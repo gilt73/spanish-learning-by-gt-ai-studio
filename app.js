@@ -138,6 +138,60 @@ function renderImportResult(trackId, meta) {
         </div>`;
 }
 
+// ---- Search (requires local server.js for the Spotify Client Credentials proxy) ----
+let searchDebounceTimer = null;
+
+function handleSearchInput() {
+    const query = document.getElementById('search-input').value.trim();
+    const resultsBox = document.getElementById('search-results');
+    clearTimeout(searchDebounceTimer);
+
+    if (!query) {
+        resultsBox.innerHTML = '';
+        return;
+    }
+
+    searchDebounceTimer = setTimeout(async () => {
+        resultsBox.innerHTML = `<p class="text-xs text-gray-500 px-1">מחפש...</p>`;
+        try {
+            const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
+            if (!res.ok) throw new Error('search failed');
+            const data = await res.json();
+            renderSearchResults(data.tracks || []);
+        } catch (err) {
+            resultsBox.innerHTML = `
+                <p class="text-[11px] text-gray-500 px-1 leading-relaxed">
+                    חיפוש דורש הרצת השרת המקומי (<code class="text-gray-400">npm start</code>) עם מפתחות Spotify ב-.env — ראו README. אפשר עדיין להדביק קישור שיר ישירות למעלה.
+                </p>`;
+        }
+    }, 400);
+}
+
+function renderSearchResults(tracks) {
+    const resultsBox = document.getElementById('search-results');
+    if (tracks.length === 0) {
+        resultsBox.innerHTML = `<p class="text-xs text-gray-500 px-1">לא נמצאו תוצאות.</p>`;
+        return;
+    }
+    resultsBox.innerHTML = tracks.map(t => `
+        <button onclick='selectSearchResult(${JSON.stringify(t).replace(/'/g, "&#39;")})'
+            class="glass-card rounded-xl p-2.5 flex items-center gap-3 text-right">
+            <img src="${t.albumArt}" alt="${t.name}" class="w-10 h-10 rounded-md object-cover">
+            <div class="flex-1 min-w-0">
+                <p class="text-sm font-bold truncate">${t.name}</p>
+                <p class="text-[11px] text-gray-500 truncate">${t.artists}</p>
+            </div>
+        </button>
+    `).join('');
+}
+
+function selectSearchResult(track) {
+    document.getElementById('search-input').value = '';
+    document.getElementById('search-results').innerHTML = '';
+    document.getElementById('import-result').classList.remove('hidden');
+    renderImportResult(track.id, { title: `${track.name} · ${track.artists}`, thumbnail_url: track.albumArt });
+}
+
 // ---- Library ----
 function renderLibrary() {
     const list = document.getElementById('song-list');

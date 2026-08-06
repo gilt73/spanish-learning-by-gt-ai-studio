@@ -42,7 +42,7 @@
                     <p class="text-[11px] text-gray-500 leading-none mt-1">by G.T AI Studio</p>
                 </div>
             </div>
-            <span id="app-version" class="text-[10px] font-mono text-gray-600 border border-white/10 rounded-full px-2 py-1">v1.1.0</span>
+            <span id="app-version" class="text-[10px] font-mono text-gray-600 border border-white/10 rounded-full px-2 py-1">v1.2.0</span>
         </header>
 
         <!-- ===================== HOME ===================== -->
@@ -79,6 +79,16 @@
                     נביא את שם השיר, העטיפה והנגן האמיתיים מספוטיפיי. פירוק מילה-מילה עדיין זמין רק לשירים שערוכים במאגר (ר' ספריית שירים).
                 </p>
                 <div id="import-result" class="hidden mt-3"></div>
+
+                <div class="border-t border-white/10 mt-4 pt-4">
+                    <label class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-3 py-2.5">
+                        <i class="fa-solid fa-magnifying-glass text-gray-400"></i>
+                        <input id="search-input" type="text" placeholder="או חפשו שיר לפי שם / אמן..."
+                            class="bg-transparent flex-1 text-sm outline-none placeholder:text-gray-500"
+                            oninput="handleSearchInput()">
+                    </label>
+                    <div id="search-results" class="flex flex-col gap-2 mt-2"></div>
+                </div>
             </div>
 
             <p class="text-xs text-gray-500 mb-2">המשיכו איפה שעצרתם</p>
@@ -218,7 +228,7 @@
 
             <div class="glass-card rounded-2xl p-4 text-center">
                 <p class="text-xs text-gray-500 mb-1">Spanish Learning</p>
-                <p id="settings-version" class="text-sm font-mono text-gray-400">v1.1.0</p>
+                <p id="settings-version" class="text-sm font-mono text-gray-400">v1.2.0</p>
                 <p id="settings-build" class="text-[10px] text-gray-600 mt-1"></p>
                 <p class="text-[11px] text-gray-600 mt-3">by G.T AI Studio</p>
             </div>

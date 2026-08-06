@@ -68,14 +68,74 @@ function renderHome() {
     `;
 }
 
-function handleSpotifyImport() {
+function extractSpotifyTrackId(url) {
+    const match = url.match(/track[\/:]([a-zA-Z0-9]{10,})/);
+    return match ? match[1].split('?')[0] : null;
+}
+
+async function handleSpotifyImport() {
     const input = document.getElementById('spotify-input');
-    if (!input.value.trim()) {
+    const url = input.value.trim();
+    if (!url) {
         input.focus();
         return;
     }
-    openSong('baila-conmigo');
-    input.value = '';
+
+    const trackId = extractSpotifyTrackId(url);
+    const resultBox = document.getElementById('import-result');
+    const btn = document.getElementById('import-btn');
+    resultBox.classList.remove('hidden');
+
+    if (!trackId) {
+        resultBox.innerHTML = `
+            <div class="glass-card rounded-xl p-3 text-xs text-red-300">
+                לא זיהיתי קישור שיר תקין. העתיקו קישור מתוך ספוטיפיי (שתפו שיר → העתק קישור).
+            </div>`;
+        return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'טוען...';
+    resultBox.innerHTML = `<div class="glass-card rounded-xl p-4 text-xs text-gray-400 text-center">מביא פרטי שיר אמיתיים מספוטיפיי...</div>`;
+
+    try {
+        const oembedUrl = `https://open.spotify.com/oembed?url=https://open.spotify.com/track/${trackId}`;
+        const res = await fetch(oembedUrl);
+        if (!res.ok) throw new Error('oEmbed request failed');
+        const meta = await res.json();
+        renderImportResult(trackId, meta);
+    } catch (err) {
+        resultBox.innerHTML = `
+            <div class="glass-card rounded-xl p-3 text-xs text-red-300">
+                לא הצלחתי להביא את פרטי השיר כרגע (בעיית רשת או קישור לא תקין). נסו שוב, או נסו את השיר לדוגמה בספרייה.
+            </div>`;
+    } finally {
+        btn.disabled = false;
+        btn.textContent = 'ייבא שיר';
+    }
+}
+
+function renderImportResult(trackId, meta) {
+    const resultBox = document.getElementById('import-result');
+    resultBox.innerHTML = `
+        <div class="glass-card rounded-2xl p-4">
+            <div class="flex items-center gap-3 mb-3">
+                <img src="${meta.thumbnail_url}" alt="${meta.title}" class="w-14 h-14 rounded-lg object-cover">
+                <div class="flex-1 min-w-0">
+                    <p class="font-bold text-sm truncate">${meta.title}</p>
+                    <p class="text-[11px] text-gray-500">נטען ישירות מספוטיפיי</p>
+                </div>
+            </div>
+            <iframe src="https://open.spotify.com/embed/track/${trackId}" width="100%" height="152"
+                frameborder="0" allow="encrypted-media" loading="lazy" class="rounded-xl"></iframe>
+            <p class="text-[11px] text-gray-500 mt-3 leading-relaxed">
+                <i class="fa-solid fa-circle-info ml-1"></i>
+                שיר זה עדיין לא ערוך במאגר המילים שלנו, אז אין עדיין שיעור מילה-מילה עבורו.
+            </p>
+            <button onclick="openSong('baila-conmigo')" class="w-full mt-2 py-2 rounded-xl glass-card text-xs font-bold">
+                נסו במקום את שיר הדוגמה הערוך
+            </button>
+        </div>`;
 }
 
 // ---- Library ----

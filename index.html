@@ -42,7 +42,7 @@
                     <p class="text-[11px] text-gray-500 leading-none mt-1">by G.T AI Studio</p>
                 </div>
             </div>
-            <span id="app-version" class="text-[10px] font-mono text-gray-600 border border-white/10 rounded-full px-2 py-1">v1.0.0</span>
+            <span id="app-version" class="text-[10px] font-mono text-gray-600 border border-white/10 rounded-full px-2 py-1">v1.1.0</span>
         </header>
 
         <!-- ===================== HOME ===================== -->
@@ -70,14 +70,15 @@
                     <input id="spotify-input" type="text" placeholder="הדביקו קישור לשיר מספוטיפיי..."
                         class="bg-transparent flex-1 text-sm outline-none placeholder:text-gray-500" dir="ltr">
                 </label>
-                <button onclick="handleSpotifyImport()"
+                <button id="import-btn" onclick="handleSpotifyImport()"
                     class="w-full py-2.5 rounded-xl bg-gradient-to-l from-gt-blue to-gt-purple text-sm font-bold">
                     ייבא שיר
                 </button>
                 <p class="text-[11px] text-gray-500 mt-2 leading-relaxed">
                     <i class="fa-solid fa-circle-info ml-1"></i>
-                    בגרסה זו הייבוא האוטומטי הוא הדגמה. הפעילו את השיר לדוגמה למטה כדי לראות איך הלמידה עובדת.
+                    נביא את שם השיר, העטיפה והנגן האמיתיים מספוטיפיי. פירוק מילה-מילה עדיין זמין רק לשירים שערוכים במאגר (ר' ספריית שירים).
                 </p>
+                <div id="import-result" class="hidden mt-3"></div>
             </div>
 
             <p class="text-xs text-gray-500 mb-2">המשיכו איפה שעצרתם</p>
@@ -217,7 +218,7 @@
 
             <div class="glass-card rounded-2xl p-4 text-center">
                 <p class="text-xs text-gray-500 mb-1">Spanish Learning</p>
-                <p id="settings-version" class="text-sm font-mono text-gray-400">v1.0.0</p>
+                <p id="settings-version" class="text-sm font-mono text-gray-400">v1.1.0</p>
                 <p id="settings-build" class="text-[10px] text-gray-600 mt-1"></p>
                 <p class="text-[11px] text-gray-600 mt-3">by G.T AI Studio</p>
             </div>

@@ -198,7 +198,9 @@ function renderLibrary() {
     list.innerHTML = SONGS.map(song => `
         <button ${song.locked ? 'disabled' : `onclick="openSong('${song.id}')"`}
             class="glass-card rounded-2xl p-4 flex items-center gap-3 text-right ${song.locked ? 'opacity-50' : ''}">
-            <span class="text-3xl">${song.cover}</span>
+            ${song.albumArt
+                ? `<img src="${song.albumArt}" alt="${song.title}" class="w-12 h-12 rounded-lg object-cover">`
+                : `<span class="text-3xl">${song.cover}</span>`}
             <div class="flex-1">
                 <p class="font-bold text-sm">${song.title}</p>
                 <p class="text-xs text-gray-500">${song.artist}</p>
@@ -235,6 +237,20 @@ function renderLesson() {
         `שורה ${state.currentLineIndex + 1} מתוך ${song.lines.length}`;
     document.getElementById('lesson-progress-bar').style.width =
         `${((state.currentLineIndex + 1) / song.lines.length) * 100}%`;
+
+    const embedWrap = document.getElementById('lesson-embed-wrap');
+    if (song.trackId) {
+        embedWrap.innerHTML = `
+            <iframe src="https://open.spotify.com/embed/track/${song.trackId}" width="100%" height="152"
+                frameborder="0" allow="encrypted-media" loading="lazy" class="rounded-xl mb-3"></iframe>
+            ${song.titleOnly ? `
+                <p class="text-[11px] text-gray-500 mb-4 leading-relaxed">
+                    <i class="fa-solid fa-circle-info ml-1"></i>
+                    לשיר האמיתי הזה יש כרגע לימוד לכותרת בלבד — פירוק שורה-שורה לכל הטקסט דורש ספק מילים מורשה (ר' SPEC.md סעיף 5).
+                </p>` : ''}`;
+    } else {
+        embedWrap.innerHTML = '';
+    }
 
     document.getElementById('lesson-es').textContent = line.es;
     document.getElementById('lesson-he').textContent = line.he;

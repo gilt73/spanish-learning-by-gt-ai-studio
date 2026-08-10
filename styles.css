@@ -1,8 +1,7 @@
-/* Design tokens adapted from the "Organic" design system (built in Claude
-   Design, V1.4). Heebo stays the body/UI font throughout for full Hebrew
-   glyph support — Caprasimo (Organic's display font) is Latin-only, so it's
-   used only for Spanish-language display text (song lines, word chips),
-   never for Hebrew headings/labels. */
+/* Design tokens — Organic design system (V1.5)
+   Heebo: body/UI font (full Hebrew glyph support)
+   Caprasimo: Spanish display text only (Latin-only font)
+*/
 
 @import url('https://fonts.googleapis.com/css2?family=Caprasimo:wght@400&display=swap');
 
@@ -26,10 +25,16 @@
     --color-accent2-400: #aebf92;
     --color-accent2-700: #56633f;
 
+    --color-spotify: #1DB954;
+    --color-spotify-dark: #169040;
+
     --color-danger: #b3453a;
     --color-danger-100: #fbe8e6;
     --color-success: #4d7c4a;
     --color-success-100: #e8f3e6;
+    --color-mastered: #2d8a2a;
+    --color-mastered-100: #d4f0d3;
+    --color-mastered-ring: #38c735;
 
     --radius-sm: 8px;
     --radius-md: 16px;
@@ -63,6 +68,9 @@
     --color-danger-100: rgba(224, 130, 119, 0.16);
     --color-success: #8fbf8a;
     --color-success-100: rgba(143, 191, 138, 0.16);
+    --color-mastered: #6edb6b;
+    --color-mastered-100: rgba(110, 219, 107, 0.16);
+    --color-mastered-ring: #5dcf5a;
 }
 
 html {
@@ -90,6 +98,7 @@ body {
     position: relative;
 }
 
+/* ---- Cards ---- */
 .card {
     background: var(--color-surface);
     border-radius: var(--radius-md);
@@ -100,6 +109,7 @@ body {
     transform: scale(0.98);
 }
 
+/* ---- Screens ---- */
 .screen {
     display: none;
     padding: 1rem 1.25rem 6rem;
@@ -115,6 +125,7 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* ---- Bottom Nav ---- */
 .bottom-nav {
     position: fixed;
     bottom: 0;
@@ -142,6 +153,8 @@ body {
     border: none;
     padding: 4px 6px;
     min-width: 56px;
+    cursor: pointer;
+    transition: color 0.15s ease;
 }
 
 .nav-item.active {
@@ -152,6 +165,24 @@ body {
     font-size: 26px;
 }
 
+/* Add Song nav button — styled differently */
+.nav-item.nav-add {
+    background: var(--color-accent);
+    color: white;
+    border-radius: 999px;
+    padding: 6px 14px;
+    margin-top: -4px;
+    gap: 2px;
+    font-size: 11px;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(198, 113, 57, 0.35);
+}
+
+.nav-item.nav-add i {
+    font-size: 20px;
+}
+
+/* ---- Buttons ---- */
 .pill {
     border-radius: 999px;
     border: 1px solid var(--color-divider);
@@ -161,6 +192,7 @@ body {
     font-size: 12px;
     padding: 8px 4px;
     text-align: center;
+    cursor: pointer;
 }
 
 .pill.active {
@@ -175,10 +207,13 @@ body {
     border-radius: 999px;
     font-weight: 700;
     border: none;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.1s ease;
 }
 
 .btn-primary:active {
     background: var(--color-accent-600, var(--color-accent));
+    transform: scale(0.97);
 }
 
 .btn-pill {
@@ -186,13 +221,65 @@ body {
     border: 1px solid var(--color-divider);
     background: var(--color-surface);
     color: var(--color-text);
+    cursor: pointer;
 }
 
+/* Spotify Button */
+.btn-spotify {
+    background: var(--color-spotify);
+    color: #fff;
+    border-radius: 999px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.btn-spotify:hover {
+    background: var(--color-spotify-dark);
+}
+
+.btn-spotify:active {
+    transform: scale(0.97);
+}
+
+/* Driving Mode — extra large buttons */
+.btn-driving {
+    min-height: 64px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: var(--radius-md);
+    padding: 0 24px;
+}
+
+.btn-driving-primary {
+    background: var(--color-accent);
+    color: var(--color-accent-100);
+    border: none;
+    cursor: pointer;
+}
+
+.btn-driving-spotify {
+    background: var(--color-spotify);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    gap: 10px;
+}
+
+/* ---- Word Chips ---- */
 .word-chip {
     background: var(--color-surface);
     border-radius: var(--radius-sm);
     border: 1px solid transparent;
     transition: all 0.2s ease;
+    cursor: pointer;
+    width: 100%;
+    text-align: right;
 }
 
 .word-chip.revealed {
@@ -200,11 +287,13 @@ body {
     border-color: var(--color-accent-400);
 }
 
+/* ---- Quiz ---- */
 .quiz-option {
     background: var(--color-surface);
     border-radius: var(--radius-sm);
     border: 1px solid var(--color-divider);
     transition: all 0.15s ease;
+    cursor: pointer;
 }
 
 .quiz-option.correct {
@@ -219,6 +308,7 @@ body {
     color: var(--color-danger);
 }
 
+/* ---- Progress Bars ---- */
 .progress-bar-track {
     background: var(--color-divider);
     border-radius: 999px;
@@ -229,8 +319,10 @@ body {
     height: 100%;
     border-radius: 999px;
     background: var(--color-accent);
+    transition: width 0.5s ease;
 }
 
+/* ---- Tags / Pills ---- */
 .tag {
     border-radius: 999px;
     font-size: 10px;
@@ -244,12 +336,16 @@ body {
     color: var(--color-text-muted);
 }
 
+/* ---- Category Cards ---- */
 .category-card {
     background: var(--color-surface);
     border-radius: var(--radius-md);
     padding: 14px;
+    cursor: pointer;
+    text-align: right;
 }
 
+/* ---- Theme Toggle ---- */
 .theme-toggle {
     display: inline-flex;
     border: 1px solid var(--color-divider);
@@ -263,6 +359,7 @@ body {
     color: var(--color-text-muted);
     background: transparent;
     border: none;
+    cursor: pointer;
 }
 
 .theme-toggle button.active {
@@ -271,6 +368,360 @@ body {
     font-weight: 700;
 }
 
+/* ---- Circular Progress Ring ---- */
+.song-ring-wrap {
+    position: relative;
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+}
+
+.song-ring-wrap .ring-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 56px;
+    height: 56px;
+    transform: rotate(-90deg);
+}
+
+.song-ring-wrap .ring-track {
+    fill: none;
+    stroke: var(--color-divider);
+    stroke-width: 3;
+}
+
+.song-ring-wrap .ring-fill {
+    fill: none;
+    stroke: var(--color-accent);
+    stroke-width: 3;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.6s ease;
+}
+
+.song-ring-wrap.mastered .ring-fill {
+    stroke: var(--color-mastered-ring);
+}
+
+.song-ring-wrap .ring-cover {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.song-ring-wrap .ring-cover img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.song-ring-wrap .ring-cover-emoji {
+    font-size: 24px;
+    line-height: 1;
+}
+
+/* Mastery checkmark overlay */
+.mastered-overlay {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 20px;
+    height: 20px;
+    background: var(--color-mastered-ring);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--color-bg);
+    z-index: 2;
+}
+
+.mastered-overlay i {
+    color: white;
+    font-size: 9px;
+}
+
+/* ---- Song Card ---- */
+.song-card {
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: right;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.song-card:active {
+    transform: scale(0.98);
+}
+
+.song-card.mastered {
+    background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-mastered-100) 100%);
+    border: 1px solid rgba(56, 199, 53, 0.2);
+}
+
+.song-card-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.song-card-title {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.3;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.song-card-artist {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.song-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.song-card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-end;
+    flex-shrink: 0;
+}
+
+.btn-spotify-small {
+    background: var(--color-spotify);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.1s ease;
+    white-space: nowrap;
+}
+
+.btn-spotify-small:active {
+    background: var(--color-spotify-dark);
+    transform: scale(0.95);
+}
+
+/* ---- Add Song Form ---- */
+.add-song-form .form-field {
+    margin-bottom: 14px;
+}
+
+.add-song-form label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    margin-bottom: 6px;
+}
+
+.add-song-form input,
+.add-song-form textarea {
+    width: 100%;
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-divider);
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+    font-family: 'Heebo', sans-serif;
+    font-size: 14px;
+    padding: 10px 12px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.15s ease;
+}
+
+.add-song-form input:focus,
+.add-song-form textarea:focus {
+    border-color: var(--color-accent);
+}
+
+.add-song-form textarea {
+    resize: vertical;
+    min-height: 160px;
+    direction: ltr;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* ---- Loading State ---- */
+.loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 32px 0;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--color-divider);
+    border-top-color: var(--color-accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ---- Shimmer skeleton ---- */
+.shimmer {
+    background: linear-gradient(90deg,
+        var(--color-surface) 0%,
+        var(--color-surface-2) 50%,
+        var(--color-surface) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.2s infinite;
+    border-radius: var(--radius-sm);
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* ---- Lesson Screen Upgrades (Driving Mode) ---- */
+.lesson-spotify-bar {
+    background: rgba(29, 185, 84, 0.12);
+    border: 1px solid rgba(29, 185, 84, 0.25);
+    border-radius: var(--radius-md);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.lesson-spotify-bar:active {
+    background: rgba(29, 185, 84, 0.2);
+}
+
+.lesson-spotify-bar i {
+    color: var(--color-spotify);
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.lesson-spotify-bar span {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-spotify);
+    flex: 1;
+}
+
+.lesson-spotify-bar .chevron {
+    color: var(--color-spotify);
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+/* Lesson action buttons — large for driving */
+.lesson-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.lesson-action-btn {
+    border-radius: 999px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: transform 0.1s ease;
+}
+
+.lesson-action-btn:active {
+    transform: scale(0.95);
+}
+
+.lesson-action-btn.size-sm {
+    width: 60px;
+    height: 60px;
+    font-size: 12px;
+}
+
+.lesson-action-btn.size-lg {
+    width: 72px;
+    height: 72px;
+    font-size: 13px;
+}
+
+.lesson-action-btn i {
+    font-size: 22px;
+}
+
+.lesson-action-btn.size-lg i {
+    font-size: 26px;
+}
+
+/* Next sentence — full width, tall */
+.btn-next-line {
+    width: 100%;
+    min-height: 64px;
+    font-size: 17px;
+    font-weight: 700;
+    background: var(--color-accent);
+    color: var(--color-accent-100);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background 0.15s ease, transform 0.1s ease;
+    box-shadow: 0 4px 14px rgba(198, 113, 57, 0.3);
+}
+
+.btn-next-line:active {
+    background: var(--color-accent-600);
+    transform: scale(0.98);
+}
+
+/* ---- Scrollbar ---- */
 ::-webkit-scrollbar {
     display: none;
 }

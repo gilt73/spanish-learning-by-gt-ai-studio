@@ -40,7 +40,7 @@
                     <p class="text-[11px] leading-none mt-1" style="color:var(--color-text-muted)">by G.T AI Studio</p>
                 </div>
             </div>
-            <span id="app-version" class="text-[10px] font-mono rounded-full px-2 py-1" style="color:var(--color-text-muted);border:1px solid var(--color-divider)">v1.4.2</span>
+            <span id="app-version" class="text-[10px] font-mono rounded-full px-2 py-1" style="color:var(--color-text-muted);border:1px solid var(--color-divider)">v1.5.0</span>
         </header>
 
         <div id="update-banner" class="hidden mx-5 mb-3 px-4 py-2.5 flex items-center gap-2 text-xs" style="background:var(--color-accent-100);border:1px solid var(--color-accent);border-radius:var(--radius-sm);color:var(--color-accent-700)">
@@ -67,40 +67,18 @@
             <p class="text-xs mb-2" style="color:var(--color-text-muted)">הרמה שלי</p>
             <div id="level-selector" class="grid grid-cols-3 gap-2 mb-5"></div>
 
-            <p class="text-xs mb-2" style="color:var(--color-text-muted)">למד עם שיר</p>
-            <div class="card p-4 mb-4">
-                <label class="flex items-center gap-2 rounded-xl px-3 py-2.5 mb-3" style="background:var(--color-surface-2);border:1px solid var(--color-divider)">
-                    <i class="fa-brands fa-spotify" style="color:var(--color-accent2)"></i>
-                    <input id="spotify-input" type="text" placeholder="הדביקו קישור לשיר מספוטיפיי..."
-                        class="bg-transparent flex-1 text-sm outline-none" dir="ltr" style="color:var(--color-text)">
-                </label>
-                <button id="import-btn" onclick="handleSpotifyImport()" class="btn-primary w-full py-2.5 text-sm">
-                    ייבא שיר
-                </button>
-                <p class="text-[11px] mt-2 leading-relaxed" style="color:var(--color-text-muted)">
-                    <i class="fa-solid fa-circle-info ml-1"></i>
-                    נביא את שם השיר, העטיפה והנגן האמיתיים מספוטיפיי. פירוק מילה-מילה עדיין זמין רק לשירים שערוכים במאגר (ר' ספריית שירים).
-                </p>
-                <div id="import-result" class="hidden mt-3"></div>
-
-                <div class="mt-4 pt-4" style="border-top:1px solid var(--color-divider)">
-                    <label class="flex items-center gap-2 rounded-xl px-3 py-2.5" style="background:var(--color-surface-2);border:1px solid var(--color-divider)">
-                        <i class="fa-solid fa-magnifying-glass" style="color:var(--color-text-muted)"></i>
-                        <input id="search-input" type="text" placeholder="או חפשו שיר לפי שם / אמן..."
-                            class="bg-transparent flex-1 text-sm outline-none" style="color:var(--color-text)"
-                            oninput="handleSearchInput()">
-                    </label>
-                    <div id="search-results" class="flex flex-col gap-2 mt-2"></div>
-                </div>
-            </div>
-
             <p class="text-xs mb-2" style="color:var(--color-text-muted)">המשיכו איפה שעצרתם</p>
             <div id="home-continue"></div>
         </section>
 
         <!-- ===================== LIBRARY ===================== -->
         <section id="screen-library" class="screen">
-            <h2 class="text-xl font-bold mb-3">ספרייה</h2>
+            <div class="flex items-center justify-between mb-3">
+                <h2 class="text-xl font-bold">ספרייה</h2>
+                <button onclick="showScreen('settings')" class="flex items-center gap-1 text-sm px-3 py-1.5 rounded-full" style="background:var(--color-surface);color:var(--color-text-muted)">
+                    <i class="fa-solid fa-gear"></i>
+                </button>
+            </div>
             <div class="theme-toggle mb-4">
                 <button id="lib-tab-songs" class="active" onclick="switchLibraryTab('songs')">שירים</button>
                 <button id="lib-tab-wordbank" onclick="switchLibraryTab('wordbank')">מאגר מילים</button>
@@ -122,11 +100,54 @@
             </button>
         </section>
 
+        <!-- ===================== ADD SONG ===================== -->
+        <section id="screen-add-song" class="screen">
+            <button onclick="showScreen('library')" class="flex items-center gap-1 text-sm mb-5" style="color:var(--color-text-muted)">
+                <i class="fa-solid fa-arrow-right"></i> חזרה לספרייה
+            </button>
+            <h2 class="text-xl font-bold mb-1">הוסף שיר חדש</h2>
+            <p class="text-xs mb-5" style="color:var(--color-text-muted)">הדביקו את המילים בספרדית — הבינה המלאכותית תתרגם ותבנה שיעור מלא</p>
+
+            <div class="add-song-form">
+                <div class="form-field">
+                    <label for="add-title">שם השיר</label>
+                    <input id="add-title" type="text" placeholder="לדוגמה: La Bamba" dir="ltr">
+                </div>
+                <div class="form-field">
+                    <label for="add-artist">שם האמן</label>
+                    <input id="add-artist" type="text" placeholder="לדוגמה: Ritchie Valens" dir="ltr">
+                </div>
+                <div class="form-field">
+                    <label for="add-spotify">קישור ספוטיפיי (אופציונלי)</label>
+                    <input id="add-spotify" type="text" placeholder="https://open.spotify.com/track/..." dir="ltr">
+                </div>
+                <div class="form-field">
+                    <label for="add-lyrics">מילות השיר בספרדית</label>
+                    <textarea id="add-lyrics" placeholder="הדביקו כאן את המילים בספרדית..."></textarea>
+                </div>
+            </div>
+
+            <button id="add-song-btn" onclick="handleAddSong()" class="btn-primary w-full py-4 text-base font-bold mb-4">
+                <i class="fa-solid fa-wand-magic-sparkles ml-2"></i>
+                צור שיעור עם AI
+            </button>
+
+            <div id="add-song-result" class="hidden"></div>
+        </section>
+
         <!-- ===================== LESSON ===================== -->
         <section id="screen-lesson" class="screen">
             <button onclick="showScreen('library')" class="flex items-center gap-1 text-sm mb-4" style="color:var(--color-text-muted)">
                 <i class="fa-solid fa-arrow-right"></i> חזרה לספרייה
             </button>
+
+            <!-- Spotify bar -->
+            <div id="lesson-spotify-bar" class="lesson-spotify-bar hidden" onclick="openSpotify()">
+                <i class="fa-brands fa-spotify"></i>
+                <span>האזן בספוטיפיי</span>
+                <i class="fa-solid fa-arrow-up-right-from-square chevron"></i>
+            </div>
+
             <div class="flex items-center justify-between mb-1">
                 <h2 id="lesson-title" class="text-lg font-bold"></h2>
                 <span id="lesson-progress" class="text-xs" style="color:var(--color-text-muted)"></span>
@@ -137,30 +158,31 @@
 
             <div id="lesson-embed-wrap"></div>
 
-            <div class="card p-6 text-center mb-4">
+            <div class="card p-5 text-center mb-4">
                 <p id="lesson-es" class="es-text text-xl mb-2" dir="ltr"></p>
-                <p id="lesson-he" class="text-sm mb-5" style="color:var(--color-text-muted)"></p>
-                <div class="flex justify-center gap-3">
-                    <button onclick="playLine(0.7)" class="btn-pill rounded-full flex flex-col items-center justify-center gap-1" style="width:64px;height:64px">
-                        <i class="fa-solid fa-turtle text-xl"></i>
-                        <span class="text-[10px]">האטה</span>
+                <p id="lesson-he" class="text-sm mb-4" style="color:var(--color-text-muted)"></p>
+                <div class="lesson-actions">
+                    <button onclick="playLine(0.7)" class="lesson-action-btn btn-pill size-sm">
+                        <i class="fa-solid fa-gauge-simple-low"></i>
+                        <span>האטה</span>
                     </button>
-                    <button onclick="playLine(1)" class="btn-primary rounded-full flex flex-col items-center justify-center gap-1" style="width:64px;height:64px">
-                        <i class="fa-solid fa-play text-xl"></i>
-                        <span class="text-[10px]">נגן</span>
+                    <button onclick="playLine(1)" class="lesson-action-btn btn-primary size-lg">
+                        <i class="fa-solid fa-play"></i>
+                        <span>נגן</span>
                     </button>
-                    <button onclick="startPronunciationPractice()" class="btn-pill rounded-full flex flex-col items-center justify-center gap-1" style="width:64px;height:64px">
-                        <i class="fa-solid fa-microphone text-xl"></i>
-                        <span class="text-[10px]">הגייה</span>
+                    <button onclick="startPronunciationPractice()" class="lesson-action-btn btn-pill size-sm">
+                        <i class="fa-solid fa-microphone"></i>
+                        <span>הגייה</span>
                     </button>
                 </div>
             </div>
 
             <p class="text-xs mb-2" style="color:var(--color-text-muted)">לחצו על מילה למשמעות והגייה</p>
-            <div id="lesson-words" class="flex flex-col gap-2 mb-6"></div>
+            <div id="lesson-words" class="flex flex-col gap-2 mb-5"></div>
 
-            <button id="lesson-next-btn" onclick="nextLine()" class="btn-primary w-full py-3 text-sm">
-                המשך לשורה הבאה
+            <button id="lesson-next-btn" onclick="nextLine()" class="btn-next-line">
+                <span id="lesson-next-label">המשך לשורה הבאה</span>
+                <i class="fa-solid fa-chevron-left"></i>
             </button>
         </section>
 
@@ -228,6 +250,9 @@
 
         <!-- ===================== SETTINGS ===================== -->
         <section id="screen-settings" class="screen">
+            <button onclick="showScreen('library')" class="flex items-center gap-1 text-sm mb-5" style="color:var(--color-text-muted)">
+                <i class="fa-solid fa-arrow-right"></i> חזרה
+            </button>
             <h2 class="text-xl font-bold mb-4">הגדרות</h2>
 
             <div class="card p-4 mb-4">
@@ -259,7 +284,7 @@
 
             <div class="card p-4 text-center">
                 <p class="text-xs mb-1" style="color:var(--color-text-muted)">Spanish Learning</p>
-                <p id="settings-version" class="text-sm font-mono" style="color:var(--color-text-muted)">v1.4.2</p>
+                <p id="settings-version" class="text-sm font-mono" style="color:var(--color-text-muted)">v1.5.0</p>
                 <p id="settings-build" class="text-[10px] mt-1" style="color:var(--color-text-muted)"></p>
                 <p class="text-[11px] mt-3" style="color:var(--color-text-muted)">by G.T AI Studio</p>
             </div>
@@ -273,11 +298,11 @@
             <button class="nav-item" data-screen="library" onclick="showScreen('library')">
                 <i class="fa-solid fa-music"></i><span>שירים</span>
             </button>
+            <button class="nav-item nav-add" data-screen="add-song" onclick="showScreen('add-song')">
+                <i class="fa-solid fa-plus"></i><span>הוסף</span>
+            </button>
             <button class="nav-item" data-screen="progress" onclick="showScreen('progress')">
                 <i class="fa-solid fa-chart-line"></i><span>התקדמות</span>
-            </button>
-            <button class="nav-item" data-screen="settings" onclick="showScreen('settings')">
-                <i class="fa-solid fa-gear"></i><span>הגדרות</span>
             </button>
         </nav>
     </div>

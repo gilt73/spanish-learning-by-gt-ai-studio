@@ -1,3 +1,6 @@
+// app.js — Spanish Learning v1.5
+// New: BYOT lesson generation, circular progress rings, mastery states, driving mode UX
+
 // ---- State ----
 const state = {
     level: localStorage.getItem('sl_level') || 'beginner',
@@ -39,19 +42,24 @@ function initTheme() {
 // ---- Navigation ----
 function showScreen(name) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById('screen-' + name).classList.add('active');
+    const screenEl = document.getElementById('screen-' + name);
+    if (screenEl) screenEl.classList.add('active');
+
     document.querySelectorAll('.nav-item').forEach(b => {
         b.classList.toggle('active', b.dataset.screen === name);
     });
+
     if (name === 'library') renderLibraryTab();
     if (name === 'progress') renderProgress();
     if (name === 'home') renderHome();
+    if (name === 'add-song') resetAddSongForm();
     window.scrollTo(0, 0);
 }
 
-// ---- Level selector (shared by home + settings) ----
+// ---- Level selector ----
 function renderLevelSelector(containerId) {
     const el = document.getElementById(containerId);
+    if (!el) return;
     el.innerHTML = LEVELS.map(l => `
         <button onclick="setLevel('${l.id}')" class="pill ${state.level === l.id ? 'active' : ''}">
             ${l.label}
@@ -66,6 +74,104 @@ function setLevel(id) {
     renderLevelSelector('settings-level-selector');
 }
 
+// ---- Circular Progress Ring ----
+// Renders an SVG ring around the song art. r=24 → circumference=~150.8
+const RING_R = 24;
+const RING_C = 2 * Math.PI * RING_R; // 150.796...
+
+function renderProgressRing(song) {
+    const pct = song.progress_percentage || 0;
+    const mastered = song.is_mastered || false;
+    const offset = RING_C - (pct / 100) * RING_C;
+
+    const coverHtml = song.albumArt
+        ? `<img src="${song.albumArt}" alt="${song.title}">`
+        : `<span class="ring-cover-emoji">${song.cover || '🎵'}</span>`;
+
+    const masteredBadge = mastered
+        ? `<div class="mastered-overlay"><i class="fa-solid fa-check"></i></div>`
+        : '';
+
+    return `
+        <div class="song-ring-wrap ${mastered ? 'mastered' : ''}">
+            <svg class="ring-svg" viewBox="0 0 56 56">
+                <circle class="ring-track" cx="28" cy="28" r="${RING_R}"/>
+                <circle class="ring-fill" cx="28" cy="28" r="${RING_R}"
+                    stroke-dasharray="${RING_C}"
+                    stroke-dashoffset="${offset.toFixed(2)}"/>
+            </svg>
+            <div class="ring-cover">${coverHtml}</div>
+            ${masteredBadge}
+        </div>`;
+}
+
+// ---- Song Progress ----
+function updateSongProgress(songId) {
+    const song = getSongById(songId);
+    if (!song) return;
+
+    const totalLines = song.lines.length;
+    if (totalLines === 0) return;
+
+    const newPct = Math.min(100, Math.round(((state.currentLineIndex + 1) / totalLines) * 100));
+    song.progress_percentage = newPct;
+
+    if (newPct >= 100) {
+        song.is_mastered = true;
+        if (!state.completedSongs.includes(songId)) {
+            state.completedSongs.push(songId);
+            state.xp += 25;
+            saveState();
+        }
+    }
+
+    saveSongProgressToStorage(songId, song.progress_percentage, song.is_mastered);
+
+    // If it's a user-added song, also update localStorage songs list
+    const userSongs = getSongsFromLocalStorage();
+    const idx = userSongs.findIndex(s => s.id === songId);
+    if (idx >= 0) {
+        userSongs[idx] = { ...userSongs[idx], ...song };
+        localStorage.setItem('sl_user_songs', JSON.stringify(userSongs));
+    }
+}
+
+// ---- Song Card Renderer ----
+function renderSongCard(song) {
+    const ring = renderProgressRing(song);
+    const spotifyBtn = song.spotify_url
+        ? `<button class="btn-spotify-small" onclick="event.stopPropagation(); window.open('${song.spotify_url}', '_blank')">
+               <i class="fa-brands fa-spotify"></i> ספוטיפיי
+           </button>`
+        : '';
+
+    const pctLabel = song.progress_percentage > 0
+        ? `<span class="text-[10px]" style="color:var(--color-text-muted)">${song.progress_percentage}%</span>`
+        : '';
+
+    const masteredLabel = song.is_mastered
+        ? `<span class="tag" style="background:var(--color-mastered-100);color:var(--color-mastered)">✓ נלמד</span>`
+        : `<span class="tag tag-neutral">${song.genre}</span>`;
+
+    return `
+        <button onclick="openSong('${song.id}')"
+            class="song-card ${song.is_mastered ? 'mastered' : ''}">
+            ${ring}
+            <div class="song-card-info">
+                <p class="song-card-title">${song.title}</p>
+                <p class="song-card-artist">${song.artist}</p>
+                <div class="song-card-meta">
+                    ${masteredLabel}
+                    ${pctLabel}
+                </div>
+            </div>
+            <div class="song-card-actions">
+                ${spotifyBtn}
+                <i class="fa-solid fa-chevron-left text-xs" style="color:var(--color-text-muted)"></i>
+            </div>
+        </button>`;
+}
+
 // ---- Home ----
 function renderHome() {
     document.getElementById('home-streak').textContent = state.streak;
@@ -73,142 +179,12 @@ function renderHome() {
     renderLevelSelector('level-selector');
 
     const wrap = document.getElementById('home-continue');
-    const song = SONGS.find(s => !s.locked);
-    wrap.innerHTML = `
-        <button onclick="openSong('${song.id}')" class="card p-4 w-full flex items-center gap-3 text-right">
-            ${song.albumArt
-                ? `<img src="${song.albumArt}" alt="${song.title}" class="w-12 h-12 rounded-lg object-cover">`
-                : `<span class="text-3xl">${song.cover}</span>`}
-            <div class="flex-1">
-                <p class="font-bold text-sm">${song.title}</p>
-                <p class="text-xs" style="color:var(--color-text-muted)">${song.artist}</p>
-            </div>
-            <i class="fa-solid fa-chevron-left" style="color:var(--color-text-muted)"></i>
-        </button>
-    `;
-}
-
-function extractSpotifyTrackId(url) {
-    const match = url.match(/track[\/:]([a-zA-Z0-9]{10,})/);
-    return match ? match[1].split('?')[0] : null;
-}
-
-async function handleSpotifyImport() {
-    const input = document.getElementById('spotify-input');
-    const url = input.value.trim();
-    if (!url) {
-        input.focus();
-        return;
+    // Find the first in-progress or first unlocked song
+    const inProgress = SONGS.find(s => !s.locked && s.progress_percentage > 0 && !s.is_mastered);
+    const song = inProgress || SONGS.find(s => !s.locked);
+    if (song) {
+        wrap.innerHTML = renderSongCard(song);
     }
-
-    const trackId = extractSpotifyTrackId(url);
-    const resultBox = document.getElementById('import-result');
-    const btn = document.getElementById('import-btn');
-    resultBox.classList.remove('hidden');
-
-    if (!trackId) {
-        resultBox.innerHTML = `
-            <div class="card p-3 text-xs" style="color:var(--color-danger)">
-                לא זיהיתי קישור שיר תקין. העתיקו קישור מתוך ספוטיפיי (שתפו שיר → העתק קישור).
-            </div>`;
-        return;
-    }
-
-    btn.disabled = true;
-    btn.textContent = 'טוען...';
-    resultBox.innerHTML = `<div class="card p-4 text-xs text-center" style="color:var(--color-text-muted)">מביא פרטי שיר אמיתיים מספוטיפיי...</div>`;
-
-    try {
-        const oembedUrl = `https://open.spotify.com/oembed?url=https://open.spotify.com/track/${trackId}`;
-        const res = await fetch(oembedUrl);
-        if (!res.ok) throw new Error('oEmbed request failed');
-        const meta = await res.json();
-        renderImportResult(trackId, meta);
-    } catch (err) {
-        resultBox.innerHTML = `
-            <div class="card p-3 text-xs" style="color:var(--color-danger)">
-                לא הצלחתי להביא את פרטי השיר כרגע (בעיית רשת או קישור לא תקין). נסו שוב, או נסו את השיר לדוגמה בספרייה.
-            </div>`;
-    } finally {
-        btn.disabled = false;
-        btn.textContent = 'ייבא שיר';
-    }
-}
-
-function renderImportResult(trackId, meta) {
-    const resultBox = document.getElementById('import-result');
-    resultBox.innerHTML = `
-        <div class="card p-4">
-            <div class="flex items-center gap-3 mb-3">
-                <img src="${meta.thumbnail_url}" alt="${meta.title}" class="w-14 h-14 rounded-lg object-cover">
-                <div class="flex-1 min-w-0">
-                    <p class="font-bold text-sm truncate">${meta.title}</p>
-                    <p class="text-[11px]" style="color:var(--color-text-muted)">נטען ישירות מספוטיפיי</p>
-                </div>
-            </div>
-            <iframe src="https://open.spotify.com/embed/track/${trackId}" width="100%" height="152"
-                frameborder="0" allow="encrypted-media" loading="lazy" class="rounded-xl"></iframe>
-            <p class="text-[11px] mt-3 leading-relaxed" style="color:var(--color-text-muted)">
-                <i class="fa-solid fa-circle-info ml-1"></i>
-                שיר זה עדיין לא ערוך במאגר המילים שלנו, אז אין עדיין שיעור מילה-מילה עבורו.
-            </p>
-            <button onclick="openSong('baila-conmigo')" class="btn-pill w-full mt-2 py-2 rounded-xl text-xs font-bold">
-                נסו במקום את שיר הדוגמה הערוך
-            </button>
-        </div>`;
-}
-
-// ---- Search (requires local server.js / api/search.js for the Spotify Client Credentials proxy) ----
-let searchDebounceTimer = null;
-
-function handleSearchInput() {
-    const query = document.getElementById('search-input').value.trim();
-    const resultsBox = document.getElementById('search-results');
-    clearTimeout(searchDebounceTimer);
-
-    if (!query) {
-        resultsBox.innerHTML = '';
-        return;
-    }
-
-    searchDebounceTimer = setTimeout(async () => {
-        resultsBox.innerHTML = `<p class="text-xs px-1" style="color:var(--color-text-muted)">מחפש...</p>`;
-        try {
-            const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
-            if (!res.ok) throw new Error('search failed');
-            const data = await res.json();
-            renderSearchResults(data.tracks || []);
-        } catch (err) {
-            resultsBox.innerHTML = `
-                <p class="text-[11px] px-1 leading-relaxed" style="color:var(--color-text-muted)">
-                    חיפוש דורש הרצת השרת המקומי (<code>npm start</code>) עם מפתחות Spotify ב-.env — ראו README. אפשר עדיין להדביק קישור שיר ישירות למעלה.
-                </p>`;
-        }
-    }, 400);
-}
-
-function renderSearchResults(tracks) {
-    const resultsBox = document.getElementById('search-results');
-    if (tracks.length === 0) {
-        resultsBox.innerHTML = `<p class="text-xs px-1" style="color:var(--color-text-muted)">לא נמצאו תוצאות.</p>`;
-        return;
-    }
-    resultsBox.innerHTML = tracks.map(t => `
-        <button onclick='selectSearchResult(${JSON.stringify(t).replace(/'/g, "&#39;")})' class="card p-2.5 flex items-center gap-3 text-right">
-            <img src="${t.albumArt}" alt="${t.name}" class="w-10 h-10 rounded-md object-cover">
-            <div class="flex-1 min-w-0">
-                <p class="text-sm font-bold truncate">${t.name}</p>
-                <p class="text-[11px] truncate" style="color:var(--color-text-muted)">${t.artists}</p>
-            </div>
-        </button>
-    `).join('');
-}
-
-function selectSearchResult(track) {
-    document.getElementById('search-input').value = '';
-    document.getElementById('search-results').innerHTML = '';
-    document.getElementById('import-result').classList.remove('hidden');
-    renderImportResult(track.id, { title: `${track.name} · ${track.artists}`, thumbnail_url: track.albumArt });
 }
 
 // ---- Library ----
@@ -229,22 +205,10 @@ function switchLibraryTab(tab) {
 
 function renderLibrary() {
     const list = document.getElementById('song-list');
-    list.innerHTML = SONGS.map(song => `
-        <button ${song.locked ? 'disabled' : `onclick="openSong('${song.id}')"`}
-            class="card p-4 flex items-center gap-3 text-right ${song.locked ? 'opacity-50' : ''}">
-            ${song.albumArt
-                ? `<img src="${song.albumArt}" alt="${song.title}" class="w-12 h-12 rounded-lg object-cover">`
-                : `<span class="text-3xl">${song.cover}</span>`}
-            <div class="flex-1">
-                <p class="font-bold text-sm">${song.title}</p>
-                <p class="text-xs" style="color:var(--color-text-muted)">${song.artist}</p>
-            </div>
-            <div class="flex flex-col items-end gap-1">
-                <span class="tag tag-neutral">${song.genre}</span>
-                ${song.locked ? '<i class="fa-solid fa-lock text-xs" style="color:var(--color-text-muted)"></i>' : ''}
-            </div>
-        </button>
-    `).join('');
+    list.innerHTML = SONGS
+        .filter(s => !s.locked)
+        .map(song => renderSongCard(song))
+        .join('');
 }
 
 function renderWordBank() {
@@ -313,7 +277,9 @@ function showLessonScreen() {
 
 function renderLesson() {
     const song = getSongById(state.currentSongId);
+    if (!song) return;
     const line = song.lines[state.currentLineIndex];
+    if (!line) return;
 
     document.getElementById('lesson-title').textContent = song.title;
     document.getElementById('lesson-progress').textContent =
@@ -321,16 +287,21 @@ function renderLesson() {
     document.getElementById('lesson-progress-bar').style.width =
         `${((state.currentLineIndex + 1) / song.lines.length) * 100}%`;
 
+    // Spotify bar
+    const spotifyBar = document.getElementById('lesson-spotify-bar');
+    if (song.spotify_url) {
+        spotifyBar.classList.remove('hidden');
+        spotifyBar.dataset.url = song.spotify_url;
+    } else {
+        spotifyBar.classList.add('hidden');
+    }
+
+    // Spotify embed (trackId)
     const embedWrap = document.getElementById('lesson-embed-wrap');
-    if (song.trackId) {
+    if (song.trackId && !song.spotify_url) {
         embedWrap.innerHTML = `
             <iframe src="https://open.spotify.com/embed/track/${song.trackId}" width="100%" height="152"
-                frameborder="0" allow="encrypted-media" loading="lazy" class="rounded-xl mb-3"></iframe>
-            ${song.titleOnly ? `
-                <p class="text-[11px] mb-4 leading-relaxed" style="color:var(--color-text-muted)">
-                    <i class="fa-solid fa-circle-info ml-1"></i>
-                    לשיר האמיתי הזה יש כרגע לימוד לכותרת בלבד — פירוק שורה-שורה לכל הטקסט דורש ספק מילים מורשה (ר' SPEC.md סעיף 5).
-                </p>` : ''}`;
+                frameborder="0" allow="encrypted-media" loading="lazy" class="rounded-xl mb-3"></iframe>`;
     } else {
         embedWrap.innerHTML = '';
     }
@@ -338,7 +309,8 @@ function renderLesson() {
     document.getElementById('lesson-es').textContent = line.es;
     document.getElementById('lesson-he').textContent = line.he;
 
-    document.getElementById('lesson-words').innerHTML = line.words.map((w, i) => `
+    const words = line.words || [];
+    document.getElementById('lesson-words').innerHTML = words.map(w => `
         <button onclick="toggleWord(this)" class="word-chip p-3 flex items-center justify-between text-right">
             <span class="flex flex-col items-start" dir="ltr">
                 <span class="es-text text-sm">${w.es}</span>
@@ -348,10 +320,16 @@ function renderLesson() {
         </button>
     `).join('');
 
-    const btn = document.getElementById('lesson-next-btn');
-    btn.textContent = state.currentLineIndex < song.lines.length - 1
-        ? 'המשך לשורה הבאה'
-        : 'סיימתי — לתרגול';
+    const isLastLine = state.currentLineIndex >= song.lines.length - 1;
+    document.getElementById('lesson-next-label').textContent = isLastLine
+        ? 'סיימתי — לתרגול'
+        : 'המשך לשורה הבאה';
+}
+
+function openSpotify() {
+    const bar = document.getElementById('lesson-spotify-bar');
+    const url = bar.dataset.url;
+    if (url) window.open(url, '_blank');
 }
 
 function toggleWord(el) {
@@ -361,8 +339,9 @@ function toggleWord(el) {
 
 function playLine(rate) {
     const song = getSongById(state.currentSongId);
+    if (!song) return;
     const line = song.lines[state.currentLineIndex];
-    if (!('speechSynthesis' in window)) return;
+    if (!line || !('speechSynthesis' in window)) return;
     const utter = new SpeechSynthesisUtterance(line.es);
     utter.lang = 'es-ES';
     utter.rate = rate;
@@ -376,19 +355,31 @@ function startPronunciationPractice() {
 
 function nextLine() {
     const song = getSongById(state.currentSongId);
+    if (!song) return;
+
+    // Update progress tracking
+    updateSongProgress(state.currentSongId);
+
     if (state.currentLineIndex < song.lines.length - 1) {
         state.currentLineIndex++;
         renderLesson();
         window.scrollTo(0, 0);
     } else {
-        startQuiz(song.lines.flatMap(l => l.words), 'song');
+        startQuiz(song.lines.flatMap(l => l.words || []), 'song');
     }
 }
 
 // ---- Quiz ----
 function startQuiz(words, origin) {
-    const questions = words.map(w => {
-        const distractors = words
+    const filtered = words.filter(w => w && w.es && w.he);
+    if (filtered.length < 2) {
+        // Not enough words — go back to library
+        showScreen('library');
+        return;
+    }
+
+    const questions = filtered.map(w => {
+        const distractors = filtered
             .filter(o => o.he !== w.he)
             .sort(() => Math.random() - 0.5)
             .slice(0, 3)
@@ -415,16 +406,16 @@ function renderQuizQuestion() {
     document.getElementById('quiz-word').textContent = q.word;
 
     document.getElementById('quiz-options').innerHTML = q.options.map(opt => `
-        <button onclick="answerQuiz(this, '${opt.replace(/'/g, "\\'")}')" class="quiz-option py-3 text-sm">${opt}</button>
+        <button onclick="answerQuiz(this, '${opt.replace(/'/g, "\\'")}', '${q.answer.replace(/'/g, "\\'")}'))"
+            class="quiz-option py-3 text-sm">${opt}</button>
     `).join('');
 }
 
-function answerQuiz(el, chosen) {
-    const q = state.quiz.questions[state.quiz.index];
+function answerQuiz(el, chosen, answer) {
     const buttons = document.querySelectorAll('#quiz-options button');
     buttons.forEach(b => b.onclick = null);
 
-    const isCorrect = chosen === q.answer;
+    const isCorrect = chosen === answer;
     if (isCorrect) {
         el.classList.add('correct');
         state.quiz.correct++;
@@ -432,7 +423,7 @@ function answerQuiz(el, chosen) {
         saveState();
     } else {
         el.classList.add('incorrect');
-        buttons.forEach(b => { if (b.textContent === q.answer) b.classList.add('correct'); });
+        buttons.forEach(b => { if (b.textContent.trim() === answer) b.classList.add('correct'); });
     }
 
     setTimeout(() => {
@@ -450,10 +441,19 @@ function finishQuiz() {
     document.getElementById('quiz-options').classList.add('hidden');
     document.getElementById('quiz-result').classList.remove('hidden');
 
-    if (state.quiz.origin === 'song' && !state.completedSongs.includes(state.currentSongId)) {
-        state.completedSongs.push(state.currentSongId);
-        state.xp += 25;
-        saveState();
+    if (state.quiz.origin === 'song') {
+        // Mark song as fully mastered
+        const song = getSongById(state.currentSongId);
+        if (song) {
+            song.progress_percentage = 100;
+            song.is_mastered = true;
+            saveSongProgressToStorage(state.currentSongId, 100, true);
+        }
+        if (!state.completedSongs.includes(state.currentSongId)) {
+            state.completedSongs.push(state.currentSongId);
+            state.xp += 25;
+            saveState();
+        }
     } else if (state.quiz.origin === 'wordbank') {
         state.xp += 15;
         saveState();
@@ -477,28 +477,149 @@ function renderProgress() {
     document.getElementById('skill-listening-pct').textContent = listeningPct + '%';
 
     const wrap = document.getElementById('progress-songs');
-    if (state.completedSongs.length === 0) {
+    const mastered = SONGS.filter(s => s.is_mastered);
+    if (mastered.length === 0) {
         wrap.innerHTML = `<p class="text-sm" style="color:var(--color-text-muted)">עדיין לא השלמתם שירים. התחילו עם "Baila Conmigo" בספרייה!</p>`;
     } else {
-        wrap.innerHTML = state.completedSongs.map(id => {
-            const s = getSongById(id);
-            return `
-                <div class="card p-3 flex items-center gap-3">
-                    <span class="text-xl">${s.cover}</span>
-                    <span class="text-sm font-bold flex-1">${s.title}</span>
-                    <i class="fa-solid fa-circle-check text-sm" style="color:var(--color-success)"></i>
-                </div>
-            `;
-        }).join('');
+        wrap.innerHTML = mastered.map(s => `
+            <div class="card p-3 flex items-center gap-3">
+                ${s.albumArt
+                    ? `<img src="${s.albumArt}" alt="${s.title}" class="w-10 h-10 rounded-full object-cover">`
+                    : `<span class="text-xl">${s.cover}</span>`}
+                <span class="text-sm font-bold flex-1">${s.title}</span>
+                <i class="fa-solid fa-circle-check text-lg" style="color:var(--color-mastered-ring)"></i>
+            </div>
+        `).join('');
     }
 }
 
+// ---- Add New Song (BYOT) ----
+function resetAddSongForm() {
+    ['add-title', 'add-artist', 'add-spotify', 'add-lyrics'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+    });
+    const btn = document.getElementById('add-song-btn');
+    if (btn) {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles ml-2"></i>צור שיעור עם AI';
+    }
+    const result = document.getElementById('add-song-result');
+    if (result) {
+        result.classList.add('hidden');
+        result.innerHTML = '';
+    }
+}
+
+async function handleAddSong() {
+    const title = document.getElementById('add-title').value.trim();
+    const artist = document.getElementById('add-artist').value.trim();
+    const spotifyUrl = document.getElementById('add-spotify').value.trim();
+    const lyrics = document.getElementById('add-lyrics').value.trim();
+
+    if (!title || !artist || !lyrics) {
+        showAddSongError('נא למלא שם שיר, שם אמן ומילות השיר');
+        return;
+    }
+
+    const btn = document.getElementById('add-song-btn');
+    const result = document.getElementById('add-song-result');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin ml-2"></i>מעבד עם AI...';
+    result.classList.remove('hidden');
+    result.innerHTML = `
+        <div class="loading-state">
+            <div class="loading-spinner"></div>
+            <p class="text-sm font-bold">מנתח את מילות השיר...</p>
+            <p class="text-xs" style="color:var(--color-text-muted)">זה עשוי לקחת 15-30 שניות</p>
+        </div>`;
+
+    try {
+        const res = await fetch('/api/generate-lesson', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title, artist, spotify_url: spotifyUrl, lyrics })
+        });
+
+        if (!res.ok) {
+            const err = await res.json();
+            throw new Error(err.error || `שגיאת שרת (${res.status})`);
+        }
+
+        const data = await res.json();
+        const lyricsData = data.lyrics_data;
+
+        if (!lyricsData || !lyricsData.lines || lyricsData.lines.length === 0) {
+            throw new Error('לא הצלחתי לעבד את המילים. נסה שוב.');
+        }
+
+        // Build song object
+        const songId = title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') + '-' + Date.now();
+        let trackId = null;
+        if (spotifyUrl) {
+            const match = spotifyUrl.match(/track[\/:]([a-zA-Z0-9]{10,})/);
+            if (match) trackId = match[1].split('?')[0];
+        }
+
+        const newSong = {
+            id: songId,
+            title,
+            artist,
+            spotify_url: spotifyUrl || null,
+            trackId,
+            albumArt: null,
+            genre: 'Salsa',
+            level: 'beginner',
+            cover: '🎵',
+            locked: false,
+            lyrics_data: lyricsData,
+            lines: lyricsData.lines,
+            progress_percentage: 0,
+            is_mastered: false
+        };
+
+        // Save to localStorage and merge into SONGS
+        saveSongToLocalStorage(newSong);
+        if (!SONGS.find(s => s.id === songId)) {
+            SONGS.push(newSong);
+        }
+
+        // Show success
+        result.innerHTML = `
+            <div class="card p-4" style="border:1px solid var(--color-accent-400)">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">🎉</span>
+                    <div>
+                        <p class="font-bold text-sm">${title}</p>
+                        <p class="text-xs" style="color:var(--color-text-muted)">${lyricsData.lines.length} שורות · ${(lyricsData.vocabulary || []).length} מילים</p>
+                    </div>
+                </div>
+                <p class="text-sm mb-3" style="color:var(--color-text-muted)">השיר נוסף לספרייה בהצלחה!</p>
+                <button onclick="openSong('${songId}')" class="btn-primary w-full py-3 text-sm font-bold">
+                    <i class="fa-solid fa-play ml-2"></i>התחל שיעור
+                </button>
+            </div>`;
+
+        btn.innerHTML = '<i class="fa-solid fa-check ml-2"></i>נוצר בהצלחה!';
+
+    } catch (err) {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles ml-2"></i>צור שיעור עם AI';
+        showAddSongError(err.message || 'אירעה שגיאה בלתי צפויה');
+    }
+}
+
+function showAddSongError(msg) {
+    const result = document.getElementById('add-song-result');
+    result.classList.remove('hidden');
+    result.innerHTML = `
+        <div class="card p-4" style="border:1px solid var(--color-danger);background:var(--color-danger-100)">
+            <p class="text-sm font-bold mb-1" style="color:var(--color-danger)">שגיאה</p>
+            <p class="text-sm" style="color:var(--color-danger)">${msg}</p>
+        </div>`;
+}
+
 // ---- Update check ----
-// Reopening a tab or a home-screen icon on mobile often just resumes the
-// already-loaded page instead of re-fetching, so a new deploy can go
-// unnoticed. This polls version.json (bypassing cache) whenever the app
-// becomes visible again, or periodically while it stays open, and shows a
-// small banner if the server's version has moved past what's loaded.
 let loadedVersion = null;
 
 function checkForUpdate() {
@@ -514,8 +635,12 @@ function checkForUpdate() {
 }
 
 // ---- Init ----
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     initTheme();
+
+    // Load songs (seed + user-added) before rendering
+    await initSongs();
+
     renderLevelSelector('level-selector');
     renderLevelSelector('settings-level-selector');
     renderHome();

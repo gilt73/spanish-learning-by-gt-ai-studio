@@ -721,6 +721,50 @@ body {
     transform: scale(0.98);
 }
 
+/* ---- Pronunciation Modal ---- */
+@keyframes slideUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.pron-word-chip {
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.pron-word-chip.correct {
+    background: var(--color-success-100);
+    border-color: var(--color-success);
+    color: var(--color-success);
+}
+
+.pron-word-chip.incorrect {
+    background: var(--color-danger-100);
+    border-color: var(--color-danger);
+    color: var(--color-danger);
+}
+
+.pron-word-chip.pending {
+    background: var(--color-surface-2);
+    border-color: var(--color-divider);
+    color: var(--color-text-muted);
+}
+
+@keyframes micPulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(198,113,57,0.4); transform: scale(1); }
+    50% { box-shadow: 0 4px 40px rgba(198,113,57,0.8); transform: scale(1.08); }
+}
+
+.mic-recording {
+    animation: micPulse 1s ease infinite !important;
+    background: var(--color-danger) !important;
+    box-shadow: 0 4px 20px rgba(179,69,58,0.6) !important;
+}
+
 /* ---- Scrollbar ---- */
 ::-webkit-scrollbar {
     display: none;

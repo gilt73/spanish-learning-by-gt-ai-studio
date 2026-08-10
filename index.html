@@ -284,9 +284,16 @@
 
             <div class="card p-4 text-center">
                 <p class="text-xs mb-1" style="color:var(--color-text-muted)">Spanish Learning</p>
-                <p id="settings-version" class="text-sm font-mono" style="color:var(--color-text-muted)">v1.5.0</p>
-                <p id="settings-build" class="text-[10px] mt-1" style="color:var(--color-text-muted)"></p>
-                <p class="text-[11px] mt-3" style="color:var(--color-text-muted)">by G.T AI Studio</p>
+                <p id="settings-version" class="text-sm font-mono font-bold">v1.5.0</p>
+                <p id="settings-build" class="text-[10px] mt-1 mb-3" style="color:var(--color-text-muted)"></p>
+                <button id="check-update-btn" onclick="checkForUpdateManual()"
+                    class="btn-pill text-xs px-4 py-2 mb-3 w-full font-bold"
+                    style="border-color:var(--color-accent);color:var(--color-accent)">
+                    <i class="fa-solid fa-arrows-rotate ml-1"></i>
+                    בדוק עדכון
+                </button>
+                <div id="check-update-result" class="hidden text-xs mb-2"></div>
+                <p class="text-[11px]" style="color:var(--color-text-muted)">by G.T AI Studio</p>
             </div>
         </section>
 
@@ -305,6 +312,46 @@
                 <i class="fa-solid fa-chart-line"></i><span>התקדמות</span>
             </button>
         </nav>
+    </div>
+
+    <!-- ===================== PRONUNCIATION MODAL ===================== -->
+    <div id="pronunciation-modal" class="hidden" style="
+        position:fixed; inset:0; z-index:100;
+        background:rgba(0,0,0,0.6); backdrop-filter:blur(4px);
+        display:none; align-items:flex-end; justify-content:center;">
+        <div style="
+            background:var(--color-surface); border-radius:var(--radius-lg) var(--radius-lg) 0 0;
+            width:100%; max-width:480px; padding:28px 24px 40px;
+            animation:slideUp 0.3s ease;">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-bold">תרגול הגייה</h3>
+                <button onclick="closePronunciationModal()" style="color:var(--color-text-muted);font-size:20px;background:none;border:none;cursor:pointer">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <p id="pron-sentence" class="es-text text-xl text-center mb-2 dir-ltr" dir="ltr"></p>
+            <p id="pron-he" class="text-sm text-center mb-6" style="color:var(--color-text-muted)"></p>
+
+            <!-- Word-by-word result display -->
+            <div id="pron-words-result" class="flex flex-wrap gap-2 justify-center mb-6 min-h-8"></div>
+
+            <!-- Mic button -->
+            <div class="flex flex-col items-center gap-3">
+                <button id="pron-mic-btn" onclick="togglePronunciationRecording()"
+                    style="width:80px;height:80px;border-radius:50%;border:none;cursor:pointer;
+                           background:var(--color-accent);color:white;font-size:28px;
+                           box-shadow:0 4px 20px rgba(198,113,57,0.4);
+                           transition:all 0.2s ease;">
+                    <i class="fa-solid fa-microphone"></i>
+                </button>
+                <p id="pron-status" class="text-sm font-bold" style="color:var(--color-text-muted)">לחץ כדי להתחיל</p>
+            </div>
+
+            <p class="text-[11px] text-center mt-5" style="color:var(--color-text-muted)">
+                <i class="fa-solid fa-circle-info ml-1"></i>
+                דברו בספרדית — המשפט יושווה אוטומטית
+            </p>
+        </div>
     </div>
 
     <script src="data.js"></script>

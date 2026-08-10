@@ -349,8 +349,151 @@ function playLine(rate) {
     speechSynthesis.speak(utter);
 }
 
+// ---- Pronunciation Practice ----
+let pronRecognition = null;
+let pronIsRecording = false;
+
 function startPronunciationPractice() {
-    alert('תרגול הגייה עם מיקרופון מתוכנן לגרסה הבאה — ראו את ה-Roadmap ב-SPEC.md.');
+    const song = getSongById(state.currentSongId);
+    if (!song) return;
+    const line = song.lines[state.currentLineIndex];
+    if (!line) return;
+    openPronunciationModal(line.es, line.he);
+}
+
+function openPronunciationModal(sentence, translation) {
+    const modal = document.getElementById('pronunciation-modal');
+    document.getElementById('pron-sentence').textContent = sentence;
+    document.getElementById('pron-he').textContent = translation;
+    document.getElementById('pron-words-result').innerHTML =
+        sentence.split(/\s+/).map(w =>
+            `<span class="pron-word-chip pending">${w.replace(/[¿¡.,!?]/g,'')}</span>`
+        ).join('');
+    document.getElementById('pron-status').textContent = 'לחץ כדי להתחיל';
+    const btn = document.getElementById('pron-mic-btn');
+    btn.classList.remove('mic-recording');
+    btn.innerHTML = '<i class="fa-solid fa-microphone"></i>';
+    modal.style.display = 'flex';
+    modal.classList.remove('hidden');
+    pronIsRecording = false;
+    if (pronRecognition) { try { pronRecognition.abort(); } catch(e){} pronRecognition = null; }
+}
+
+function closePronunciationModal() {
+    const modal = document.getElementById('pronunciation-modal');
+    modal.style.display = 'none';
+    modal.classList.add('hidden');
+    pronIsRecording = false;
+    if (pronRecognition) { try { pronRecognition.abort(); } catch(e){} pronRecognition = null; }
+}
+
+function togglePronunciationRecording() {
+    if (pronIsRecording) {
+        stopPronunciationRecording();
+    } else {
+        startPronunciationRecording();
+    }
+}
+
+function startPronunciationRecording() {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+        document.getElementById('pron-status').textContent = 'הדפדפן לא תומך בזיהוי דיבור';
+        return;
+    }
+
+    pronRecognition = new SpeechRecognition();
+    pronRecognition.lang = 'es-ES';
+    pronRecognition.continuous = false;
+    pronRecognition.interimResults = true;
+    pronRecognition.maxAlternatives = 1;
+
+    const btn = document.getElementById('pron-mic-btn');
+    btn.classList.add('mic-recording');
+    btn.innerHTML = '<i class="fa-solid fa-stop"></i>';
+    document.getElementById('pron-status').textContent = 'מאזין... דברו בספרדית';
+    pronIsRecording = true;
+
+    pronRecognition.onresult = (event) => {
+        const transcript = Array.from(event.results)
+            .map(r => r[0].transcript)
+            .join(' ')
+            .trim();
+        if (event.results[0].isFinal) {
+            showPronunciationResult(transcript);
+        } else {
+            document.getElementById('pron-status').textContent = '"' + transcript + '"';
+        }
+    };
+
+    pronRecognition.onerror = (event) => {
+        btn.classList.remove('mic-recording');
+        btn.innerHTML = '<i class="fa-solid fa-microphone"></i>';
+        pronIsRecording = false;
+        const msgs = {
+            'not-allowed': 'גישה למיקרופון נדחתה — אשרו הרשאה בהגדרות הדפדפן',
+            'no-speech': 'לא זוהה דיבור — נסו שוב',
+            'network': 'שגיאת רשת — בדקו חיבור'
+        };
+        document.getElementById('pron-status').textContent = msgs[event.error] || ('שגיאה: ' + event.error);
+    };
+
+    pronRecognition.onend = () => {
+        btn.classList.remove('mic-recording');
+        btn.innerHTML = '<i class="fa-solid fa-microphone"></i>';
+        pronIsRecording = false;
+    };
+
+    pronRecognition.start();
+}
+
+function stopPronunciationRecording() {
+    if (pronRecognition) {
+        try { pronRecognition.stop(); } catch(e){}
+    }
+    pronIsRecording = false;
+}
+
+function normalizeWord(w) {
+    return w.toLowerCase()
+        .replace(/[¿¡.,!?;:"'()\[\]]/g, '')
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // strip accents
+        .trim();
+}
+
+function showPronunciationResult(transcript) {
+    const sentence = document.getElementById('pron-sentence').textContent;
+    const expectedWords = sentence.split(/\s+/).map(normalizeWord);
+    const spokenWords = transcript.split(/\s+/).map(normalizeWord);
+
+    let correctCount = 0;
+    const chips = document.querySelectorAll('#pron-words-result .pron-word-chip');
+    chips.forEach((chip, i) => {
+        const expected = expectedWords[i];
+        // Check if this expected word appears anywhere in spoken words (order-tolerant)
+        const found = spokenWords.some(sw => sw === expected || sw.startsWith(expected) || expected.startsWith(sw));
+        if (found) {
+            chip.classList.remove('pending');
+            chip.classList.add('correct');
+            correctCount++;
+        } else {
+            chip.classList.remove('pending');
+            chip.classList.add('incorrect');
+        }
+    });
+
+    const pct = Math.round((correctCount / expectedWords.length) * 100);
+    const statusEl = document.getElementById('pron-status');
+    if (pct === 100) {
+        statusEl.textContent = '🎉 מושלם! הגייה מעולה';
+        statusEl.style.color = 'var(--color-success)';
+    } else if (pct >= 60) {
+        statusEl.textContent = `👍 ${pct}% נכון — נסו שוב`;
+        statusEl.style.color = 'var(--color-accent)';
+    } else {
+        statusEl.textContent = `🎯 ${pct}% — המשיכו להתאמן`;
+        statusEl.style.color = 'var(--color-text-muted)';
+    }
 }
 
 function nextLine() {
@@ -632,6 +775,33 @@ function checkForUpdate() {
             }
         })
         .catch(() => {});
+}
+
+async function checkForUpdateManual() {
+    const btn = document.getElementById('check-update-btn');
+    const result = document.getElementById('check-update-result');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin ml-1"></i> בודק...';
+    result.classList.add('hidden');
+    try {
+        const res = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
+        const data = await res.json();
+        if (!loadedVersion || data.version !== loadedVersion) {
+            result.innerHTML = `<span style="color:var(--color-accent)">🆕 גרסה ${data.version} זמינה — מרענן...</span>`;
+            result.classList.remove('hidden');
+            setTimeout(() => location.reload(), 1500);
+        } else {
+            result.innerHTML = `<span style="color:var(--color-success)">✓ אתם מעודכנים (v${loadedVersion})</span>`;
+            result.classList.remove('hidden');
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fa-solid fa-arrows-rotate ml-1"></i> בדוק עדכון';
+        }
+    } catch {
+        result.innerHTML = `<span style="color:var(--color-danger)">שגיאת רשת — נסו שוב</span>`;
+        result.classList.remove('hidden');
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-arrows-rotate ml-1"></i> בדוק עדכון';
+    }
 }
 
 // ---- Init ----

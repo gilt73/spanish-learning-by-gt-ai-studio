@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Spanish Learning · G.T AI Studio</title>
     <meta name="description" content="למדו ספרדית בעברית דרך שירי סלסה ובצ'אטה — מילה-מילה, משפט-משפט.">
-    <meta name="theme-color" content="#050505">
+    <meta name="theme-color" content="#f5ead8">
     <link rel="icon" href="icon.svg" type="image/svg+xml">
     <link rel="icon" href="icon-192.png" sizes="192x192" type="image/png">
     <link rel="apple-touch-icon" href="icon-180.png">
@@ -21,13 +21,7 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Heebo', 'sans-serif'] },
-                    colors: {
-                        'gt-dark': '#0f172a',
-                        'gt-purple': '#a855f7',
-                        'gt-blue': '#3b82f6',
-                        'gt-orange': '#f97316'
-                    }
+                    fontFamily: { sans: ['Heebo', 'sans-serif'] }
                 }
             }
         }
@@ -43,76 +37,93 @@
                 <span class="text-2xl">🇪🇸</span>
                 <div>
                     <h1 class="text-lg font-bold leading-none">Spanish Learning</h1>
-                    <p class="text-[11px] text-gray-500 leading-none mt-1">by G.T AI Studio</p>
+                    <p class="text-[11px] leading-none mt-1" style="color:var(--color-text-muted)">by G.T AI Studio</p>
                 </div>
             </div>
-            <span id="app-version" class="text-[10px] font-mono text-gray-600 border border-white/10 rounded-full px-2 py-1">v1.3.0</span>
+            <span id="app-version" class="text-[10px] font-mono rounded-full px-2 py-1" style="color:var(--color-text-muted);border:1px solid var(--color-divider)">v1.4.0</span>
         </header>
 
         <!-- ===================== HOME ===================== -->
         <section id="screen-home" class="screen active">
-            <div class="glass-card rounded-2xl p-5 mb-4">
-                <p class="text-sm text-gray-400 mb-1">שלום, גיל 👋</p>
+            <div class="card p-5 mb-4">
+                <p class="text-sm mb-1" style="color:var(--color-text-muted)">שלום, גיל 👋</p>
                 <div class="flex items-center gap-2 text-sm">
-                    <i class="fa-solid fa-fire text-orange-400"></i>
+                    <i class="fa-solid fa-fire" style="color:var(--color-accent)"></i>
                     <span id="home-streak" class="font-bold">0</span>
-                    <span class="text-gray-400">ימי רצף</span>
-                    <span class="mx-2 text-gray-700">|</span>
-                    <i class="fa-solid fa-star text-yellow-400"></i>
+                    <span style="color:var(--color-text-muted)">ימי רצף</span>
+                    <span class="mx-2" style="color:var(--color-divider)">|</span>
+                    <i class="fa-solid fa-star" style="color:var(--color-accent2)"></i>
                     <span id="home-xp" class="font-bold">0</span>
-                    <span class="text-gray-400">XP</span>
+                    <span style="color:var(--color-text-muted)">XP</span>
                 </div>
             </div>
 
-            <p class="text-xs text-gray-500 mb-2">הרמה שלי</p>
+            <p class="text-xs mb-2" style="color:var(--color-text-muted)">הרמה שלי</p>
             <div id="level-selector" class="grid grid-cols-3 gap-2 mb-5"></div>
 
-            <p class="text-xs text-gray-500 mb-2">למד עם שיר</p>
-            <div class="glass-card rounded-2xl p-4 mb-4">
-                <label class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 mb-3">
-                    <i class="fa-brands fa-spotify text-green-500"></i>
+            <p class="text-xs mb-2" style="color:var(--color-text-muted)">למד עם שיר</p>
+            <div class="card p-4 mb-4">
+                <label class="flex items-center gap-2 rounded-xl px-3 py-2.5 mb-3" style="background:var(--color-surface-2);border:1px solid var(--color-divider)">
+                    <i class="fa-brands fa-spotify" style="color:var(--color-accent2)"></i>
                     <input id="spotify-input" type="text" placeholder="הדביקו קישור לשיר מספוטיפיי..."
-                        class="bg-transparent flex-1 text-sm outline-none placeholder:text-gray-500" dir="ltr">
+                        class="bg-transparent flex-1 text-sm outline-none" dir="ltr" style="color:var(--color-text)">
                 </label>
-                <button id="import-btn" onclick="handleSpotifyImport()"
-                    class="w-full py-2.5 rounded-xl bg-gradient-to-l from-gt-blue to-gt-purple text-sm font-bold">
+                <button id="import-btn" onclick="handleSpotifyImport()" class="btn-primary w-full py-2.5 text-sm">
                     ייבא שיר
                 </button>
-                <p class="text-[11px] text-gray-500 mt-2 leading-relaxed">
+                <p class="text-[11px] mt-2 leading-relaxed" style="color:var(--color-text-muted)">
                     <i class="fa-solid fa-circle-info ml-1"></i>
                     נביא את שם השיר, העטיפה והנגן האמיתיים מספוטיפיי. פירוק מילה-מילה עדיין זמין רק לשירים שערוכים במאגר (ר' ספריית שירים).
                 </p>
                 <div id="import-result" class="hidden mt-3"></div>
 
-                <div class="border-t border-white/10 mt-4 pt-4">
-                    <label class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-3 py-2.5">
-                        <i class="fa-solid fa-magnifying-glass text-gray-400"></i>
+                <div class="mt-4 pt-4" style="border-top:1px solid var(--color-divider)">
+                    <label class="flex items-center gap-2 rounded-xl px-3 py-2.5" style="background:var(--color-surface-2);border:1px solid var(--color-divider)">
+                        <i class="fa-solid fa-magnifying-glass" style="color:var(--color-text-muted)"></i>
                         <input id="search-input" type="text" placeholder="או חפשו שיר לפי שם / אמן..."
-                            class="bg-transparent flex-1 text-sm outline-none placeholder:text-gray-500"
+                            class="bg-transparent flex-1 text-sm outline-none" style="color:var(--color-text)"
                             oninput="handleSearchInput()">
                     </label>
                     <div id="search-results" class="flex flex-col gap-2 mt-2"></div>
                 </div>
             </div>
 
-            <p class="text-xs text-gray-500 mb-2">המשיכו איפה שעצרתם</p>
+            <p class="text-xs mb-2" style="color:var(--color-text-muted)">המשיכו איפה שעצרתם</p>
             <div id="home-continue"></div>
         </section>
 
         <!-- ===================== LIBRARY ===================== -->
         <section id="screen-library" class="screen">
-            <h2 class="text-xl font-bold mb-4">ספריית שירים</h2>
+            <h2 class="text-xl font-bold mb-3">ספרייה</h2>
+            <div class="theme-toggle mb-4">
+                <button id="lib-tab-songs" class="active" onclick="switchLibraryTab('songs')">שירים</button>
+                <button id="lib-tab-wordbank" onclick="switchLibraryTab('wordbank')">מאגר מילים</button>
+            </div>
             <div id="song-list" class="flex flex-col gap-3"></div>
+            <div id="wordbank-grid" class="grid grid-cols-2 gap-3 hidden"></div>
+        </section>
+
+        <!-- ===================== WORD BANK DETAIL ===================== -->
+        <section id="screen-wordbank-detail" class="screen">
+            <button onclick="backToWordbank()" class="flex items-center gap-1 text-sm mb-4" style="color:var(--color-text-muted)">
+                <i class="fa-solid fa-arrow-right"></i> חזרה למאגר המילים
+            </button>
+            <h2 id="wb-detail-title" class="text-xl font-bold mb-1"></h2>
+            <p id="wb-detail-meta" class="text-xs mb-4" style="color:var(--color-text-muted)"></p>
+            <div id="wb-detail-words" class="flex flex-col gap-2 mb-6"></div>
+            <button onclick="startCategoryQuiz()" class="btn-primary w-full py-3 text-sm">
+                תרגלו קטגוריה זו
+            </button>
         </section>
 
         <!-- ===================== LESSON ===================== -->
         <section id="screen-lesson" class="screen">
-            <button onclick="showScreen('library')" class="flex items-center gap-1 text-sm text-gray-400 mb-4">
+            <button onclick="showScreen('library')" class="flex items-center gap-1 text-sm mb-4" style="color:var(--color-text-muted)">
                 <i class="fa-solid fa-arrow-right"></i> חזרה לספרייה
             </button>
             <div class="flex items-center justify-between mb-1">
                 <h2 id="lesson-title" class="text-lg font-bold"></h2>
-                <span id="lesson-progress" class="text-xs text-gray-500"></span>
+                <span id="lesson-progress" class="text-xs" style="color:var(--color-text-muted)"></span>
             </div>
             <div class="progress-bar-track h-1.5 mb-6">
                 <div id="lesson-progress-bar" class="progress-bar-fill" style="width:0%"></div>
@@ -120,27 +131,26 @@
 
             <div id="lesson-embed-wrap"></div>
 
-            <div class="glass-card rounded-2xl p-6 text-center mb-4">
-                <p id="lesson-es" class="text-xl font-bold mb-2" dir="ltr"></p>
-                <p id="lesson-he" class="text-sm text-gray-400 mb-5"></p>
+            <div class="card p-6 text-center mb-4">
+                <p id="lesson-es" class="es-text text-xl mb-2" dir="ltr"></p>
+                <p id="lesson-he" class="text-sm mb-5" style="color:var(--color-text-muted)"></p>
                 <div class="flex justify-center gap-2">
-                    <button onclick="playLine(0.7)" class="glass-card rounded-full px-3 py-2 text-xs">
+                    <button onclick="playLine(0.7)" class="btn-pill rounded-full px-3 py-2 text-xs">
                         <i class="fa-solid fa-turtle ml-1"></i> האטה
                     </button>
-                    <button onclick="playLine(1)" class="glass-card rounded-full px-3 py-2 text-xs">
+                    <button onclick="playLine(1)" class="btn-pill rounded-full px-3 py-2 text-xs">
                         <i class="fa-solid fa-play ml-1"></i> נגן
                     </button>
-                    <button onclick="startPronunciationPractice()" class="glass-card rounded-full px-3 py-2 text-xs">
+                    <button onclick="startPronunciationPractice()" class="btn-pill rounded-full px-3 py-2 text-xs">
                         <i class="fa-solid fa-microphone ml-1"></i> תרגלו הגייה
                     </button>
                 </div>
             </div>
 
-            <p class="text-xs text-gray-500 mb-2">לחצו על מילה למשמעות והגייה</p>
+            <p class="text-xs mb-2" style="color:var(--color-text-muted)">לחצו על מילה למשמעות והגייה</p>
             <div id="lesson-words" class="flex flex-col gap-2 mb-6"></div>
 
-            <button id="lesson-next-btn" onclick="nextLine()"
-                class="w-full py-3 rounded-xl bg-gradient-to-l from-gt-blue to-gt-purple text-sm font-bold">
+            <button id="lesson-next-btn" onclick="nextLine()" class="btn-primary w-full py-3 text-sm">
                 המשך לשורה הבאה
             </button>
         </section>
@@ -149,18 +159,17 @@
         <section id="screen-quiz" class="screen">
             <div class="flex items-center justify-between mb-6">
                 <h2 class="text-lg font-bold">תרגול מהיר</h2>
-                <span id="quiz-score" class="text-xs text-gray-500">0 / 0</span>
+                <span id="quiz-score" class="text-xs" style="color:var(--color-text-muted)">0 / 0</span>
             </div>
-            <div id="quiz-question-wrap" class="glass-card rounded-2xl p-6 mb-4 text-center">
-                <p class="text-xs text-gray-500 mb-2">מה המשמעות של</p>
-                <p id="quiz-word" class="text-2xl font-bold mb-1" dir="ltr"></p>
+            <div id="quiz-question-wrap" class="card p-6 mb-4 text-center">
+                <p class="text-xs mb-2" style="color:var(--color-text-muted)">מה המשמעות של</p>
+                <p id="quiz-word" class="es-text text-2xl mb-1" dir="ltr"></p>
             </div>
             <div id="quiz-options" class="grid grid-cols-2 gap-3 mb-6"></div>
             <div id="quiz-result" class="hidden text-center">
                 <p class="text-lg font-bold mb-2">כל הכבוד! 🎉</p>
-                <p class="text-sm text-gray-400 mb-5">סיימתם את התרגול על השיר הזה.</p>
-                <button onclick="showScreen('progress')"
-                    class="w-full py-3 rounded-xl bg-gradient-to-l from-gt-blue to-gt-purple text-sm font-bold">
+                <p class="text-sm mb-5" style="color:var(--color-text-muted)">סיימתם את התרגול.</p>
+                <button onclick="showScreen('progress')" class="btn-primary w-full py-3 text-sm">
                     לצפייה בהתקדמות
                 </button>
             </div>
@@ -170,41 +179,41 @@
         <section id="screen-progress" class="screen">
             <h2 class="text-xl font-bold mb-4">ההתקדמות שלי</h2>
             <div class="grid grid-cols-2 gap-3 mb-5">
-                <div class="glass-card rounded-2xl p-4 text-center">
-                    <i class="fa-solid fa-fire text-orange-400 text-lg mb-1"></i>
+                <div class="card p-4 text-center">
+                    <i class="fa-solid fa-fire text-lg mb-1" style="color:var(--color-accent)"></i>
                     <p id="progress-streak" class="text-xl font-bold">0</p>
-                    <p class="text-[11px] text-gray-500">ימי רצף</p>
+                    <p class="text-[11px]" style="color:var(--color-text-muted)">ימי רצף</p>
                 </div>
-                <div class="glass-card rounded-2xl p-4 text-center">
-                    <i class="fa-solid fa-star text-yellow-400 text-lg mb-1"></i>
+                <div class="card p-4 text-center">
+                    <i class="fa-solid fa-star text-lg mb-1" style="color:var(--color-accent2)"></i>
                     <p id="progress-xp" class="text-xl font-bold">0</p>
-                    <p class="text-[11px] text-gray-500">XP</p>
+                    <p class="text-[11px]" style="color:var(--color-text-muted)">XP</p>
                 </div>
             </div>
 
-            <p class="text-xs text-gray-500 mb-2">מיומנויות</p>
-            <div class="glass-card rounded-2xl p-4 flex flex-col gap-4 mb-5">
+            <p class="text-xs mb-2" style="color:var(--color-text-muted)">מיומנויות</p>
+            <div class="card p-4 flex flex-col gap-4 mb-5">
                 <div>
                     <div class="flex justify-between text-xs mb-1.5">
-                        <span>אוצר מילים</span><span id="skill-vocab-pct" class="text-gray-500">0%</span>
+                        <span>אוצר מילים</span><span id="skill-vocab-pct" style="color:var(--color-text-muted)">0%</span>
                     </div>
                     <div class="progress-bar-track h-2"><div id="skill-vocab" class="progress-bar-fill" style="width:0%"></div></div>
                 </div>
                 <div>
                     <div class="flex justify-between text-xs mb-1.5">
-                        <span>דקדוק</span><span id="skill-grammar-pct" class="text-gray-500">0%</span>
+                        <span>דקדוק</span><span id="skill-grammar-pct" style="color:var(--color-text-muted)">0%</span>
                     </div>
                     <div class="progress-bar-track h-2"><div id="skill-grammar" class="progress-bar-fill" style="width:0%"></div></div>
                 </div>
                 <div>
                     <div class="flex justify-between text-xs mb-1.5">
-                        <span>הבנת נשמע</span><span id="skill-listening-pct" class="text-gray-500">0%</span>
+                        <span>הבנת נשמע</span><span id="skill-listening-pct" style="color:var(--color-text-muted)">0%</span>
                     </div>
                     <div class="progress-bar-track h-2"><div id="skill-listening" class="progress-bar-fill" style="width:0%"></div></div>
                 </div>
             </div>
 
-            <p class="text-xs text-gray-500 mb-2">שירים שהושלמו</p>
+            <p class="text-xs mb-2" style="color:var(--color-text-muted)">שירים שהושלמו</p>
             <div id="progress-songs" class="flex flex-col gap-2"></div>
         </section>
 
@@ -212,12 +221,19 @@
         <section id="screen-settings" class="screen">
             <h2 class="text-xl font-bold mb-4">הגדרות</h2>
 
-            <div class="glass-card rounded-2xl p-4 mb-4">
+            <div class="card p-4 mb-4">
+                <div class="flex items-center justify-between mb-3">
+                    <p class="text-sm font-bold">מראה</p>
+                    <div class="theme-toggle">
+                        <button id="theme-btn-light" onclick="setTheme('light')">בהיר</button>
+                        <button id="theme-btn-dark" onclick="setTheme('dark')">כהה</button>
+                    </div>
+                </div>
                 <p class="text-sm font-bold mb-3">רמת לימוד</p>
                 <div id="settings-level-selector" class="grid grid-cols-3 gap-2"></div>
             </div>
 
-            <div class="glass-card rounded-2xl p-4 mb-4 flex flex-col gap-3">
+            <div class="card p-4 mb-4 flex flex-col gap-3">
                 <div class="flex items-center justify-between text-sm">
                     <span>קול הגייה איטי כברירת מחדל</span>
                     <input type="checkbox" class="w-4 h-4">
@@ -232,11 +248,11 @@
                 </div>
             </div>
 
-            <div class="glass-card rounded-2xl p-4 text-center">
-                <p class="text-xs text-gray-500 mb-1">Spanish Learning</p>
-                <p id="settings-version" class="text-sm font-mono text-gray-400">v1.3.0</p>
-                <p id="settings-build" class="text-[10px] text-gray-600 mt-1"></p>
-                <p class="text-[11px] text-gray-600 mt-3">by G.T AI Studio</p>
+            <div class="card p-4 text-center">
+                <p class="text-xs mb-1" style="color:var(--color-text-muted)">Spanish Learning</p>
+                <p id="settings-version" class="text-sm font-mono" style="color:var(--color-text-muted)">v1.4.0</p>
+                <p id="settings-build" class="text-[10px] mt-1" style="color:var(--color-text-muted)"></p>
+                <p class="text-[11px] mt-3" style="color:var(--color-text-muted)">by G.T AI Studio</p>
             </div>
         </section>
 
@@ -258,6 +274,7 @@
     </div>
 
     <script src="data.js"></script>
+    <script src="wordbank.js"></script>
     <script src="app.js"></script>
 </body>
 

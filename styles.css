@@ -1,14 +1,84 @@
+/* Design tokens adapted from the "Organic" design system (built in Claude
+   Design, V1.4). Heebo stays the body/UI font throughout for full Hebrew
+   glyph support — Caprasimo (Organic's display font) is Latin-only, so it's
+   used only for Spanish-language display text (song lines, word chips),
+   never for Hebrew headings/labels. */
+
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo:wght@400&display=swap');
+
+:root {
+    --color-bg: #f5ead8;
+    --color-surface: #ebddc5;
+    --color-surface-2: #f9f4ed;
+    --color-text: #201e1d;
+    --color-text-muted: rgba(32, 30, 29, 0.58);
+    --color-divider: rgba(32, 30, 29, 0.14);
+
+    --color-accent: #c67139;
+    --color-accent-100: #fff2eb;
+    --color-accent-400: #f6a06b;
+    --color-accent-600: #b2622d;
+    --color-accent-700: #8c491a;
+    --color-accent-900: #402310;
+
+    --color-accent2: #7a8a5e;
+    --color-accent2-100: #f0fae1;
+    --color-accent2-400: #aebf92;
+    --color-accent2-700: #56633f;
+
+    --color-danger: #b3453a;
+    --color-danger-100: #fbe8e6;
+    --color-success: #4d7c4a;
+    --color-success-100: #e8f3e6;
+
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 28px;
+
+    --shadow-sm: 0 1px 2px rgba(46, 43, 37, 0.14);
+    --shadow-md: 0 3px 10px rgba(46, 43, 37, 0.14);
+}
+
+[data-theme="dark"] {
+    --color-bg: #201c17;
+    --color-surface: #2b261f;
+    --color-surface-2: #342e25;
+    --color-text: #f5ead8;
+    --color-text-muted: rgba(245, 234, 216, 0.6);
+    --color-divider: rgba(245, 234, 216, 0.14);
+
+    --color-accent: #f6a06b;
+    --color-accent-100: rgba(246, 160, 107, 0.16);
+    --color-accent-400: #f6a06b;
+    --color-accent-600: #ffc6a5;
+    --color-accent-700: #ffe1d0;
+    --color-accent-900: #fff2eb;
+
+    --color-accent2: #aebf92;
+    --color-accent2-100: rgba(174, 191, 146, 0.16);
+    --color-accent2-400: #aebf92;
+    --color-accent2-700: #e1eecc;
+
+    --color-danger: #e08277;
+    --color-danger-100: rgba(224, 130, 119, 0.16);
+    --color-success: #8fbf8a;
+    --color-success-100: rgba(143, 191, 138, 0.16);
+}
+
 html {
     scroll-behavior: smooth;
 }
 
 body {
-    background-color: #050505;
-    background-image:
-        radial-gradient(circle at 15% 10%, rgba(168, 85, 247, 0.15), transparent 30%),
-        radial-gradient(circle at 85% 20%, rgba(59, 130, 246, 0.15), transparent 30%);
-    color: white;
+    background-color: var(--color-bg);
+    color: var(--color-text);
     min-height: 100vh;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.es-text {
+    font-family: 'Caprasimo', 'Heebo', system-ui, sans-serif;
+    font-weight: 400;
 }
 
 .app-shell {
@@ -20,15 +90,13 @@ body {
     position: relative;
 }
 
-.glass-card {
-    background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.25s ease;
+.card {
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
 }
 
-.glass-card:active {
+.card:active {
     transform: scale(0.98);
 }
 
@@ -54,10 +122,8 @@ body {
     transform: translateX(-50%);
     width: 100%;
     max-width: 480px;
-    background: rgba(10, 10, 12, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--color-surface-2);
+    border-top: 1px solid var(--color-divider);
     display: flex;
     justify-content: space-around;
     padding: 0.6rem 0 0.9rem;
@@ -70,44 +136,88 @@ body {
     align-items: center;
     gap: 2px;
     font-size: 11px;
-    color: #71717a;
+    color: var(--color-text-muted);
     background: none;
     border: none;
 }
 
 .nav-item.active {
-    color: #60a5fa;
+    color: var(--color-accent-700);
 }
 
 .nav-item i {
     font-size: 18px;
 }
 
+.pill {
+    border-radius: 999px;
+    border: 1px solid var(--color-divider);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-weight: 700;
+    font-size: 12px;
+    padding: 8px 4px;
+    text-align: center;
+}
+
+.pill.active {
+    background: var(--color-accent-100);
+    border-color: var(--color-accent);
+    color: var(--color-accent-700);
+}
+
+.btn-primary {
+    background: var(--color-accent);
+    color: var(--color-accent-100);
+    border-radius: 999px;
+    font-weight: 700;
+    border: none;
+}
+
+.btn-primary:active {
+    background: var(--color-accent-600, var(--color-accent));
+}
+
+.btn-pill {
+    border-radius: 999px;
+    border: 1px solid var(--color-divider);
+    background: var(--color-surface);
+    color: var(--color-text);
+}
+
 .word-chip {
+    background: var(--color-surface);
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
     transition: all 0.2s ease;
 }
 
 .word-chip.revealed {
-    background: rgba(59, 130, 246, 0.15);
-    border-color: rgba(96, 165, 250, 0.4);
+    background: var(--color-accent-100);
+    border-color: var(--color-accent-400);
 }
 
 .quiz-option {
+    background: var(--color-surface);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-divider);
     transition: all 0.15s ease;
 }
 
 .quiz-option.correct {
-    background: rgba(34, 197, 94, 0.2);
-    border-color: rgba(74, 222, 128, 0.6);
+    background: var(--color-success-100);
+    border-color: var(--color-success);
+    color: var(--color-success);
 }
 
 .quiz-option.incorrect {
-    background: rgba(239, 68, 68, 0.2);
-    border-color: rgba(248, 113, 113, 0.6);
+    background: var(--color-danger-100);
+    border-color: var(--color-danger);
+    color: var(--color-danger);
 }
 
 .progress-bar-track {
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--color-divider);
     border-radius: 999px;
     overflow: hidden;
 }
@@ -115,7 +225,47 @@ body {
 .progress-bar-fill {
     height: 100%;
     border-radius: 999px;
-    background: linear-gradient(90deg, #3b82f6, #a855f7);
+    background: var(--color-accent);
+}
+
+.tag {
+    border-radius: 999px;
+    font-size: 10px;
+    padding: 2px 10px;
+    background: var(--color-accent2-100);
+    color: var(--color-accent2-700);
+}
+
+.tag-neutral {
+    background: var(--color-surface-2);
+    color: var(--color-text-muted);
+}
+
+.category-card {
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    padding: 14px;
+}
+
+.theme-toggle {
+    display: inline-flex;
+    border: 1px solid var(--color-divider);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.theme-toggle button {
+    padding: 6px 12px;
+    font-size: 11px;
+    color: var(--color-text-muted);
+    background: transparent;
+    border: none;
+}
+
+.theme-toggle button.active {
+    background: var(--color-accent-100);
+    color: var(--color-accent-700);
+    font-weight: 700;
 }
 
 ::-webkit-scrollbar {

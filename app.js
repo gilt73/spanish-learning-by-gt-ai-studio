@@ -493,6 +493,26 @@ function renderProgress() {
     }
 }
 
+// ---- Update check ----
+// Reopening a tab or a home-screen icon on mobile often just resumes the
+// already-loaded page instead of re-fetching, so a new deploy can go
+// unnoticed. This polls version.json (bypassing cache) whenever the app
+// becomes visible again, or periodically while it stays open, and shows a
+// small banner if the server's version has moved past what's loaded.
+let loadedVersion = null;
+
+function checkForUpdate() {
+    if (!loadedVersion) return;
+    fetch('version.json?t=' + Date.now(), { cache: 'no-store' })
+        .then(r => r.json())
+        .then(data => {
+            if (data.version !== loadedVersion) {
+                document.getElementById('update-banner').classList.remove('hidden');
+            }
+        })
+        .catch(() => {});
+}
+
 // ---- Init ----
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
@@ -503,10 +523,16 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('version.json')
         .then(r => r.json())
         .then(data => {
+            loadedVersion = data.version;
             document.getElementById('app-version').textContent = 'v' + data.version;
             document.getElementById('settings-version').textContent = 'v' + data.version;
             document.getElementById('settings-build').textContent =
                 'build: ' + new Date(data.buildDate).toLocaleDateString('he-IL');
         })
         .catch(() => {});
+
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') checkForUpdate();
+    });
+    setInterval(checkForUpdate, 5 * 60 * 1000);
 });

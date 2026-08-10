@@ -1,6 +1,6 @@
 {
     "name": "spanish-learning-by-gt-ai-studio",
-    "version": "1.2.0",
+    "version": "1.6.0",
     "private": true,
     "description": "Spanish learning app for Hebrew speakers, by G.T AI Studio",
     "main": "server.js",

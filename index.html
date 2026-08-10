@@ -40,7 +40,7 @@
                     <p class="text-[11px] leading-none mt-1" style="color:var(--color-text-muted)">by G.T AI Studio</p>
                 </div>
             </div>
-            <span id="app-version" class="text-[10px] font-mono rounded-full px-2 py-1" style="color:var(--color-text-muted);border:1px solid var(--color-divider)">v1.5.0</span>
+            <span id="app-version" class="text-[10px] font-mono rounded-full px-2 py-1" style="color:var(--color-text-muted);border:1px solid var(--color-divider)">v1.6.0</span>
         </header>
 
         <div id="update-banner" class="hidden mx-5 mb-3 px-4 py-2.5 flex items-center gap-2 text-xs" style="background:var(--color-accent-100);border:1px solid var(--color-accent);border-radius:var(--radius-sm);color:var(--color-accent-700)">
@@ -84,7 +84,32 @@
                 <button id="lib-tab-wordbank" onclick="switchLibraryTab('wordbank')">מאגר מילים</button>
             </div>
             <div id="song-list" class="flex flex-col gap-3"></div>
-            <div id="wordbank-grid" class="grid grid-cols-2 gap-3 hidden"></div>
+
+            <div id="wordbank-section" class="hidden flex flex-col gap-4">
+                <!-- Random practice hero button -->
+                <div class="card p-4 flex items-center justify-between" style="background:linear-gradient(135deg, var(--color-accent-100) 0%, var(--color-surface) 100%);border:1px solid var(--color-accent-400)">
+                    <div>
+                        <p class="font-bold text-sm" style="color:var(--color-accent-700)">🎲 תרגול אקראי</p>
+                        <p class="text-xs mt-0.5" style="color:var(--color-text-muted)">תרגלו מילים מכל המאגרים בסדר רנדומלי</p>
+                    </div>
+                    <button onclick="startRandomPractice('all')" class="btn-primary text-xs px-4 py-2.5 shadow-sm">
+                        התחל תרגול
+                    </button>
+                </div>
+
+                <!-- Word Bank Sub-tabs -->
+                <div class="flex items-center gap-2">
+                    <button id="wb-subtab-basic" class="pill flex-1 active" onclick="switchWordbankSubtab('basic')">
+                        📚 מילים בסיסיות
+                    </button>
+                    <button id="wb-subtab-songs" class="pill flex-1" onclick="switchWordbankSubtab('songs')">
+                        🎵 מילים משירים
+                    </button>
+                </div>
+
+                <div id="wordbank-grid" class="grid grid-cols-2 gap-3"></div>
+                <div id="wordbank-song-container" class="hidden flex flex-col gap-2"></div>
+            </div>
         </section>
 
         <!-- ===================== WORD BANK DETAIL ===================== -->
@@ -181,7 +206,7 @@
             <div id="lesson-words" class="flex flex-col gap-2 mb-5"></div>
 
             <button id="lesson-next-btn" onclick="nextLine()" class="btn-next-line">
-                <span id="lesson-next-label">המשך לשורה הבאה</span>
+                <span id="lesson-next-label">המשך למשפט הבא ...</span>
                 <i class="fa-solid fa-chevron-left"></i>
             </button>
         </section>
@@ -282,9 +307,19 @@
                 </div>
             </div>
 
+            <div id="pwa-install-card" class="card p-4 mb-4 flex items-center justify-between" style="background:linear-gradient(135deg, var(--color-accent-100) 0%, var(--color-surface) 100%);border:1px solid var(--color-accent-400)">
+                <div>
+                    <p class="font-bold text-sm" style="color:var(--color-accent-700)">📱 התקנת האפליקציה בטלפון</p>
+                    <p id="pwa-install-sub" class="text-xs mt-0.5" style="color:var(--color-text-muted)">הוסיפו למסך הבית לגישה מהירה ללא דפדפן</p>
+                </div>
+                <button id="pwa-install-btn" onclick="triggerPwaInstall()" class="btn-primary text-xs px-4 py-2 font-bold shadow-sm">
+                    התקן עכשיו
+                </button>
+            </div>
+
             <div class="card p-4 text-center">
                 <p class="text-xs mb-1" style="color:var(--color-text-muted)">Spanish Learning</p>
-                <p id="settings-version" class="text-sm font-mono font-bold">v1.5.0</p>
+                <p id="settings-version" class="text-sm font-mono font-bold">v1.6.0</p>
                 <p id="settings-build" class="text-[10px] mt-1 mb-3" style="color:var(--color-text-muted)"></p>
                 <button id="check-update-btn" onclick="checkForUpdateManual()"
                     class="btn-pill text-xs px-4 py-2 mb-3 w-full font-bold"
@@ -311,6 +346,9 @@
             <button class="nav-item" data-screen="progress" onclick="showScreen('progress')">
                 <i class="fa-solid fa-chart-line"></i><span>התקדמות</span>
             </button>
+            <button class="nav-item" data-screen="settings" onclick="showScreen('settings')">
+                <i class="fa-solid fa-gear"></i><span>הגדרות</span>
+            </button>
         </nav>
     </div>
 
@@ -332,8 +370,8 @@
             <p id="pron-sentence" class="es-text text-xl text-center mb-2 dir-ltr" dir="ltr"></p>
             <p id="pron-he" class="text-sm text-center mb-6" style="color:var(--color-text-muted)"></p>
 
-            <!-- Word-by-word result display -->
-            <div id="pron-words-result" class="flex flex-wrap gap-2 justify-center mb-6 min-h-8"></div>
+            <!-- Word-by-word result display (dir="ltr" for left-to-right Spanish word order) -->
+            <div id="pron-words-result" class="flex flex-wrap gap-2 justify-center mb-6 min-h-8" dir="ltr"></div>
 
             <!-- Mic button -->
             <div class="flex flex-col items-center gap-3">
@@ -351,6 +389,42 @@
                 <i class="fa-solid fa-circle-info ml-1"></i>
                 דברו בספרדית — המשפט יושווה אוטומטית
             </p>
+        </div>
+    </div>
+
+    <!-- ===================== iOS PWA INSTALL MODAL ===================== -->
+    <div id="ios-install-modal" class="hidden" style="
+        position:fixed; inset:0; z-index:110;
+        background:rgba(0,0,0,0.6); backdrop-filter:blur(4px);
+        display:none; align-items:flex-end; justify-content:center;">
+        <div style="
+            background:var(--color-surface); border-radius:var(--radius-lg) var(--radius-lg) 0 0;
+            width:100%; max-width:480px; padding:28px 24px 40px;
+            animation:slideUp 0.3s ease;">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-bold">התקנה ב-iPhone / iPad 📱</h3>
+                <button onclick="closeIosInstallModal()" style="color:var(--color-text-muted);font-size:20px;background:none;border:none;cursor:pointer">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <p class="text-sm mb-4" style="color:var(--color-text-muted)">להתקנת האפליקציה במסך הבית בספארי:</p>
+            <div class="flex flex-col gap-3 text-sm">
+                <div class="flex items-center gap-3 p-3 rounded-xl" style="background:var(--color-surface-2)">
+                    <span class="text-xl">1️⃣</span>
+                    <span>לחצו על כפתור השיתוף בתחתית הדפדפן (<i class="fa-solid fa-arrow-up-from-bracket"></i>)</span>
+                </div>
+                <div class="flex items-center gap-3 p-3 rounded-xl" style="background:var(--color-surface-2)">
+                    <span class="text-xl">2️⃣</span>
+                    <span>גללו מטה ולחצו על <strong>"הוסף למסך הבית"</strong> (Add to Home Screen ➕)</span>
+                </div>
+                <div class="flex items-center gap-3 p-3 rounded-xl" style="background:var(--color-surface-2)">
+                    <span class="text-xl">3️⃣</span>
+                    <span>לחצו על <strong>"הוסף"</strong> בפינה העליונה</span>
+                </div>
+            </div>
+            <button onclick="closeIosInstallModal()" class="btn-primary w-full py-3 mt-6 text-sm font-bold">
+                הבנתי, תודה!
+            </button>
         </div>
     </div>
 

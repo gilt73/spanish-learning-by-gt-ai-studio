@@ -1,5 +1,4 @@
-// app.js — Spanish Learning v1.5
-// New: BYOT lesson generation, circular progress rings, mastery states, driving mode UX
+// app.js — Spanish Learning v1.6.0
 
 // ---- State ----
 const state = {
@@ -11,6 +10,7 @@ const state = {
     currentLineIndex: 0,
     currentCategoryId: null,
     libraryTab: 'songs',
+    wordbankSubtab: 'basic',
     quiz: { questions: [], index: 0, correct: 0, origin: 'song' }
 };
 
@@ -192,7 +192,7 @@ function renderLibraryTab() {
     document.getElementById('lib-tab-songs').classList.toggle('active', state.libraryTab === 'songs');
     document.getElementById('lib-tab-wordbank').classList.toggle('active', state.libraryTab === 'wordbank');
     document.getElementById('song-list').classList.toggle('hidden', state.libraryTab !== 'songs');
-    document.getElementById('wordbank-grid').classList.toggle('hidden', state.libraryTab !== 'wordbank');
+    document.getElementById('wordbank-section').classList.toggle('hidden', state.libraryTab !== 'wordbank');
 
     if (state.libraryTab === 'songs') renderLibrary();
     else renderWordBank();
@@ -201,6 +201,11 @@ function renderLibraryTab() {
 function switchLibraryTab(tab) {
     state.libraryTab = tab;
     renderLibraryTab();
+}
+
+function switchWordbankSubtab(subtab) {
+    state.wordbankSubtab = subtab;
+    renderWordBank();
 }
 
 function renderLibrary() {
@@ -212,18 +217,80 @@ function renderLibrary() {
 }
 
 function renderWordBank() {
+    const isBasic = (state.wordbankSubtab || 'basic') === 'basic';
+    document.getElementById('wb-subtab-basic').classList.toggle('active', isBasic);
+    document.getElementById('wb-subtab-songs').classList.toggle('active', !isBasic);
+
     const grid = document.getElementById('wordbank-grid');
-    const levelLabel = id => (LEVELS.find(l => l.id === id) || {}).label || id;
-    grid.innerHTML = WORD_CATEGORIES.map(cat => `
-        <button onclick="openWordCategory('${cat.id}')" class="category-card text-right">
-            <i class="fa-solid ${cat.icon}" style="color:var(--color-accent)"></i>
-            <p class="font-bold text-sm mt-2 mb-2">${cat.title}</p>
-            <div class="flex items-center gap-2 flex-wrap">
-                <span class="tag">${levelLabel(cat.level)}</span>
-                <span class="text-[11px]" style="color:var(--color-text-muted)">${cat.words.length} מילים</span>
-            </div>
-        </button>
-    `).join('');
+    const songContainer = document.getElementById('wordbank-song-container');
+
+    if (isBasic) {
+        grid.classList.remove('hidden');
+        songContainer.classList.add('hidden');
+
+        const levelLabel = id => (LEVELS.find(l => l.id === id) || {}).label || id;
+        grid.innerHTML = WORD_CATEGORIES.map(cat => `
+            <button onclick="openWordCategory('${cat.id}')" class="category-card text-right">
+                <i class="fa-solid ${cat.icon}" style="color:var(--color-accent)"></i>
+                <p class="font-bold text-sm mt-2 mb-2">${cat.title}</p>
+                <div class="flex items-center gap-2 flex-wrap">
+                    <span class="tag">${levelLabel(cat.level)}</span>
+                    <span class="text-[11px]" style="color:var(--color-text-muted)">${cat.words.length} מילים</span>
+                </div>
+            </button>
+        `).join('');
+    } else {
+        grid.classList.add('hidden');
+        songContainer.classList.remove('hidden');
+
+        const songWords = getLearnedSongWords(SONGS);
+        if (songWords.length === 0) {
+            songContainer.innerHTML = `
+                <div class="card p-6 text-center">
+                    <p class="text-sm" style="color:var(--color-text-muted)">עדיין לא נלמדו מילים משירים. למדו שיר בספרייה כדי להוסיף מילים למאגר!</p>
+                </div>`;
+        } else {
+            songContainer.innerHTML = `
+                <div class="flex items-center justify-between mb-2 px-1">
+                    <p class="text-xs font-bold" style="color:var(--color-text-muted)">${songWords.length} מילים שנלמדו משירים</p>
+                    <button onclick="startRandomPractice('songs')" class="btn-pill text-xs px-3 py-1 font-bold" style="border-color:var(--color-accent);color:var(--color-accent)">
+                        <i class="fa-solid fa-shuffle ml-1"></i>תרגול אקראי
+                    </button>
+                </div>
+                ${songWords.map(w => `
+                    <button onclick="toggleWord(this)" class="word-chip p-3 flex items-center justify-between text-right">
+                        <span class="flex flex-col items-start" dir="ltr">
+                            <span class="es-text text-sm">${w.es}</span>
+                            <span class="reveal hidden text-[11px]" style="color:var(--color-text-muted)">${w.pron || ''}</span>
+                        </span>
+                        <div class="flex flex-col items-end">
+                            <span class="text-sm">${w.he}</span>
+                            <span class="text-[10px]" style="color:var(--color-text-muted)">${w.songTitle}</span>
+                        </div>
+                    </button>
+                `).join('')}`;
+        }
+    }
+}
+
+function startRandomPractice(bankType) {
+    let pool = [];
+    if (bankType === 'basic') {
+        pool = getAllBasicWords();
+    } else if (bankType === 'songs') {
+        pool = getLearnedSongWords(SONGS);
+    } else {
+        // Combined
+        pool = [...getAllBasicWords(), ...getLearnedSongWords(SONGS)];
+    }
+
+    if (pool.length < 2) {
+        alert('אין מספיק מילים במאגר לתרגול אקראי.');
+        return;
+    }
+
+    const shuffled = [...pool].sort(() => Math.random() - 0.5).slice(0, 10);
+    startQuiz(shuffled, 'wordbank');
 }
 
 function openWordCategory(id) {
@@ -322,8 +389,8 @@ function renderLesson() {
 
     const isLastLine = state.currentLineIndex >= song.lines.length - 1;
     document.getElementById('lesson-next-label').textContent = isLastLine
-        ? 'סיימתי — לתרגול'
-        : 'המשך לשורה הבאה';
+        ? 'סיימתי — לתרגול...'
+        : 'המשך למשפט הבא ...';
 }
 
 function openSpotify() {
@@ -402,6 +469,13 @@ function startPronunciationRecording() {
         return;
     }
 
+    // Reset all word chips to pending state before starting recording
+    const chips = document.querySelectorAll('#pron-words-result .pron-word-chip');
+    chips.forEach(chip => {
+        chip.classList.remove('correct', 'incorrect');
+        chip.classList.add('pending');
+    });
+
     pronRecognition = new SpeechRecognition();
     pronRecognition.lang = 'es-ES';
     pronRecognition.continuous = false;
@@ -412,6 +486,7 @@ function startPronunciationRecording() {
     btn.classList.add('mic-recording');
     btn.innerHTML = '<i class="fa-solid fa-stop"></i>';
     document.getElementById('pron-status').textContent = 'מאזין... דברו בספרדית';
+    document.getElementById('pron-status').style.color = 'var(--color-text-muted)';
     pronIsRecording = true;
 
     pronRecognition.onresult = (event) => {
@@ -469,15 +544,14 @@ function showPronunciationResult(transcript) {
     let correctCount = 0;
     const chips = document.querySelectorAll('#pron-words-result .pron-word-chip');
     chips.forEach((chip, i) => {
+        chip.classList.remove('pending', 'correct', 'incorrect');
         const expected = expectedWords[i];
         // Check if this expected word appears anywhere in spoken words (order-tolerant)
         const found = spokenWords.some(sw => sw === expected || sw.startsWith(expected) || expected.startsWith(sw));
         if (found) {
-            chip.classList.remove('pending');
             chip.classList.add('correct');
             correctCount++;
         } else {
-            chip.classList.remove('pending');
             chip.classList.add('incorrect');
         }
     });
@@ -763,11 +837,60 @@ function showAddSongError(msg) {
 }
 
 // ---- Update check ----
+// ---- Update check & PWA Install ----
 let loadedVersion = null;
+let deferredInstallPrompt = null;
+
+// PWA Install Event listener
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredInstallPrompt = e;
+    const btn = document.getElementById('pwa-install-btn');
+    if (btn) {
+        btn.textContent = 'התקן עכשיו';
+    }
+});
+
+function triggerPwaInstall() {
+    if (deferredInstallPrompt) {
+        deferredInstallPrompt.prompt();
+        deferredInstallPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted PWA installation');
+            }
+            deferredInstallPrompt = null;
+        });
+    } else {
+        const isIos = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        if (isIos) {
+            openIosInstallModal();
+        } else if (window.matchMedia('(display-mode: standalone)').matches) {
+            alert('האפליקציה כבר מותקנת ופועלת במצב אפליקציה עצמאי במכשירכם!');
+        } else {
+            alert('להתקנת האפליקציה בטלפון: פתחו את תפריט הדפדפן (3 נקודות) ולחצו "הוסף למסך הבית" / "התקן אפליקציה".');
+        }
+    }
+}
+
+function openIosInstallModal() {
+    const modal = document.getElementById('ios-install-modal');
+    if (modal) {
+        modal.style.display = 'flex';
+        modal.classList.remove('hidden');
+    }
+}
+
+function closeIosInstallModal() {
+    const modal = document.getElementById('ios-install-modal');
+    if (modal) {
+        modal.style.display = 'none';
+        modal.classList.add('hidden');
+    }
+}
 
 function checkForUpdate() {
     if (!loadedVersion) return;
-    fetch('version.json?t=' + Date.now(), { cache: 'no-store' })
+    fetch('version.json?t=' + Date.now(), { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } })
         .then(r => r.json())
         .then(data => {
             if (data.version !== loadedVersion) {
@@ -784,14 +907,17 @@ async function checkForUpdateManual() {
     btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin ml-1"></i> בודק...';
     result.classList.add('hidden');
     try {
-        const res = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
+        const res = await fetch('version.json?t=' + Date.now(), { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } });
         const data = await res.json();
         if (!loadedVersion || data.version !== loadedVersion) {
             result.innerHTML = `<span style="color:var(--color-accent)">🆕 גרסה ${data.version} זמינה — מרענן...</span>`;
             result.classList.remove('hidden');
-            setTimeout(() => location.reload(), 1500);
+            if ('caches' in window) {
+                caches.keys().then(names => Promise.all(names.map(name => caches.delete(name))));
+            }
+            setTimeout(() => location.reload(true), 1200);
         } else {
-            result.innerHTML = `<span style="color:var(--color-success)">✓ אתם מעודכנים (v${loadedVersion})</span>`;
+            result.innerHTML = `<span style="color:var(--color-success)">✓ אתם מעודכנים (v${data.version})</span>`;
             result.classList.remove('hidden');
             btn.disabled = false;
             btn.innerHTML = '<i class="fa-solid fa-arrows-rotate ml-1"></i> בדוק עדכון';
@@ -815,7 +941,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderLevelSelector('settings-level-selector');
     renderHome();
 
-    fetch('version.json')
+    // Check PWA standalone mode
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+        const sub = document.getElementById('pwa-install-sub');
+        const btn = document.getElementById('pwa-install-btn');
+        if (sub) sub.textContent = 'האפליקציה מותקנת ופעילה במכשירך ✓';
+        if (btn) {
+            btn.textContent = 'מותקן';
+            btn.disabled = true;
+            btn.style.opacity = '0.7';
+        }
+    }
+
+    fetch('version.json?t=' + Date.now(), { cache: 'no-store' })
         .then(r => r.json())
         .then(data => {
             loadedVersion = data.version;
@@ -826,8 +964,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         })
         .catch(() => {});
 
+    // Register Service Worker for PWA & Offline Support
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js').then(reg => {
+            console.log('SW Registered:', reg.scope);
+        }).catch(err => console.log('SW Reg failed:', err));
+    }
+
     document.addEventListener('visibilitychange', () => {
         if (document.visibilityState === 'visible') checkForUpdate();
     });
     setInterval(checkForUpdate, 5 * 60 * 1000);
 });
+

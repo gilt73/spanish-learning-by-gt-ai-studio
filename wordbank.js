@@ -152,3 +152,38 @@ const WORD_CATEGORIES = [
 function getWordCategoryById(id) {
     return WORD_CATEGORIES.find(c => c.id === id);
 }
+
+function getAllBasicWords() {
+    const list = [];
+    WORD_CATEGORIES.forEach(cat => {
+        cat.words.forEach(w => {
+            list.push({ ...w, categoryTitle: cat.title, categoryId: cat.id, source: 'basic' });
+        });
+    });
+    return list;
+}
+
+function getLearnedSongWords(songs) {
+    const list = [];
+    const seen = new Set();
+    (songs || []).forEach(song => {
+        (song.lines || []).forEach(line => {
+            (line.words || []).forEach(w => {
+                const norm = (w.es || '').toLowerCase().trim();
+                if (norm && !seen.has(norm)) {
+                    seen.add(norm);
+                    list.push({
+                        es: w.es,
+                        he: w.he,
+                        pron: w.pron || '',
+                        songTitle: song.title,
+                        songId: song.id,
+                        source: 'song'
+                    });
+                }
+            });
+        });
+    });
+    return list;
+}
+

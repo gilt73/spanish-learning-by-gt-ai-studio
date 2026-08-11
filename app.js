@@ -1,4 +1,4 @@
-// app.js — Spanish Learning v1.6.0
+// app.js — Spanish Learning v2.0.0
 
 // ---- State ----
 const state = {
@@ -21,11 +21,14 @@ function saveState() {
     localStorage.setItem('sl_completed', JSON.stringify(state.completedSongs));
 }
 
-// ---- Theme ----
+// ============================================================
+// THEME — 3-way (light / dark / high-contrast)
+// ============================================================
 function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     document.getElementById('theme-btn-light').classList.toggle('active', theme === 'light');
     document.getElementById('theme-btn-dark').classList.toggle('active', theme === 'dark');
+    document.getElementById('theme-btn-high-contrast').classList.toggle('active', theme === 'high-contrast');
 }
 
 function setTheme(theme) {
@@ -39,7 +42,9 @@ function initTheme() {
     applyTheme(theme);
 }
 
-// ---- Navigation ----
+// ============================================================
+// NAVIGATION
+// ============================================================
 function showScreen(name) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     const screenEl = document.getElementById('screen-' + name);
@@ -56,7 +61,9 @@ function showScreen(name) {
     window.scrollTo(0, 0);
 }
 
-// ---- Level selector ----
+// ============================================================
+// LEVEL SELECTOR
+// ============================================================
 function renderLevelSelector(containerId) {
     const el = document.getElementById(containerId);
     if (!el) return;
@@ -74,10 +81,11 @@ function setLevel(id) {
     renderLevelSelector('settings-level-selector');
 }
 
-// ---- Circular Progress Ring ----
-// Renders an SVG ring around the song art. r=24 → circumference=~150.8
+// ============================================================
+// CIRCULAR PROGRESS RING
+// ============================================================
 const RING_R = 24;
-const RING_C = 2 * Math.PI * RING_R; // 150.796...
+const RING_C = 2 * Math.PI * RING_R;
 
 function renderProgressRing(song) {
     const pct = song.progress_percentage || 0;
@@ -105,7 +113,9 @@ function renderProgressRing(song) {
         </div>`;
 }
 
-// ---- Song Progress ----
+// ============================================================
+// SONG PROGRESS
+// ============================================================
 function updateSongProgress(songId) {
     const song = getSongById(songId);
     if (!song) return;
@@ -127,7 +137,6 @@ function updateSongProgress(songId) {
 
     saveSongProgressToStorage(songId, song.progress_percentage, song.is_mastered);
 
-    // If it's a user-added song, also update localStorage songs list
     const userSongs = getSongsFromLocalStorage();
     const idx = userSongs.findIndex(s => s.id === songId);
     if (idx >= 0) {
@@ -136,7 +145,9 @@ function updateSongProgress(songId) {
     }
 }
 
-// ---- Song Card Renderer ----
+// ============================================================
+// SONG CARD
+// ============================================================
 function renderSongCard(song) {
     const ring = renderProgressRing(song);
     const spotifyBtn = song.spotify_url
@@ -172,14 +183,15 @@ function renderSongCard(song) {
         </button>`;
 }
 
-// ---- Home ----
+// ============================================================
+// HOME
+// ============================================================
 function renderHome() {
     document.getElementById('home-streak').textContent = state.streak;
     document.getElementById('home-xp').textContent = state.xp;
     renderLevelSelector('level-selector');
 
     const wrap = document.getElementById('home-continue');
-    // Find the first in-progress or first unlocked song
     const inProgress = SONGS.find(s => !s.locked && s.progress_percentage > 0 && !s.is_mastered);
     const song = inProgress || SONGS.find(s => !s.locked);
     if (song) {
@@ -187,7 +199,9 @@ function renderHome() {
     }
 }
 
-// ---- Library ----
+// ============================================================
+// LIBRARY
+// ============================================================
 function renderLibraryTab() {
     document.getElementById('lib-tab-songs').classList.toggle('active', state.libraryTab === 'songs');
     document.getElementById('lib-tab-wordbank').classList.toggle('active', state.libraryTab === 'wordbank');
@@ -280,7 +294,6 @@ function startRandomPractice(bankType) {
     } else if (bankType === 'songs') {
         pool = getLearnedSongWords(SONGS);
     } else {
-        // Combined
         pool = [...getAllBasicWords(), ...getLearnedSongWords(SONGS)];
     }
 
@@ -327,7 +340,9 @@ function startCategoryQuiz() {
     startQuiz(cat.words, 'wordbank');
 }
 
-// ---- Lesson ----
+// ============================================================
+// LESSON (normal mode)
+// ============================================================
 function openSong(songId) {
     state.currentSongId = songId;
     state.currentLineIndex = 0;
@@ -416,7 +431,24 @@ function playLine(rate) {
     speechSynthesis.speak(utter);
 }
 
-// ---- Pronunciation Practice ----
+function nextLine() {
+    const song = getSongById(state.currentSongId);
+    if (!song) return;
+
+    updateSongProgress(state.currentSongId);
+
+    if (state.currentLineIndex < song.lines.length - 1) {
+        state.currentLineIndex++;
+        renderLesson();
+        window.scrollTo(0, 0);
+    } else {
+        startQuiz(song.lines.flatMap(l => l.words || []), 'song');
+    }
+}
+
+// ============================================================
+// PRONUNCIATION PRACTICE
+// ============================================================
 let pronRecognition = null;
 let pronIsRecording = false;
 
@@ -469,7 +501,6 @@ function startPronunciationRecording() {
         return;
     }
 
-    // Reset all word chips to pending state before starting recording
     const chips = document.querySelectorAll('#pron-words-result .pron-word-chip');
     chips.forEach(chip => {
         chip.classList.remove('correct', 'incorrect');
@@ -532,7 +563,7 @@ function stopPronunciationRecording() {
 function normalizeWord(w) {
     return w.toLowerCase()
         .replace(/[¿¡.,!?;:"'()\[\]]/g, '')
-        .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // strip accents
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
         .trim();
 }
 
@@ -546,7 +577,6 @@ function showPronunciationResult(transcript) {
     chips.forEach((chip, i) => {
         chip.classList.remove('pending', 'correct', 'incorrect');
         const expected = expectedWords[i];
-        // Check if this expected word appears anywhere in spoken words (order-tolerant)
         const found = spokenWords.some(sw => sw === expected || sw.startsWith(expected) || expected.startsWith(sw));
         if (found) {
             chip.classList.add('correct');
@@ -570,27 +600,12 @@ function showPronunciationResult(transcript) {
     }
 }
 
-function nextLine() {
-    const song = getSongById(state.currentSongId);
-    if (!song) return;
-
-    // Update progress tracking
-    updateSongProgress(state.currentSongId);
-
-    if (state.currentLineIndex < song.lines.length - 1) {
-        state.currentLineIndex++;
-        renderLesson();
-        window.scrollTo(0, 0);
-    } else {
-        startQuiz(song.lines.flatMap(l => l.words || []), 'song');
-    }
-}
-
-// ---- Quiz ----
+// ============================================================
+// QUIZ
+// ============================================================
 function startQuiz(words, origin) {
     const filtered = words.filter(w => w && w.es && w.he);
     if (filtered.length < 2) {
-        // Not enough words — go back to library
         showScreen('library');
         return;
     }
@@ -659,7 +674,6 @@ function finishQuiz() {
     document.getElementById('quiz-result').classList.remove('hidden');
 
     if (state.quiz.origin === 'song') {
-        // Mark song as fully mastered
         const song = getSongById(state.currentSongId);
         if (song) {
             song.progress_percentage = 100;
@@ -677,7 +691,9 @@ function finishQuiz() {
     }
 }
 
-// ---- Progress ----
+// ============================================================
+// PROGRESS
+// ============================================================
 function renderProgress() {
     document.getElementById('progress-streak').textContent = state.streak;
     document.getElementById('progress-xp').textContent = state.xp;
@@ -710,7 +726,9 @@ function renderProgress() {
     }
 }
 
-// ---- Add New Song (BYOT) ----
+// ============================================================
+// ADD NEW SONG (BYOT)
+// ============================================================
 function resetAddSongForm() {
     ['add-title', 'add-artist', 'add-spotify', 'add-lyrics'].forEach(id => {
         const el = document.getElementById(id);
@@ -770,7 +788,6 @@ async function handleAddSong() {
             throw new Error('לא הצלחתי לעבד את המילים. נסה שוב.');
         }
 
-        // Build song object
         const songId = title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') + '-' + Date.now();
         let trackId = null;
         if (spotifyUrl) {
@@ -795,13 +812,11 @@ async function handleAddSong() {
             is_mastered: false
         };
 
-        // Save to localStorage and merge into SONGS
         saveSongToLocalStorage(newSong);
         if (!SONGS.find(s => s.id === songId)) {
             SONGS.push(newSong);
         }
 
-        // Show success
         result.innerHTML = `
             <div class="card p-4" style="border:1px solid var(--color-accent-400)">
                 <div class="flex items-center gap-3 mb-3">
@@ -836,28 +851,364 @@ function showAddSongError(msg) {
         </div>`;
 }
 
-// ---- Update check ----
-// ---- Update check & PWA Install ----
+// ============================================================
+// AUDIO FEEDBACK — AudioContext Beep (40ms, ~880Hz)
+// ============================================================
+let _audioCtx = null;
+
+function getAudioCtx() {
+    if (!_audioCtx) {
+        _audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    // Safari requires resume after a user gesture
+    if (_audioCtx.state === 'suspended') {
+        _audioCtx.resume();
+    }
+    return _audioCtx;
+}
+
+function playBeep(freq = 880, durationMs = 40, volume = 0.18) {
+    try {
+        const ctx = getAudioCtx();
+        const oscillator = ctx.createOscillator();
+        const gainNode = ctx.createGain();
+
+        oscillator.connect(gainNode);
+        gainNode.connect(ctx.destination);
+
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(freq, ctx.currentTime);
+
+        gainNode.gain.setValueAtTime(volume, ctx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + durationMs / 1000);
+
+        oscillator.start(ctx.currentTime);
+        oscillator.stop(ctx.currentTime + durationMs / 1000);
+    } catch (e) {
+        // Silently ignore if AudioContext unavailable
+    }
+}
+
+// ============================================================
+// DRIVING MODE STATE
+// ============================================================
+const drivingState = {
+    active: false,
+    autoPlay: false,
+    autoPlayTimer: null,
+    wakeLock: null,
+    touchStartX: 0,
+    touchStartY: 0,
+    touchStartTime: 0,
+    isSwiping: false
+};
+
+// ---- Wake Lock ----
+async function acquireWakeLock() {
+    if ('wakeLock' in navigator) {
+        try {
+            drivingState.wakeLock = await navigator.wakeLock.request('screen');
+        } catch (e) {
+            // Wake Lock not critical — ignore
+        }
+    }
+}
+
+function releaseWakeLock() {
+    if (drivingState.wakeLock) {
+        drivingState.wakeLock.release().catch(() => {});
+        drivingState.wakeLock = null;
+    }
+}
+
+// Re-acquire wake lock if page becomes visible again (iOS releases it on visibility change)
+document.addEventListener('visibilitychange', () => {
+    if (drivingState.active && document.visibilityState === 'visible') {
+        acquireWakeLock();
+    }
+});
+
+// ---- Enter / Exit ----
+function enterDrivingMode() {
+    const song = getSongById(state.currentSongId);
+    if (!song) return;
+
+    drivingState.active = true;
+
+    const overlay = document.getElementById('driving-overlay');
+    overlay.classList.remove('hidden');
+
+    renderDrivingScreen();
+    attachDrivingGestures();
+    acquireWakeLock();
+
+    // Unlock AudioContext on first user interaction
+    getAudioCtx();
+}
+
+function exitDrivingMode() {
+    drivingState.active = false;
+    stopDrivingAutoPlay();
+    releaseWakeLock();
+
+    const overlay = document.getElementById('driving-overlay');
+    overlay.classList.add('hidden');
+
+    detachDrivingGestures();
+}
+
+// ---- Render ----
+function renderDrivingScreen(animate = false) {
+    const song = getSongById(state.currentSongId);
+    if (!song) return;
+    const line = song.lines[state.currentLineIndex];
+    if (!line) return;
+
+    const esEl = document.getElementById('driving-es');
+    const heEl = document.getElementById('driving-he');
+
+    if (animate) {
+        esEl.classList.remove('driving-sentence-enter');
+        heEl.classList.remove('driving-sentence-enter');
+        // Force reflow to restart animation
+        void esEl.offsetWidth;
+        void heEl.offsetWidth;
+        esEl.classList.add('driving-sentence-enter');
+        heEl.classList.add('driving-sentence-enter');
+    }
+
+    esEl.textContent = line.es;
+    heEl.textContent = line.he;
+
+    document.getElementById('driving-meta').textContent =
+        `${song.title} · ${state.currentLineIndex + 1} / ${song.lines.length}`;
+
+    const pct = ((state.currentLineIndex + 1) / song.lines.length) * 100;
+    document.getElementById('driving-progress-fill').style.width = pct + '%';
+}
+
+// ---- Navigation ----
+function drivingNextLine() {
+    const song = getSongById(state.currentSongId);
+    if (!song) return;
+    if (state.currentLineIndex < song.lines.length - 1) {
+        updateSongProgress(state.currentSongId);
+        state.currentLineIndex++;
+        renderDrivingScreen(true);
+        // Mirror to lesson screen for when user exits
+        renderLesson();
+    }
+    // If at the last line, stay and do nothing (no quiz in driving mode)
+}
+
+function drivingPrevLine() {
+    if (state.currentLineIndex > 0) {
+        state.currentLineIndex--;
+        renderDrivingScreen(true);
+        renderLesson();
+    }
+}
+
+// ---- Play current line TTS (Spanish) ----
+function drivingPlayCurrent() {
+    const song = getSongById(state.currentSongId);
+    if (!song) return;
+    const line = song.lines[state.currentLineIndex];
+    if (!line || !('speechSynthesis' in window)) return;
+    speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(line.es);
+    utter.lang = 'es-ES';
+    utter.rate = 1;
+    speechSynthesis.speak(utter);
+    return utter; // return for auto-play chaining
+}
+
+// ---- Touch/Gesture Handling ----
+function onDrivingTouchStart(e) {
+    const t = e.changedTouches[0];
+    drivingState.touchStartX = t.clientX;
+    drivingState.touchStartY = t.clientY;
+    drivingState.touchStartTime = Date.now();
+    drivingState.isSwiping = false;
+}
+
+function onDrivingTouchMove(e) {
+    const t = e.changedTouches[0];
+    const dx = Math.abs(t.clientX - drivingState.touchStartX);
+    const dy = Math.abs(t.clientY - drivingState.touchStartY);
+    if (dx > 10 || dy > 10) drivingState.isSwiping = true;
+    // Prevent page scroll inside overlay
+    e.preventDefault();
+}
+
+function onDrivingTouchEnd(e) {
+    const t = e.changedTouches[0];
+    const deltaX = t.clientX - drivingState.touchStartX;
+    const deltaY = t.clientY - drivingState.touchStartY;
+    const elapsed = Date.now() - drivingState.touchStartTime;
+    const absDx = Math.abs(deltaX);
+    const absDy = Math.abs(deltaY);
+
+    // Horizontal swipe: deltaX threshold 50px, dominant axis
+    if (absDx > 50 && absDx > absDy) {
+        playBeep(880, 35, 0.15);
+        flashTouchZone();
+        if (deltaX < 0) {
+            // Swipe left → Next
+            drivingNextLine();
+            if (drivingState.autoPlay) restartDrivingAutoPlay();
+        } else {
+            // Swipe right → Previous
+            drivingPrevLine();
+            if (drivingState.autoPlay) restartDrivingAutoPlay();
+        }
+    } else if (!drivingState.isSwiping || (absDx < 20 && absDy < 20)) {
+        // Tap — play/speak current line
+        playBeep(660, 30, 0.12);
+        flashTouchZone();
+        drivingPlayCurrent();
+        if (drivingState.autoPlay) restartDrivingAutoPlay();
+    }
+}
+
+function flashTouchZone() {
+    const zone = document.getElementById('driving-touch-zone');
+    zone.classList.remove('tap-flash');
+    void zone.offsetWidth; // reflow
+    zone.classList.add('tap-flash');
+}
+
+function attachDrivingGestures() {
+    const zone = document.getElementById('driving-touch-zone');
+    zone.addEventListener('touchstart', onDrivingTouchStart, { passive: true });
+    zone.addEventListener('touchmove', onDrivingTouchMove, { passive: false });
+    zone.addEventListener('touchend', onDrivingTouchEnd, { passive: true });
+}
+
+function detachDrivingGestures() {
+    const zone = document.getElementById('driving-touch-zone');
+    zone.removeEventListener('touchstart', onDrivingTouchStart);
+    zone.removeEventListener('touchmove', onDrivingTouchMove);
+    zone.removeEventListener('touchend', onDrivingTouchEnd);
+}
+
+// ============================================================
+// AUTO-PLAY LOOP
+// ============================================================
+function toggleDrivingAutoPlay() {
+    if (drivingState.autoPlay) {
+        stopDrivingAutoPlay();
+    } else {
+        startDrivingAutoPlay();
+    }
+    updateAutoPlayBtn();
+}
+
+function updateAutoPlayBtn() {
+    const btn = document.getElementById('driving-autoplay-btn');
+    if (!btn) return;
+    if (drivingState.autoPlay) {
+        btn.classList.add('active');
+        btn.innerHTML = '<i class="fa-solid fa-rotate fa-spin"></i> השמעה אוטומטית: פעיל';
+    } else {
+        btn.classList.remove('active');
+        btn.innerHTML = '<i class="fa-solid fa-rotate"></i> השמעה אוטומטית: כבוי';
+    }
+}
+
+function stopDrivingAutoPlay() {
+    drivingState.autoPlay = false;
+    if (drivingState.autoPlayTimer) {
+        clearTimeout(drivingState.autoPlayTimer);
+        drivingState.autoPlayTimer = null;
+    }
+    speechSynthesis.cancel();
+    updateAutoPlayBtn();
+}
+
+function startDrivingAutoPlay() {
+    drivingState.autoPlay = true;
+    updateAutoPlayBtn();
+    runAutoPlayCycle();
+}
+
+function restartDrivingAutoPlay() {
+    if (drivingState.autoPlayTimer) {
+        clearTimeout(drivingState.autoPlayTimer);
+        drivingState.autoPlayTimer = null;
+    }
+    speechSynthesis.cancel();
+    // Small delay before restarting loop after manual swipe
+    drivingState.autoPlayTimer = setTimeout(() => {
+        if (drivingState.autoPlay && drivingState.active) {
+            runAutoPlayCycle();
+        }
+    }, 800);
+}
+
+function runAutoPlayCycle() {
+    if (!drivingState.autoPlay || !drivingState.active) return;
+
+    const song = getSongById(state.currentSongId);
+    if (!song) return;
+    const line = song.lines[state.currentLineIndex];
+    if (!line) return;
+
+    // Step 1: Speak Spanish
+    speechSynthesis.cancel();
+    const esUtter = new SpeechSynthesisUtterance(line.es);
+    esUtter.lang = 'es-ES';
+    esUtter.rate = 0.9;
+
+    esUtter.onend = () => {
+        if (!drivingState.autoPlay || !drivingState.active) return;
+        // Step 2: Pause 2 seconds, then speak Hebrew
+        drivingState.autoPlayTimer = setTimeout(() => {
+            if (!drivingState.autoPlay || !drivingState.active) return;
+            const heUtter = new SpeechSynthesisUtterance(line.he);
+            heUtter.lang = 'he-IL';
+            heUtter.rate = 0.9;
+            heUtter.onend = () => {
+                if (!drivingState.autoPlay || !drivingState.active) return;
+                // Step 3: Pause 1.5 seconds, advance to next line
+                drivingState.autoPlayTimer = setTimeout(() => {
+                    if (!drivingState.autoPlay || !drivingState.active) return;
+                    const atEnd = state.currentLineIndex >= song.lines.length - 1;
+                    if (atEnd) {
+                        // End of song — stop auto-play
+                        stopDrivingAutoPlay();
+                        return;
+                    }
+                    playBeep(880, 35, 0.1);
+                    drivingNextLine();
+                    // Continue loop
+                    drivingState.autoPlayTimer = setTimeout(() => {
+                        runAutoPlayCycle();
+                    }, 300);
+                }, 1500);
+            };
+            speechSynthesis.speak(heUtter);
+        }, 2000);
+    };
+
+    speechSynthesis.speak(esUtter);
+}
+
+// ============================================================
+// PWA INSTALL & UPDATE
+// ============================================================
 let loadedVersion = null;
 let deferredInstallPrompt = null;
 
-// PWA Install Event listener
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredInstallPrompt = e;
-    const btn = document.getElementById('pwa-install-btn');
-    if (btn) {
-        btn.textContent = 'התקן עכשיו';
-    }
 });
 
 function triggerPwaInstall() {
     if (deferredInstallPrompt) {
         deferredInstallPrompt.prompt();
         deferredInstallPrompt.userChoice.then((choiceResult) => {
-            if (choiceResult.outcome === 'accepted') {
-                console.log('User accepted PWA installation');
-            }
             deferredInstallPrompt = null;
         });
     } else {
@@ -888,6 +1239,7 @@ function closeIosInstallModal() {
     }
 }
 
+// ---- Passive update check (background) ----
 function checkForUpdate() {
     if (!loadedVersion) return;
     fetch('version.json?t=' + Date.now(), { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } })
@@ -900,22 +1252,39 @@ function checkForUpdate() {
         .catch(() => {});
 }
 
+// ---- Manual "Check for Updates" — full FORCE_UPDATE flow ----
 async function checkForUpdateManual() {
     const btn = document.getElementById('check-update-btn');
     const result = document.getElementById('check-update-result');
     btn.disabled = true;
     btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin ml-1"></i> בודק...';
     result.classList.add('hidden');
+
     try {
-        const res = await fetch('version.json?t=' + Date.now(), { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } });
+        const res = await fetch('version.json?t=' + Date.now(), {
+            cache: 'no-store',
+            headers: { 'Cache-Control': 'no-cache' }
+        });
         const data = await res.json();
+
         if (!loadedVersion || data.version !== loadedVersion) {
-            result.innerHTML = `<span style="color:var(--color-accent)">🆕 גרסה ${data.version} זמינה — מרענן...</span>`;
+            result.innerHTML = `<span style="color:var(--color-accent)">🆕 גרסה ${data.version} זמינה — מנקה מטמון ומרענן...</span>`;
             result.classList.remove('hidden');
-            if ('caches' in window) {
-                caches.keys().then(names => Promise.all(names.map(name => caches.delete(name))));
+
+            // 1. Tell the SW to wipe all caches and skipWaiting
+            if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+                navigator.serviceWorker.controller.postMessage('FORCE_UPDATE');
             }
-            setTimeout(() => location.reload(true), 1200);
+
+            // 2. Also wipe from the page side for safety
+            if ('caches' in window) {
+                await caches.keys().then(names =>
+                    Promise.all(names.map(name => caches.delete(name)))
+                );
+            }
+
+            // 3. Hard reload after a short delay
+            setTimeout(() => location.reload(true), 1400);
         } else {
             result.innerHTML = `<span style="color:var(--color-success)">✓ אתם מעודכנים (v${data.version})</span>`;
             result.classList.remove('hidden');
@@ -930,7 +1299,9 @@ async function checkForUpdateManual() {
     }
 }
 
-// ---- Init ----
+// ============================================================
+// INIT
+// ============================================================
 document.addEventListener('DOMContentLoaded', async () => {
     initTheme();
 
@@ -953,6 +1324,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
+    // Load version info
     fetch('version.json?t=' + Date.now(), { cache: 'no-store' })
         .then(r => r.json())
         .then(data => {
@@ -964,16 +1336,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         })
         .catch(() => {});
 
-    // Register Service Worker for PWA & Offline Support
+    // Register Service Worker
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('./sw.js').then(reg => {
-            console.log('SW Registered:', reg.scope);
+            console.log('SW Registered v2.0.0:', reg.scope);
         }).catch(err => console.log('SW Reg failed:', err));
     }
 
+    // Passive update polling
     document.addEventListener('visibilitychange', () => {
         if (document.visibilityState === 'visible') checkForUpdate();
     });
     setInterval(checkForUpdate, 5 * 60 * 1000);
 });
-

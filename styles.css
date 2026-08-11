@@ -1,10 +1,13 @@
-/* Design tokens — Organic design system (V1.5)
+/* Design tokens — Organic design system (V2.0)
    Heebo: body/UI font (full Hebrew glyph support)
    Caprasimo: Spanish display text only (Latin-only font)
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Caprasimo:wght@400&display=swap');
 
+/* ============================================================
+   ROOT — Light Theme (default)
+   ============================================================ */
 :root {
     --color-bg: #f5ead8;
     --color-surface: #ebddc5;
@@ -42,8 +45,23 @@
 
     --shadow-sm: 0 1px 2px rgba(46, 43, 37, 0.14);
     --shadow-md: 0 3px 10px rgba(46, 43, 37, 0.14);
+
+    /* Driving Mode text colors — Light */
+    --dm-es-color: #111827;
+    --dm-he-color: #1d4ed8;
+    --dm-bg: #f5ead8;
+    --dm-controls-bg: rgba(245, 234, 216, 0.95);
+    --dm-hint-color: rgba(32, 30, 29, 0.4);
+    --dm-progress-color: #c67139;
+    --dm-btn-bg: rgba(32, 30, 29, 0.1);
+    --dm-btn-color: #201e1d;
+    --dm-btn-primary-bg: #c67139;
+    --dm-btn-primary-color: #fff;
 }
 
+/* ============================================================
+   DARK THEME
+   ============================================================ */
 [data-theme="dark"] {
     --color-bg: #201c17;
     --color-surface: #2b261f;
@@ -71,8 +89,67 @@
     --color-mastered: #6edb6b;
     --color-mastered-100: rgba(110, 219, 107, 0.16);
     --color-mastered-ring: #5dcf5a;
+
+    /* Driving Mode text colors — Dark (best for driving) */
+    --dm-es-color: #ffffff;
+    --dm-he-color: #fde047;
+    --dm-bg: #0a0806;
+    --dm-controls-bg: rgba(10, 8, 6, 0.97);
+    --dm-hint-color: rgba(255, 255, 255, 0.3);
+    --dm-progress-color: #f6a06b;
+    --dm-btn-bg: rgba(255, 255, 255, 0.1);
+    --dm-btn-color: #f5ead8;
+    --dm-btn-primary-bg: #f6a06b;
+    --dm-btn-primary-color: #0a0806;
 }
 
+/* ============================================================
+   HIGH CONTRAST THEME — Neon on black for peripheral vision
+   ============================================================ */
+[data-theme="high-contrast"] {
+    --color-bg: #000000;
+    --color-surface: #0d0d0d;
+    --color-surface-2: #1a1a1a;
+    --color-text: #ffffff;
+    --color-text-muted: rgba(255, 255, 255, 0.6);
+    --color-divider: rgba(255, 255, 255, 0.2);
+
+    --color-accent: #00ff88;
+    --color-accent-100: rgba(0, 255, 136, 0.15);
+    --color-accent-400: #00ff88;
+    --color-accent-600: #00cc6e;
+    --color-accent-700: #00cc6e;
+    --color-accent-900: #004422;
+
+    --color-accent2: #ff00aa;
+    --color-accent2-100: rgba(255, 0, 170, 0.15);
+    --color-accent2-400: #ff00aa;
+    --color-accent2-700: #ff66cc;
+
+    --color-danger: #ff3333;
+    --color-danger-100: rgba(255, 51, 51, 0.15);
+    --color-success: #00ff88;
+    --color-success-100: rgba(0, 255, 136, 0.15);
+    --color-mastered: #00ff88;
+    --color-mastered-100: rgba(0, 255, 136, 0.15);
+    --color-mastered-ring: #00ff88;
+
+    /* Driving Mode text colors — High Contrast */
+    --dm-es-color: #00ff88;
+    --dm-he-color: #ffff00;
+    --dm-bg: #000000;
+    --dm-controls-bg: rgba(0, 0, 0, 0.98);
+    --dm-hint-color: rgba(255, 255, 255, 0.35);
+    --dm-progress-color: #00ff88;
+    --dm-btn-bg: rgba(255, 255, 255, 0.12);
+    --dm-btn-color: #ffffff;
+    --dm-btn-primary-bg: #00ff88;
+    --dm-btn-primary-color: #000000;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
 html {
     scroll-behavior: smooth;
 }
@@ -98,7 +175,9 @@ body {
     position: relative;
 }
 
-/* ---- Cards ---- */
+/* ============================================================
+   CARDS
+   ============================================================ */
 .card {
     background: var(--color-surface);
     border-radius: var(--radius-md);
@@ -109,7 +188,9 @@ body {
     transform: scale(0.98);
 }
 
-/* ---- Screens ---- */
+/* ============================================================
+   SCREENS
+   ============================================================ */
 .screen {
     display: none;
     padding: 1rem 1.25rem 6rem;
@@ -125,7 +206,9 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* ---- Bottom Nav ---- */
+/* ============================================================
+   BOTTOM NAV
+   ============================================================ */
 .bottom-nav {
     position: fixed;
     bottom: 0;
@@ -165,7 +248,7 @@ body {
     font-size: 22px;
 }
 
-/* Add Song nav button — styled differently */
+/* Add Song nav button */
 .nav-item.nav-add {
     background: var(--color-accent);
     color: white;
@@ -182,7 +265,9 @@ body {
     font-size: 20px;
 }
 
-/* ---- Buttons ---- */
+/* ============================================================
+   BUTTONS
+   ============================================================ */
 .pill {
     border-radius: 999px;
     border: 1px solid var(--color-divider);
@@ -271,7 +356,9 @@ body {
     gap: 10px;
 }
 
-/* ---- Word Chips ---- */
+/* ============================================================
+   WORD CHIPS
+   ============================================================ */
 .word-chip {
     background: var(--color-surface);
     border-radius: var(--radius-sm);
@@ -287,7 +374,9 @@ body {
     border-color: var(--color-accent-400);
 }
 
-/* ---- Quiz ---- */
+/* ============================================================
+   QUIZ
+   ============================================================ */
 .quiz-option {
     background: var(--color-surface);
     border-radius: var(--radius-sm);
@@ -308,7 +397,9 @@ body {
     color: var(--color-danger);
 }
 
-/* ---- Progress Bars ---- */
+/* ============================================================
+   PROGRESS BARS
+   ============================================================ */
 .progress-bar-track {
     background: var(--color-divider);
     border-radius: 999px;
@@ -322,7 +413,9 @@ body {
     transition: width 0.5s ease;
 }
 
-/* ---- Tags / Pills ---- */
+/* ============================================================
+   TAGS / PILLS
+   ============================================================ */
 .tag {
     border-radius: 999px;
     font-size: 10px;
@@ -336,7 +429,9 @@ body {
     color: var(--color-text-muted);
 }
 
-/* ---- Category Cards ---- */
+/* ============================================================
+   CATEGORY CARDS
+   ============================================================ */
 .category-card {
     background: var(--color-surface);
     border-radius: var(--radius-md);
@@ -345,7 +440,9 @@ body {
     text-align: right;
 }
 
-/* ---- Theme Toggle ---- */
+/* ============================================================
+   THEME TOGGLE (3 buttons)
+   ============================================================ */
 .theme-toggle {
     display: inline-flex;
     border: 1px solid var(--color-divider);
@@ -360,6 +457,7 @@ body {
     background: transparent;
     border: none;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .theme-toggle button.active {
@@ -368,7 +466,9 @@ body {
     font-weight: 700;
 }
 
-/* ---- Circular Progress Ring ---- */
+/* ============================================================
+   CIRCULAR PROGRESS RING
+   ============================================================ */
 .song-ring-wrap {
     position: relative;
     flex-shrink: 0;
@@ -450,7 +550,9 @@ body {
     font-size: 9px;
 }
 
-/* ---- Song Card ---- */
+/* ============================================================
+   SONG CARD
+   ============================================================ */
 .song-card {
     background: var(--color-surface);
     border-radius: var(--radius-md);
@@ -535,7 +637,9 @@ body {
     transform: scale(0.95);
 }
 
-/* ---- Add Song Form ---- */
+/* ============================================================
+   ADD SONG FORM
+   ============================================================ */
 .add-song-form .form-field {
     margin-bottom: 14px;
 }
@@ -576,7 +680,9 @@ body {
     line-height: 1.5;
 }
 
-/* ---- Loading State ---- */
+/* ============================================================
+   LOADING
+   ============================================================ */
 .loading-state {
     display: flex;
     flex-direction: column;
@@ -599,7 +705,9 @@ body {
     to { transform: rotate(360deg); }
 }
 
-/* ---- Shimmer skeleton ---- */
+/* ============================================================
+   SHIMMER SKELETON
+   ============================================================ */
 .shimmer {
     background: linear-gradient(90deg,
         var(--color-surface) 0%,
@@ -615,7 +723,9 @@ body {
     100% { background-position: 200% 0; }
 }
 
-/* ---- Lesson Screen Upgrades (Driving Mode) ---- */
+/* ============================================================
+   LESSON SCREEN (normal mode)
+   ============================================================ */
 .lesson-spotify-bar {
     background: rgba(29, 185, 84, 0.12);
     border: 1px solid rgba(29, 185, 84, 0.25);
@@ -652,7 +762,7 @@ body {
     opacity: 0.7;
 }
 
-/* Lesson action buttons — large for driving */
+/* Lesson action buttons */
 .lesson-actions {
     display: flex;
     justify-content: center;
@@ -699,7 +809,7 @@ body {
     color: #ffffff;
 }
 
-/* Next sentence — full width, tall */
+/* Next sentence button */
 .btn-next-line {
     width: 100%;
     min-height: 64px;
@@ -723,7 +833,233 @@ body {
     transform: scale(0.98);
 }
 
-/* ---- Pronunciation Modal ---- */
+/* Driving mode entry button inside lesson card */
+.btn-driving-mode-enter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px;
+    margin-top: 12px;
+    border-radius: 999px;
+    border: 1px solid var(--color-divider);
+    background: var(--color-surface-2);
+    color: var(--color-text-muted);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-driving-mode-enter:hover,
+.btn-driving-mode-enter:active {
+    background: var(--color-accent-100);
+    border-color: var(--color-accent);
+    color: var(--color-accent-700);
+}
+
+/* ============================================================
+   DRIVING MODE OVERLAY
+   ============================================================ */
+.driving-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: var(--dm-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: hidden;
+    transition: background 0.2s ease;
+}
+
+.driving-overlay.hidden {
+    display: none;
+}
+
+/* Progress bar at very top */
+.driving-progress-track {
+    width: 100%;
+    height: 4px;
+    background: rgba(128,128,128,0.2);
+    flex-shrink: 0;
+}
+
+.driving-progress-fill {
+    height: 100%;
+    background: var(--dm-progress-color);
+    transition: width 0.4s ease;
+}
+
+/* Touch zone — fills all available space */
+.driving-touch-zone {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 24px;
+    gap: 28px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+    position: relative;
+}
+
+/* Flash animation on tap */
+@keyframes tapFlash {
+    0%   { opacity: 1; }
+    40%  { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+.driving-touch-zone.tap-flash {
+    animation: tapFlash 0.15s ease;
+}
+
+/* Spanish sentence — massive */
+.driving-text-es {
+    font-family: 'Caprasimo', system-ui, sans-serif;
+    font-size: clamp(2rem, 7vw, 3.5rem);
+    font-weight: 900;
+    color: var(--dm-es-color);
+    text-align: center;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    direction: ltr;
+    transition: color 0.2s ease;
+}
+
+/* Hebrew translation — large */
+.driving-text-he {
+    font-family: 'Heebo', sans-serif;
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+    font-weight: 700;
+    color: var(--dm-he-color);
+    text-align: center;
+    line-height: 1.3;
+    transition: color 0.2s ease;
+}
+
+/* Song title & counter */
+.driving-meta {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--dm-hint-color);
+    text-align: center;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* Swipe hint icons */
+.driving-swipe-hint {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    opacity: 0;
+    animation: hintFadeIn 0.8s ease 1.5s forwards;
+}
+
+@keyframes hintFadeIn {
+    to { opacity: 1; }
+}
+
+.driving-swipe-hint span {
+    font-size: 0.7rem;
+    color: var(--dm-hint-color);
+    font-weight: 600;
+}
+
+.driving-swipe-hint i {
+    font-size: 1.2rem;
+    color: var(--dm-hint-color);
+}
+
+/* Bottom controls bar */
+.driving-controls {
+    flex-shrink: 0;
+    background: var(--dm-controls-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(128,128,128,0.15);
+    padding: 12px 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.driving-controls-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Auto-play toggle button */
+.driving-autoplay-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 16px;
+    border-radius: var(--radius-md);
+    border: 2px solid var(--dm-progress-color);
+    background: transparent;
+    color: var(--dm-progress-color);
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Heebo', sans-serif;
+    transition: all 0.2s ease;
+}
+
+.driving-autoplay-btn.active {
+    background: var(--dm-btn-primary-bg);
+    color: var(--dm-btn-primary-color);
+    border-color: var(--dm-btn-primary-bg);
+}
+
+.driving-autoplay-btn i {
+    font-size: 18px;
+}
+
+/* Exit button */
+.driving-exit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 14px 20px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(128,128,128,0.3);
+    background: var(--dm-btn-bg);
+    color: var(--dm-btn-color);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Heebo', sans-serif;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.driving-exit-btn:active {
+    transform: scale(0.96);
+}
+
+/* Sentence transition animation */
+@keyframes sentenceIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.driving-sentence-enter {
+    animation: sentenceIn 0.25s ease;
+}
+
+/* ============================================================
+   PRONUNCIATION MODAL
+   ============================================================ */
 @keyframes slideUp {
     from { transform: translateY(100%); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
@@ -767,7 +1103,9 @@ body {
     box-shadow: 0 4px 20px rgba(179,69,58,0.6) !important;
 }
 
-/* ---- Scrollbar ---- */
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
 ::-webkit-scrollbar {
     display: none;
 }

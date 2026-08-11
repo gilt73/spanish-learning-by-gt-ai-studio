@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Spanish Learning · G.T AI Studio</title>
     <meta name="description" content="למדו ספרדית בעברית דרך שירי סלסה ובצ'אטה — מילה-מילה, משפט-משפט.">
-    <meta name="theme-color" content="#f5ead8">
+    <meta name="theme-color" content="#201c17">
     <link rel="icon" href="icon.svg" type="image/svg+xml">
     <link rel="icon" href="icon-192.png" sizes="192x192" type="image/png">
     <link rel="apple-touch-icon" href="icon-180.png">
@@ -40,7 +40,7 @@
                     <p class="text-[11px] leading-none mt-1" style="color:var(--color-text-muted)">by G.T AI Studio</p>
                 </div>
             </div>
-            <span id="app-version" class="text-[10px] font-mono rounded-full px-2 py-1" style="color:var(--color-text-muted);border:1px solid var(--color-divider)">v1.6.0</span>
+            <span id="app-version" class="text-[10px] font-mono rounded-full px-2 py-1" style="color:var(--color-text-muted);border:1px solid var(--color-divider)">v2.0.0</span>
         </header>
 
         <div id="update-banner" class="hidden mx-5 mb-3 px-4 py-2.5 flex items-center gap-2 text-xs" style="background:var(--color-accent-100);border:1px solid var(--color-accent);border-radius:var(--radius-sm);color:var(--color-accent-700)">
@@ -200,6 +200,11 @@
                         <span>הגייה</span>
                     </button>
                 </div>
+                <!-- Driving Mode Entry Button -->
+                <button id="enter-driving-btn" onclick="enterDrivingMode()" class="btn-driving-mode-enter">
+                    <i class="fa-solid fa-car-side"></i>
+                    מצב נהיגה 🚗
+                </button>
             </div>
 
             <p class="text-xs mb-2" style="color:var(--color-text-muted)">לחצו על מילה למשמעות והגייה</p>
@@ -281,14 +286,17 @@
             <h2 class="text-xl font-bold mb-4">הגדרות</h2>
 
             <div class="card p-4 mb-4">
-                <div class="flex items-center justify-between mb-3">
-                    <p class="text-sm font-bold">מראה</p>
-                    <div class="theme-toggle">
-                        <button id="theme-btn-light" onclick="setTheme('light')">בהיר</button>
-                        <button id="theme-btn-dark" onclick="setTheme('dark')">כהה</button>
-                    </div>
+                <div class="flex items-center justify-between mb-4">
+                    <p class="text-sm font-bold">מראה ונגישות</p>
                 </div>
-                <p class="text-sm font-bold mb-3">רמת לימוד</p>
+                <!-- 3-way theme selector -->
+                <p class="text-xs mb-2" style="color:var(--color-text-muted)">ערכת צבעים</p>
+                <div class="theme-toggle w-full mb-4" style="display:flex">
+                    <button id="theme-btn-light"  onclick="setTheme('light')"         style="flex:1">☀️ בהיר</button>
+                    <button id="theme-btn-dark"   onclick="setTheme('dark')"          style="flex:1">🌙 כהה</button>
+                    <button id="theme-btn-high-contrast" onclick="setTheme('high-contrast')" style="flex:1">⚡ ניגוד</button>
+                </div>
+                <p class="text-xs mb-2" style="color:var(--color-text-muted)">רמת לימוד</p>
                 <div id="settings-level-selector" class="grid grid-cols-3 gap-2"></div>
             </div>
 
@@ -319,7 +327,7 @@
 
             <div class="card p-4 text-center">
                 <p class="text-xs mb-1" style="color:var(--color-text-muted)">Spanish Learning</p>
-                <p id="settings-version" class="text-sm font-mono font-bold">v1.6.0</p>
+                <p id="settings-version" class="text-sm font-mono font-bold">v2.0.0</p>
                 <p id="settings-build" class="text-[10px] mt-1 mb-3" style="color:var(--color-text-muted)"></p>
                 <button id="check-update-btn" onclick="checkForUpdateManual()"
                     class="btn-pill text-xs px-4 py-2 mb-3 w-full font-bold"
@@ -352,6 +360,46 @@
         </nav>
     </div>
 
+    <!-- ===================== DRIVING MODE OVERLAY ===================== -->
+    <!-- Outside app-shell so it covers entire viewport regardless of max-width -->
+    <div id="driving-overlay" class="driving-overlay hidden" role="region" aria-label="מצב נהיגה">
+
+        <!-- Top progress bar -->
+        <div class="driving-progress-track">
+            <div id="driving-progress-fill" class="driving-progress-fill" style="width:0%"></div>
+        </div>
+
+        <!-- Full-screen touch zone -->
+        <div id="driving-touch-zone" class="driving-touch-zone">
+            <p id="driving-meta" class="driving-meta"></p>
+            <p id="driving-es" class="driving-text-es" dir="ltr"></p>
+            <p id="driving-he" class="driving-text-he"></p>
+            <div class="driving-swipe-hint" aria-hidden="true">
+                <i class="fa-solid fa-arrow-right"></i>
+                <span>קודם</span>
+                <span style="opacity:0.3">|</span>
+                <span>הקש=נגן</span>
+                <span style="opacity:0.3">|</span>
+                <span>הבא</span>
+                <i class="fa-solid fa-arrow-left"></i>
+            </div>
+        </div>
+
+        <!-- Bottom controls -->
+        <div class="driving-controls">
+            <div class="driving-controls-row">
+                <button id="driving-autoplay-btn" class="driving-autoplay-btn" onclick="toggleDrivingAutoPlay()">
+                    <i class="fa-solid fa-rotate"></i>
+                    השמעה אוטומטית: כבוי
+                </button>
+                <button class="driving-exit-btn" onclick="exitDrivingMode()">
+                    <i class="fa-solid fa-xmark"></i>
+                    יציאה
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- ===================== PRONUNCIATION MODAL ===================== -->
     <div id="pronunciation-modal" class="hidden" style="
         position:fixed; inset:0; z-index:100;
@@ -370,7 +418,7 @@
             <p id="pron-sentence" class="es-text text-xl text-center mb-2 dir-ltr" dir="ltr"></p>
             <p id="pron-he" class="text-sm text-center mb-6" style="color:var(--color-text-muted)"></p>
 
-            <!-- Word-by-word result display (dir="ltr" for left-to-right Spanish word order) -->
+            <!-- Word-by-word result display -->
             <div id="pron-words-result" class="flex flex-wrap gap-2 justify-center mb-6 min-h-8" dir="ltr"></div>
 
             <!-- Mic button -->

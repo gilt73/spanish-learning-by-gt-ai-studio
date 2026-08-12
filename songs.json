@@ -1,1 +1,4144 @@
-[]
+[
+  {
+    "id": "amores-como-el-nuestro",
+    "title": "Amores Como el Nuestro",
+    "artist": "Jerry Rivera",
+    "spotify_url": "https://open.spotify.com/track/3dUOVExxPh0nmE6DtYVWIE",
+    "trackId": "3dUOVExxPh0nmE6DtYVWIE",
+    "albumArt": "https://i.scdn.co/image/ab67616d00001e0210a9f305f4826ba8ce8bfaa0",
+    "genre": "Salsa",
+    "level": "expert",
+    "cover": "🎺",
+    "locked": false,
+    "lyrics_data": {
+      "lines": [
+        {
+          "id": 1,
+          "spanish_text": "Amores como el nuestro quedan ya muy pocos",
+          "hebrew_translation": "אהבות כמו שלנו כבר כמעט ולא נשארו",
+          "words": [
+            {
+              "es": "amores",
+              "he": "אהבות",
+              "pron": "אָמוֹרֶס"
+            },
+            {
+              "es": "quedan",
+              "he": "נשארים",
+              "pron": "קֶדָאן"
+            },
+            {
+              "es": "pocos",
+              "he": "מעטים",
+              "pron": "פּוֹקוֹס"
+            }
+          ],
+          "audio_es_path": "audio/amores-como-el-nuestro/00_es.mp3",
+          "audio_he_path": "audio/amores-como-el-nuestro/00_he.mp3"
+        },
+        {
+          "id": 2,
+          "spanish_text": "Del cielo caen estrellas sin oír deseos",
+          "hebrew_translation": "מהשמיים נופלים כוכבים מבלי לשמוע משאלות",
+          "words": [
+            {
+              "es": "cielo",
+              "he": "שמיים",
+              "pron": "סְיֶילוֹ"
+            },
+            {
+              "es": "caen",
+              "he": "נופלים",
+              "pron": "קָאֶן"
+            },
+            {
+              "es": "estrellas",
+              "he": "כוכבים",
+              "pron": "אֶסְטְרֶיָאס"
+            },
+            {
+              "es": "deseos",
+              "he": "משאלות",
+              "pron": "דֶסֶאוֹס"
+            }
+          ],
+          "audio_es_path": "audio/amores-como-el-nuestro/01_es.mp3",
+          "audio_he_path": "audio/amores-como-el-nuestro/01_he.mp3"
+        },
+        {
+          "id": 3,
+          "spanish_text": "Deshojar una rosa es cosa ya de tontos",
+          "hebrew_translation": "לתלוש עלי כותרת של ורד זה כבר עניין של טיפשים",
+          "words": [
+            {
+              "es": "deshojar",
+              "he": "לתלוש עלי כותרת",
+              "pron": "דֶסוֹחָאר"
+            },
+            {
+              "es": "rosa",
+              "he": "ורד",
+              "pron": "רוֹסָה"
+            },
+            {
+              "es": "tontos",
+              "he": "טיפשים",
+              "pron": "טוֹנְטוֹס"
+            }
+          ],
+          "audio_es_path": "audio/amores-como-el-nuestro/02_es.mp3",
+          "audio_he_path": "audio/amores-como-el-nuestro/02_he.mp3"
+        },
+        {
+          "id": 4,
+          "spanish_text": "A nadie le interesan ya los sentimientos",
+          "hebrew_translation": "לאף אחד כבר לא אכפת מהרגשות",
+          "words": [
+            {
+              "es": "nadie",
+              "he": "אף אחד",
+              "pron": "נָאדְיֶה"
+            },
+            {
+              "es": "interesan",
+              "he": "מעניינים",
+              "pron": "אִנְטֶרֶסָאן"
+            },
+            {
+              "es": "sentimientos",
+              "he": "רגשות",
+              "pron": "סֶנְטִימְיֶנְטוֹס"
+            }
+          ],
+          "audio_es_path": "audio/amores-como-el-nuestro/03_es.mp3",
+          "audio_he_path": "audio/amores-como-el-nuestro/03_he.mp3"
+        },
+        {
+          "id": 5,
+          "spanish_text": "Como los unicornios van desapareciendo",
+          "hebrew_translation": "כמו חדי-הקרן, הם הולכים ונעלמים",
+          "words": [
+            {
+              "es": "unicornios",
+              "he": "חדי-קרן",
+              "pron": "אוּנִיקוֹרְנְיוֹס"
+            },
+            {
+              "es": "desapareciendo",
+              "he": "נעלמים (בתהליך)",
+              "pron": "דֶסָאפָארֶסְיֶנְדּוֹ"
+            }
+          ],
+          "audio_es_path": "audio/amores-como-el-nuestro/04_es.mp3",
+          "audio_he_path": "audio/amores-como-el-nuestro/04_he.mp3"
+        },
+        {
+          "id": 6,
+          "spanish_text": "Amar es hoy tan fácil, sólo es cosa de un beso",
+          "hebrew_translation": "לאהוב היום זה כל כך קל, זה רק עניין של נשיקה",
+          "words": [
+            {
+              "es": "fácil",
+              "he": "קל",
+              "pron": "פָאסִיל"
+            },
+            {
+              "es": "beso",
+              "he": "נשיקה",
+              "pron": "בֶּסוֹ"
+            }
+          ],
+          "audio_es_path": "audio/amores-como-el-nuestro/05_es.mp3",
+          "audio_he_path": "audio/amores-como-el-nuestro/05_he.mp3"
+        },
+        {
+          "id": 7,
+          "spanish_text": "Un amor como el nuestro no debe morir jamás",
+          "hebrew_translation": "אהבה כמו שלנו אסור שתמות לעולם",
+          "words": [
+            {
+              "es": "debe",
+              "he": "חייב / צריך",
+              "pron": "דֶבֶה"
+            },
+            {
+              "es": "morir",
+              "he": "למות",
+              "pron": "מוֹרִיר"
+            },
+            {
+              "es": "jamás",
+              "he": "לעולם לא",
+              "pron": "חָמָאס"
+            }
+          ],
+          "audio_es_path": "audio/amores-como-el-nuestro/06_es.mp3",
+          "audio_he_path": "audio/amores-como-el-nuestro/06_he.mp3"
+        },
+        {
+          "id": 8,
+          "spanish_text": "En los muros casi nadie pinta corazones",
+          "hebrew_translation": "על הקירות כמעט אף אחד לא מצייר לבבות",
+          "words": [
+            {
+              "es": "muros",
+              "he": "קירות",
+              "pron": "מוּרוֹס"
+            },
+            {
+              "es": "pinta",
+              "he": "מצייר / צובע",
+              "pron": "פִּינְטָה"
+            },
+            {
+              "es": "corazones",
+              "he": "לבבות",
+              "pron": "קוֹרָסוֹנֶס"
+            }
+          ],
+          "audio_es_path": "audio/amores-como-el-nuestro/07_es.mp3",
+          "audio_he_path": "audio/amores-como-el-nuestro/07_he.mp3"
+        },
+        {
+          "id": 9,
+          "spanish_text": "Ya nadie se promete más allá del tiempo",
+          "hebrew_translation": "כבר אף אחד לא מבטיח מעבר לזמן",
+          "words": [
+            {
+              "es": "promete",
+              "he": "מבטיח",
+              "pron": "פְּרוֹמֶטֶה"
+            },
+            {
+              "es": "tiempo",
+              "he": "זמן",
+              "pron": "טְיֶימְפּוֹ"
+            }
+          ],
+          "audio_es_path": "audio/amores-como-el-nuestro/08_es.mp3",
+          "audio_he_path": "audio/amores-como-el-nuestro/08_he.mp3"
+        },
+        {
+          "id": 10,
+          "spanish_text": "De sábanas mojadas hablan las canciones",
+          "hebrew_translation": "על סדינים רטובים מדברים השירים",
+          "words": [
+            {
+              "es": "sábanas",
+              "he": "סדינים",
+              "pron": "סָאבָאנָאס"
+            },
+            {
+              "es": "mojadas",
+              "he": "רטובות",
+              "pron": "מוֹחָאדָאס"
+            },
+            {
+              "es": "canciones",
+              "he": "שירים",
+              "pron": "קָנְסְיוֹנֶס"
+            }
+          ],
+          "audio_es_path": "audio/amores-como-el-nuestro/09_es.mp3",
+          "audio_he_path": "audio/amores-como-el-nuestro/09_he.mp3"
+        },
+        {
+          "id": 11,
+          "spanish_text": "Como Romeo y Julieta lo nuestro es algo eterno",
+          "hebrew_translation": "כמו רומיאו ויוליה, מה ששלנו הוא משהו נצחי",
+          "words": [
+            {
+              "es": "nuestro",
+              "he": "שלנו",
+              "pron": "נוּאֶסְטְרוֹ"
+            },
+            {
+              "es": "eterno",
+              "he": "נצחי",
+              "pron": "אֶטֶרְנוֹ"
+            }
+          ],
+          "audio_es_path": "audio/amores-como-el-nuestro/10_es.mp3",
+          "audio_he_path": "audio/amores-como-el-nuestro/10_he.mp3"
+        },
+        {
+          "id": 12,
+          "spanish_text": "Estar enamorado es darse por completo",
+          "hebrew_translation": "להיות מאוהב זה להתמסר לחלוטין",
+          "words": [
+            {
+              "es": "enamorado",
+              "he": "מאוהב",
+              "pron": "אֶנָאמוֹרָאדוֹ"
+            },
+            {
+              "es": "completo",
+              "he": "שלם / לחלוטין",
+              "pron": "קוֹמְפְּלֶטוֹ"
+            }
+          ],
+          "audio_es_path": "audio/amores-como-el-nuestro/11_es.mp3",
+          "audio_he_path": "audio/amores-como-el-nuestro/11_he.mp3"
+        },
+        {
+          "id": 13,
+          "spanish_text": "Este amor que nos brindamos merece la eternidad",
+          "hebrew_translation": "האהבה הזו שאנו מעניקים זו לזה ראויה לנצח",
+          "words": [
+            {
+              "es": "brindamos",
+              "he": "מעניקים",
+              "pron": "בְּרִינְדָאמוֹס"
+            },
+            {
+              "es": "merece",
+              "he": "ראויה / מגיע לה",
+              "pron": "מֶרֶסֶה"
+            },
+            {
+              "es": "eternidad",
+              "he": "נצחיות",
+              "pron": "אֶטֶרְנִידָאד"
+            }
+          ],
+          "audio_es_path": "audio/amores-como-el-nuestro/12_es.mp3",
+          "audio_he_path": "audio/amores-como-el-nuestro/12_he.mp3"
+        },
+        {
+          "id": 14,
+          "spanish_text": "Por ser tan puro y sagrado",
+          "hebrew_translation": "בגלל היותה כל כך טהורה וקדושה",
+          "words": [
+            {
+              "es": "puro",
+              "he": "טהור",
+              "pron": "פּוּרוֹ"
+            },
+            {
+              "es": "sagrado",
+              "he": "קדוש",
+              "pron": "סָאגְרָאדוֹ"
+            }
+          ],
+          "audio_es_path": "audio/amores-como-el-nuestro/13_es.mp3",
+          "audio_he_path": "audio/amores-como-el-nuestro/13_he.mp3"
+        },
+        {
+          "id": 15,
+          "spanish_text": "Pues que ha pasado de moda aquel que da serenatas",
+          "hebrew_translation": "כי עבר מהאופנה מי ששר סרנדות",
+          "words": [
+            {
+              "es": "moda",
+              "he": "אופנה",
+              "pron": "מוֹדָה"
+            },
+            {
+              "es": "serenatas",
+              "he": "סרנדות",
+              "pron": "סֶרֶנָאטָאס"
+            }
+          ],
+          "audio_es_path": "audio/amores-como-el-nuestro/14_es.mp3",
+          "audio_he_path": "audio/amores-como-el-nuestro/14_he.mp3"
+        },
+        {
+          "id": 16,
+          "spanish_text": "O aquel que regala rosas",
+          "hebrew_translation": "או מי שמעניק ורדים במתנה",
+          "words": [
+            {
+              "es": "regala",
+              "he": "מעניק במתנה",
+              "pron": "רֶגָאלָה"
+            }
+          ],
+          "audio_es_path": "audio/amores-como-el-nuestro/15_es.mp3",
+          "audio_he_path": "audio/amores-como-el-nuestro/15_he.mp3"
+        },
+        {
+          "id": 17,
+          "spanish_text": "Todo lo que siente el alma",
+          "hebrew_translation": "כל מה שהנשמה מרגישה",
+          "words": [
+            {
+              "es": "siente",
+              "he": "מרגיש",
+              "pron": "סְיֶנְטֶה"
+            },
+            {
+              "es": "alma",
+              "he": "נשמה",
+              "pron": "אָלְמָה"
+            }
+          ],
+          "audio_es_path": "audio/amores-como-el-nuestro/16_es.mp3",
+          "audio_he_path": "audio/amores-como-el-nuestro/16_he.mp3"
+        },
+        {
+          "id": 18,
+          "spanish_text": "Es entregarse a la vida si es necesario",
+          "hebrew_translation": "זה להתמסר לחיים אם יש צורך בכך",
+          "words": [
+            {
+              "es": "entregarse",
+              "he": "להתמסר",
+              "pron": "אֶנְטְרֶגָארְסֶה"
+            },
+            {
+              "es": "necesario",
+              "he": "נחוץ / הכרחי",
+              "pron": "נֶסֶסָארְיוֹ"
+            }
+          ],
+          "audio_es_path": "audio/amores-como-el-nuestro/17_es.mp3",
+          "audio_he_path": "audio/amores-como-el-nuestro/17_he.mp3"
+        }
+      ],
+      "vocabulary": [
+        {
+          "es": "quedar",
+          "he": "להישאר",
+          "pron": "קֶדָאר",
+          "category": "verb"
+        },
+        {
+          "es": "estrella",
+          "he": "כוכב",
+          "pron": "אֶסְטְרֶיָה",
+          "category": "noun"
+        },
+        {
+          "es": "deseo",
+          "he": "משאלה / רצון",
+          "pron": "דֶסֶאוֹ",
+          "category": "noun"
+        },
+        {
+          "es": "tonto",
+          "he": "טיפש",
+          "pron": "טוֹנְטוֹ",
+          "category": "adjective"
+        },
+        {
+          "es": "sentimiento",
+          "he": "רגש",
+          "pron": "סֶנְטִימְיֶנְטוֹ",
+          "category": "noun"
+        },
+        {
+          "es": "desaparecer",
+          "he": "להיעלם",
+          "pron": "דֶסָאפָארֶסֶר",
+          "category": "verb"
+        },
+        {
+          "es": "eterno",
+          "he": "נצחי",
+          "pron": "אֶטֶרְנוֹ",
+          "category": "adjective"
+        },
+        {
+          "es": "prometer",
+          "he": "להבטיח",
+          "pron": "פְּרוֹמֶטֶר",
+          "category": "verb"
+        },
+        {
+          "es": "corazón",
+          "he": "לב",
+          "pron": "קוֹרָסוֹן",
+          "category": "noun"
+        },
+        {
+          "es": "enamorado",
+          "he": "מאוהב",
+          "pron": "אֶנָאמוֹרָאדוֹ",
+          "category": "adjective"
+        },
+        {
+          "es": "merecer",
+          "he": "להיות ראוי ל- / להגיע ל-",
+          "pron": "מֶרֶסֶר",
+          "category": "verb"
+        },
+        {
+          "es": "alma",
+          "he": "נשמה",
+          "pron": "אָלְמָה",
+          "category": "noun"
+        },
+        {
+          "es": "entregarse",
+          "he": "להתמסר",
+          "pron": "אֶנְטְרֶגָארְסֶה",
+          "category": "verb"
+        }
+      ]
+    },
+    "lines": [
+      {
+        "id": 1,
+        "spanish_text": "Amores como el nuestro quedan ya muy pocos",
+        "hebrew_translation": "אהבות כמו שלנו כבר כמעט ולא נשארו",
+        "words": [
+          {
+            "es": "amores",
+            "he": "אהבות",
+            "pron": "אָמוֹרֶס"
+          },
+          {
+            "es": "quedan",
+            "he": "נשארים",
+            "pron": "קֶדָאן"
+          },
+          {
+            "es": "pocos",
+            "he": "מעטים",
+            "pron": "פּוֹקוֹס"
+          }
+        ],
+        "audio_es_path": "audio/amores-como-el-nuestro/00_es.mp3",
+        "audio_he_path": "audio/amores-como-el-nuestro/00_he.mp3"
+      },
+      {
+        "id": 2,
+        "spanish_text": "Del cielo caen estrellas sin oír deseos",
+        "hebrew_translation": "מהשמיים נופלים כוכבים מבלי לשמוע משאלות",
+        "words": [
+          {
+            "es": "cielo",
+            "he": "שמיים",
+            "pron": "סְיֶילוֹ"
+          },
+          {
+            "es": "caen",
+            "he": "נופלים",
+            "pron": "קָאֶן"
+          },
+          {
+            "es": "estrellas",
+            "he": "כוכבים",
+            "pron": "אֶסְטְרֶיָאס"
+          },
+          {
+            "es": "deseos",
+            "he": "משאלות",
+            "pron": "דֶסֶאוֹס"
+          }
+        ],
+        "audio_es_path": "audio/amores-como-el-nuestro/01_es.mp3",
+        "audio_he_path": "audio/amores-como-el-nuestro/01_he.mp3"
+      },
+      {
+        "id": 3,
+        "spanish_text": "Deshojar una rosa es cosa ya de tontos",
+        "hebrew_translation": "לתלוש עלי כותרת של ורד זה כבר עניין של טיפשים",
+        "words": [
+          {
+            "es": "deshojar",
+            "he": "לתלוש עלי כותרת",
+            "pron": "דֶסוֹחָאר"
+          },
+          {
+            "es": "rosa",
+            "he": "ורד",
+            "pron": "רוֹסָה"
+          },
+          {
+            "es": "tontos",
+            "he": "טיפשים",
+            "pron": "טוֹנְטוֹס"
+          }
+        ],
+        "audio_es_path": "audio/amores-como-el-nuestro/02_es.mp3",
+        "audio_he_path": "audio/amores-como-el-nuestro/02_he.mp3"
+      },
+      {
+        "id": 4,
+        "spanish_text": "A nadie le interesan ya los sentimientos",
+        "hebrew_translation": "לאף אחד כבר לא אכפת מהרגשות",
+        "words": [
+          {
+            "es": "nadie",
+            "he": "אף אחד",
+            "pron": "נָאדְיֶה"
+          },
+          {
+            "es": "interesan",
+            "he": "מעניינים",
+            "pron": "אִנְטֶרֶסָאן"
+          },
+          {
+            "es": "sentimientos",
+            "he": "רגשות",
+            "pron": "סֶנְטִימְיֶנְטוֹס"
+          }
+        ],
+        "audio_es_path": "audio/amores-como-el-nuestro/03_es.mp3",
+        "audio_he_path": "audio/amores-como-el-nuestro/03_he.mp3"
+      },
+      {
+        "id": 5,
+        "spanish_text": "Como los unicornios van desapareciendo",
+        "hebrew_translation": "כמו חדי-הקרן, הם הולכים ונעלמים",
+        "words": [
+          {
+            "es": "unicornios",
+            "he": "חדי-קרן",
+            "pron": "אוּנִיקוֹרְנְיוֹס"
+          },
+          {
+            "es": "desapareciendo",
+            "he": "נעלמים (בתהליך)",
+            "pron": "דֶסָאפָארֶסְיֶנְדּוֹ"
+          }
+        ],
+        "audio_es_path": "audio/amores-como-el-nuestro/04_es.mp3",
+        "audio_he_path": "audio/amores-como-el-nuestro/04_he.mp3"
+      },
+      {
+        "id": 6,
+        "spanish_text": "Amar es hoy tan fácil, sólo es cosa de un beso",
+        "hebrew_translation": "לאהוב היום זה כל כך קל, זה רק עניין של נשיקה",
+        "words": [
+          {
+            "es": "fácil",
+            "he": "קל",
+            "pron": "פָאסִיל"
+          },
+          {
+            "es": "beso",
+            "he": "נשיקה",
+            "pron": "בֶּסוֹ"
+          }
+        ],
+        "audio_es_path": "audio/amores-como-el-nuestro/05_es.mp3",
+        "audio_he_path": "audio/amores-como-el-nuestro/05_he.mp3"
+      },
+      {
+        "id": 7,
+        "spanish_text": "Un amor como el nuestro no debe morir jamás",
+        "hebrew_translation": "אהבה כמו שלנו אסור שתמות לעולם",
+        "words": [
+          {
+            "es": "debe",
+            "he": "חייב / צריך",
+            "pron": "דֶבֶה"
+          },
+          {
+            "es": "morir",
+            "he": "למות",
+            "pron": "מוֹרִיר"
+          },
+          {
+            "es": "jamás",
+            "he": "לעולם לא",
+            "pron": "חָמָאס"
+          }
+        ],
+        "audio_es_path": "audio/amores-como-el-nuestro/06_es.mp3",
+        "audio_he_path": "audio/amores-como-el-nuestro/06_he.mp3"
+      },
+      {
+        "id": 8,
+        "spanish_text": "En los muros casi nadie pinta corazones",
+        "hebrew_translation": "על הקירות כמעט אף אחד לא מצייר לבבות",
+        "words": [
+          {
+            "es": "muros",
+            "he": "קירות",
+            "pron": "מוּרוֹס"
+          },
+          {
+            "es": "pinta",
+            "he": "מצייר / צובע",
+            "pron": "פִּינְטָה"
+          },
+          {
+            "es": "corazones",
+            "he": "לבבות",
+            "pron": "קוֹרָסוֹנֶס"
+          }
+        ],
+        "audio_es_path": "audio/amores-como-el-nuestro/07_es.mp3",
+        "audio_he_path": "audio/amores-como-el-nuestro/07_he.mp3"
+      },
+      {
+        "id": 9,
+        "spanish_text": "Ya nadie se promete más allá del tiempo",
+        "hebrew_translation": "כבר אף אחד לא מבטיח מעבר לזמן",
+        "words": [
+          {
+            "es": "promete",
+            "he": "מבטיח",
+            "pron": "פְּרוֹמֶטֶה"
+          },
+          {
+            "es": "tiempo",
+            "he": "זמן",
+            "pron": "טְיֶימְפּוֹ"
+          }
+        ],
+        "audio_es_path": "audio/amores-como-el-nuestro/08_es.mp3",
+        "audio_he_path": "audio/amores-como-el-nuestro/08_he.mp3"
+      },
+      {
+        "id": 10,
+        "spanish_text": "De sábanas mojadas hablan las canciones",
+        "hebrew_translation": "על סדינים רטובים מדברים השירים",
+        "words": [
+          {
+            "es": "sábanas",
+            "he": "סדינים",
+            "pron": "סָאבָאנָאס"
+          },
+          {
+            "es": "mojadas",
+            "he": "רטובות",
+            "pron": "מוֹחָאדָאס"
+          },
+          {
+            "es": "canciones",
+            "he": "שירים",
+            "pron": "קָנְסְיוֹנֶס"
+          }
+        ],
+        "audio_es_path": "audio/amores-como-el-nuestro/09_es.mp3",
+        "audio_he_path": "audio/amores-como-el-nuestro/09_he.mp3"
+      },
+      {
+        "id": 11,
+        "spanish_text": "Como Romeo y Julieta lo nuestro es algo eterno",
+        "hebrew_translation": "כמו רומיאו ויוליה, מה ששלנו הוא משהו נצחי",
+        "words": [
+          {
+            "es": "nuestro",
+            "he": "שלנו",
+            "pron": "נוּאֶסְטְרוֹ"
+          },
+          {
+            "es": "eterno",
+            "he": "נצחי",
+            "pron": "אֶטֶרְנוֹ"
+          }
+        ],
+        "audio_es_path": "audio/amores-como-el-nuestro/10_es.mp3",
+        "audio_he_path": "audio/amores-como-el-nuestro/10_he.mp3"
+      },
+      {
+        "id": 12,
+        "spanish_text": "Estar enamorado es darse por completo",
+        "hebrew_translation": "להיות מאוהב זה להתמסר לחלוטין",
+        "words": [
+          {
+            "es": "enamorado",
+            "he": "מאוהב",
+            "pron": "אֶנָאמוֹרָאדוֹ"
+          },
+          {
+            "es": "completo",
+            "he": "שלם / לחלוטין",
+            "pron": "קוֹמְפְּלֶטוֹ"
+          }
+        ],
+        "audio_es_path": "audio/amores-como-el-nuestro/11_es.mp3",
+        "audio_he_path": "audio/amores-como-el-nuestro/11_he.mp3"
+      },
+      {
+        "id": 13,
+        "spanish_text": "Este amor que nos brindamos merece la eternidad",
+        "hebrew_translation": "האהבה הזו שאנו מעניקים זו לזה ראויה לנצח",
+        "words": [
+          {
+            "es": "brindamos",
+            "he": "מעניקים",
+            "pron": "בְּרִינְדָאמוֹס"
+          },
+          {
+            "es": "merece",
+            "he": "ראויה / מגיע לה",
+            "pron": "מֶרֶסֶה"
+          },
+          {
+            "es": "eternidad",
+            "he": "נצחיות",
+            "pron": "אֶטֶרְנִידָאד"
+          }
+        ],
+        "audio_es_path": "audio/amores-como-el-nuestro/12_es.mp3",
+        "audio_he_path": "audio/amores-como-el-nuestro/12_he.mp3"
+      },
+      {
+        "id": 14,
+        "spanish_text": "Por ser tan puro y sagrado",
+        "hebrew_translation": "בגלל היותה כל כך טהורה וקדושה",
+        "words": [
+          {
+            "es": "puro",
+            "he": "טהור",
+            "pron": "פּוּרוֹ"
+          },
+          {
+            "es": "sagrado",
+            "he": "קדוש",
+            "pron": "סָאגְרָאדוֹ"
+          }
+        ],
+        "audio_es_path": "audio/amores-como-el-nuestro/13_es.mp3",
+        "audio_he_path": "audio/amores-como-el-nuestro/13_he.mp3"
+      },
+      {
+        "id": 15,
+        "spanish_text": "Pues que ha pasado de moda aquel que da serenatas",
+        "hebrew_translation": "כי עבר מהאופנה מי ששר סרנדות",
+        "words": [
+          {
+            "es": "moda",
+            "he": "אופנה",
+            "pron": "מוֹדָה"
+          },
+          {
+            "es": "serenatas",
+            "he": "סרנדות",
+            "pron": "סֶרֶנָאטָאס"
+          }
+        ],
+        "audio_es_path": "audio/amores-como-el-nuestro/14_es.mp3",
+        "audio_he_path": "audio/amores-como-el-nuestro/14_he.mp3"
+      },
+      {
+        "id": 16,
+        "spanish_text": "O aquel que regala rosas",
+        "hebrew_translation": "או מי שמעניק ורדים במתנה",
+        "words": [
+          {
+            "es": "regala",
+            "he": "מעניק במתנה",
+            "pron": "רֶגָאלָה"
+          }
+        ],
+        "audio_es_path": "audio/amores-como-el-nuestro/15_es.mp3",
+        "audio_he_path": "audio/amores-como-el-nuestro/15_he.mp3"
+      },
+      {
+        "id": 17,
+        "spanish_text": "Todo lo que siente el alma",
+        "hebrew_translation": "כל מה שהנשמה מרגישה",
+        "words": [
+          {
+            "es": "siente",
+            "he": "מרגיש",
+            "pron": "סְיֶנְטֶה"
+          },
+          {
+            "es": "alma",
+            "he": "נשמה",
+            "pron": "אָלְמָה"
+          }
+        ],
+        "audio_es_path": "audio/amores-como-el-nuestro/16_es.mp3",
+        "audio_he_path": "audio/amores-como-el-nuestro/16_he.mp3"
+      },
+      {
+        "id": 18,
+        "spanish_text": "Es entregarse a la vida si es necesario",
+        "hebrew_translation": "זה להתמסר לחיים אם יש צורך בכך",
+        "words": [
+          {
+            "es": "entregarse",
+            "he": "להתמסר",
+            "pron": "אֶנְטְרֶגָארְסֶה"
+          },
+          {
+            "es": "necesario",
+            "he": "נחוץ / הכרחי",
+            "pron": "נֶסֶסָארְיוֹ"
+          }
+        ],
+        "audio_es_path": "audio/amores-como-el-nuestro/17_es.mp3",
+        "audio_he_path": "audio/amores-como-el-nuestro/17_he.mp3"
+      }
+    ],
+    "progress_percentage": 0,
+    "is_mastered": false
+  },
+  {
+    "id": "la-cita",
+    "title": "La Cita",
+    "artist": "Galy Galiano",
+    "spotify_url": "https://open.spotify.com/track/0XQzw53uo8V4GErre45Az1",
+    "trackId": "0XQzw53uo8V4GErre45Az1",
+    "albumArt": "https://i.scdn.co/image/ab67616d00001e0216e5246b005aaeae2a3b4f70",
+    "genre": "Salsa",
+    "level": "beginner",
+    "cover": "🎺",
+    "locked": false,
+    "lyrics_data": {
+      "lines": [
+        {
+          "id": 1,
+          "spanish_text": "Pasa y siéntate, tranquilízate",
+          "hebrew_translation": "כנסי ושבי, תירגעי",
+          "words": [
+            {
+              "es": "pasa",
+              "he": "כנסי / תעברי",
+              "pron": "פָּאסָה"
+            },
+            {
+              "es": "siéntate",
+              "he": "שבי",
+              "pron": "סְיֶנְטָטֶה"
+            },
+            {
+              "es": "tranquilízate",
+              "he": "תירגעי",
+              "pron": "טְרַנְקִילִיסָאטֶה"
+            }
+          ],
+          "audio_es_path": "audio/la-cita/00_es.mp3",
+          "audio_he_path": "audio/la-cita/00_he.mp3"
+        },
+        {
+          "id": 2,
+          "spanish_text": "Al fin ya estás aquí, qué más te da",
+          "hebrew_translation": "סוף סוף את כבר כאן, מה זה כבר משנה לך",
+          "words": [
+            {
+              "es": "al fin",
+              "he": "סוף סוף",
+              "pron": "אַל פִין"
+            },
+            {
+              "es": "qué más te da",
+              "he": "מה זה משנה לך",
+              "pron": "קֶה מָאס טֶה דָה"
+            }
+          ],
+          "audio_es_path": "audio/la-cita/01_es.mp3",
+          "audio_he_path": "audio/la-cita/01_he.mp3"
+        },
+        {
+          "id": 3,
+          "spanish_text": "Imagínate, que yo no soy yo",
+          "hebrew_translation": "תדמייני לעצמך שאני זה לא אני",
+          "words": [
+            {
+              "es": "imagínate",
+              "he": "תדמייני לעצמך",
+              "pron": "אִימָחִינָאטֶה"
+            },
+            {
+              "es": "soy",
+              "he": "אני (הנני)",
+              "pron": "סוֹי"
+            }
+          ],
+          "audio_es_path": "audio/la-cita/02_es.mp3",
+          "audio_he_path": "audio/la-cita/02_he.mp3"
+        },
+        {
+          "id": 4,
+          "spanish_text": "Que soy el otro hombre que esperabas ver",
+          "hebrew_translation": "שאני הגבר האחר שציפית לראות",
+          "words": [
+            {
+              "es": "otro",
+              "he": "אחר",
+              "pron": "אוֹטְרוֹ"
+            },
+            {
+              "es": "esperabas",
+              "he": "ציפית / חיכית",
+              "pron": "אֶסְפֶּרָאבָאס"
+            }
+          ],
+          "audio_es_path": "audio/la-cita/03_es.mp3",
+          "audio_he_path": "audio/la-cita/03_he.mp3"
+        },
+        {
+          "id": 5,
+          "spanish_text": "Un desconocido que te ha escrito un verso",
+          "hebrew_translation": "זר שכתב לך שורה של שיר",
+          "words": [
+            {
+              "es": "desconocido",
+              "he": "זר / לא מוכר",
+              "pron": "דֶסְקוֹנוֹסִידוֹ"
+            },
+            {
+              "es": "verso",
+              "he": "בית בשיר / שורה",
+              "pron": "בֶּרְסוֹ"
+            }
+          ],
+          "audio_es_path": "audio/la-cita/04_es.mp3",
+          "audio_he_path": "audio/la-cita/04_he.mp3"
+        },
+        {
+          "id": 6,
+          "spanish_text": "Y te dibujó la luna, en un trozo de papel",
+          "hebrew_translation": "וצייר לך את הירח על פיסת נייר",
+          "words": [
+            {
+              "es": "dibujó",
+              "he": "צייר",
+              "pron": "דִיבוּחוֹ"
+            },
+            {
+              "es": "trozo",
+              "he": "חתיכה / פיסה",
+              "pron": "טְרוֹסוֹ"
+            }
+          ],
+          "audio_es_path": "audio/la-cita/05_es.mp3",
+          "audio_he_path": "audio/la-cita/05_he.mp3"
+        },
+        {
+          "id": 7,
+          "spanish_text": "Un amante improvisado, misterioso, apasionado",
+          "hebrew_translation": "מאהב מאולתר, מסתורי, מלא תשוקה",
+          "words": [
+            {
+              "es": "amante",
+              "he": "מאהב",
+              "pron": "אַמָאנְטֶה"
+            },
+            {
+              "es": "improvisado",
+              "he": "מאולתר",
+              "pron": "אִמְפְּרוֹבִיסָאדוֹ"
+            },
+            {
+              "es": "apasionado",
+              "he": "מלא תשוקה",
+              "pron": "אַפָּאסְיוֹנָאדוֹ"
+            }
+          ],
+          "audio_es_path": "audio/la-cita/06_es.mp3",
+          "audio_he_path": "audio/la-cita/06_he.mp3"
+        },
+        {
+          "id": 8,
+          "spanish_text": "Que te dio una cita, en este hotel",
+          "hebrew_translation": "שקבע איתך פגישה במלון הזה",
+          "words": [
+            {
+              "es": "cita",
+              "he": "פגישה / דייט",
+              "pron": "סִיטָה"
+            },
+            {
+              "es": "hotel",
+              "he": "מלון",
+              "pron": "אוֹטֶל"
+            }
+          ],
+          "audio_es_path": "audio/la-cita/07_es.mp3",
+          "audio_he_path": "audio/la-cita/07_he.mp3"
+        },
+        {
+          "id": 9,
+          "spanish_text": "Desnúdate ahora y apaga la luz un instante",
+          "hebrew_translation": "תתפשטי עכשיו ותכבי את האור לרגע",
+          "words": [
+            {
+              "es": "desnúdate",
+              "he": "תתפשטי",
+              "pron": "דֶסְנוּדָאטֶה"
+            },
+            {
+              "es": "apaga",
+              "he": "תכבי",
+              "pron": "אַפָּאגָה"
+            },
+            {
+              "es": "instante",
+              "he": "רגע",
+              "pron": "אִנְסְטַנְטֶה"
+            }
+          ],
+          "audio_es_path": "audio/la-cita/08_es.mp3",
+          "audio_he_path": "audio/la-cita/08_he.mp3"
+        },
+        {
+          "id": 10,
+          "spanish_text": "Y hazme el amor, como lo haces con esos amantes",
+          "hebrew_translation": "ותעשי איתי אהבה, כמו שאת עושה עם המאהבים האלה",
+          "words": [
+            {
+              "es": "hazme",
+              "he": "תעשי לי",
+              "pron": "אַסְמֶה"
+            },
+            {
+              "es": "amor",
+              "he": "אהבה",
+              "pron": "אַמוֹר"
+            }
+          ],
+          "audio_es_path": "audio/la-cita/09_es.mp3",
+          "audio_he_path": "audio/la-cita/09_he.mp3"
+        },
+        {
+          "id": 11,
+          "spanish_text": "Te juro que hoy es la última vez que te burlas de mí",
+          "hebrew_translation": "אני נשבע לך שהיום זו הפעם האחרונה שאת צוחקת עליי",
+          "words": [
+            {
+              "es": "juro",
+              "he": "נשבע",
+              "pron": "חוּרוֹ"
+            },
+            {
+              "es": "última",
+              "he": "אחרונה",
+              "pron": "אוּלְטִימָה"
+            },
+            {
+              "es": "te burlas",
+              "he": "את לועגת / צוחקת",
+              "pron": "טֶה בּוּרְלָאס"
+            }
+          ],
+          "audio_es_path": "audio/la-cita/10_es.mp3",
+          "audio_he_path": "audio/la-cita/10_he.mp3"
+        },
+        {
+          "id": 12,
+          "spanish_text": "Que me engañas y me hieres",
+          "hebrew_translation": "שאת בוגדת בי ופוגעת בי",
+          "words": [
+            {
+              "es": "engañas",
+              "he": "בוגדת / מרמה",
+              "pron": "אֶנְגַאנְיָאס"
+            },
+            {
+              "es": "hieres",
+              "he": "פוגעת",
+              "pron": "יֶרֶס"
+            }
+          ],
+          "audio_es_path": "audio/la-cita/11_es.mp3",
+          "audio_he_path": "audio/la-cita/11_he.mp3"
+        },
+        {
+          "id": 13,
+          "spanish_text": "Y fueron mis manos las que te escribieron la carta",
+          "hebrew_translation": "ואלו היו הידיים שלי שכתבו לך את המכתב",
+          "words": [
+            {
+              "es": "manos",
+              "he": "ידיים",
+              "pron": "מָאנוֹס"
+            },
+            {
+              "es": "carta",
+              "he": "מכתב",
+              "pron": "קָארְטָה"
+            }
+          ],
+          "audio_es_path": "audio/la-cita/12_es.mp3",
+          "audio_he_path": "audio/la-cita/12_he.mp3"
+        },
+        {
+          "id": 14,
+          "spanish_text": "Han sido mis celos los que te pusieron la trampa",
+          "hebrew_translation": "זו הייתה הקנאה שלי שטמנה לך את המלכודת",
+          "words": [
+            {
+              "es": "celos",
+              "he": "קנאה",
+              "pron": "סֶלוֹס"
+            },
+            {
+              "es": "trampa",
+              "he": "מלכודת",
+              "pron": "טְרָאמְפָּה"
+            }
+          ],
+          "audio_es_path": "audio/la-cita/13_es.mp3",
+          "audio_he_path": "audio/la-cita/13_he.mp3"
+        },
+        {
+          "id": 15,
+          "spanish_text": "Y es mi corazón el que llora de pena por dentro",
+          "hebrew_translation": "וזה הלב שלי שבוכה מכאב מבפנים",
+          "words": [
+            {
+              "es": "corazón",
+              "he": "לב",
+              "pron": "קוֹרָסוֹן"
+            },
+            {
+              "es": "llora",
+              "he": "בוכה",
+              "pron": "יוֹרָה"
+            },
+            {
+              "es": "pena",
+              "he": "צער / כאב",
+              "pron": "פֶּנָה"
+            }
+          ],
+          "audio_es_path": "audio/la-cita/14_es.mp3",
+          "audio_he_path": "audio/la-cita/14_he.mp3"
+        },
+        {
+          "id": 16,
+          "spanish_text": "Pero te dejo y me marcho, para siempre",
+          "hebrew_translation": "אבל אני עוזב אותך והולך לתמיד",
+          "words": [
+            {
+              "es": "dejo",
+              "he": "עוזב",
+              "pron": "דֶחוֹ"
+            },
+            {
+              "es": "me marcho",
+              "he": "אני הולך / עוזב",
+              "pron": "מֶה מָארְצ'וֹ"
+            },
+            {
+              "es": "siempre",
+              "he": "תמיד",
+              "pron": "סְיֶמְפְּרֶה"
+            }
+          ],
+          "audio_es_path": "audio/la-cita/15_es.mp3",
+          "audio_he_path": "audio/la-cita/15_he.mp3"
+        },
+        {
+          "id": 17,
+          "spanish_text": "Fue sorpresa para ti hallarme en el cuarto",
+          "hebrew_translation": "זו הייתה הפתעה בשבילך למצוא אותי בחדר",
+          "words": [
+            {
+              "es": "sorpresa",
+              "he": "הפתעה",
+              "pron": "סוֹרְפְּרֶסָה"
+            },
+            {
+              "es": "hallarme",
+              "he": "למצוא אותי",
+              "pron": "אַיָארְמֶה"
+            },
+            {
+              "es": "cuarto",
+              "he": "חדר",
+              "pron": "קוּאָרְטוֹ"
+            }
+          ],
+          "audio_es_path": "audio/la-cita/16_es.mp3",
+          "audio_he_path": "audio/la-cita/16_he.mp3"
+        },
+        {
+          "id": 18,
+          "spanish_text": "Palideciste y te pusiste muy nerviosa",
+          "hebrew_translation": "החוורת ונהיית מאוד לחוצה",
+          "words": [
+            {
+              "es": "palideciste",
+              "he": "החוורת",
+              "pron": "פָּאלִידֶסִיסְטֶה"
+            },
+            {
+              "es": "nerviosa",
+              "he": "עצבנית / לחוצה",
+              "pron": "נֶרְבְיוֹסָה"
+            }
+          ],
+          "audio_es_path": "audio/la-cita/17_es.mp3",
+          "audio_he_path": "audio/la-cita/17_he.mp3"
+        }
+      ],
+      "vocabulary": [
+        {
+          "es": "cita",
+          "he": "פגישה / דייט",
+          "pron": "סִיטָה",
+          "category": "noun"
+        },
+        {
+          "es": "desconocido",
+          "he": "זר / לא מוכר",
+          "pron": "דֶסְקוֹנוֹסִידוֹ",
+          "category": "noun"
+        },
+        {
+          "es": "amante",
+          "he": "מאהב",
+          "pron": "אַמָאנְטֶה",
+          "category": "noun"
+        },
+        {
+          "es": "tranquilizarse",
+          "he": "להירגע",
+          "pron": "טְרַנְקִילִיסָארְסֶה",
+          "category": "verb"
+        },
+        {
+          "es": "apagar",
+          "he": "לכבות",
+          "pron": "אַפָּאגָאר",
+          "category": "verb"
+        },
+        {
+          "es": "engañar",
+          "he": "לבגוד / לרמות",
+          "pron": "אֶנְגַאנְיָאר",
+          "category": "verb"
+        },
+        {
+          "es": "celos",
+          "he": "קנאה",
+          "pron": "סֶלוֹס",
+          "category": "noun"
+        },
+        {
+          "es": "trampa",
+          "he": "מלכודת",
+          "pron": "טְרָאמְפָּה",
+          "category": "noun"
+        },
+        {
+          "es": "marchar",
+          "he": "ללכת / לעזוב",
+          "pron": "מָארְצ'ָאר",
+          "category": "verb"
+        },
+        {
+          "es": "sorpresa",
+          "he": "הפתעה",
+          "pron": "סוֹרְפְּרֶסָה",
+          "category": "noun"
+        },
+        {
+          "es": "corazón",
+          "he": "לב",
+          "pron": "קוֹרָסוֹן",
+          "category": "noun"
+        },
+        {
+          "es": "pena",
+          "he": "צער / עצב",
+          "pron": "פֶּנָה",
+          "category": "noun"
+        },
+        {
+          "es": "jurar",
+          "he": "להישבע",
+          "pron": "חוּרָאר",
+          "category": "verb"
+        },
+        {
+          "es": "improvisado",
+          "he": "מאולתר",
+          "pron": "אִמְפְּרוֹבִיסָאדוֹ",
+          "category": "adjective"
+        },
+        {
+          "es": "última",
+          "he": "אחרונה",
+          "pron": "אוּלְטִימָה",
+          "category": "adjective"
+        }
+      ]
+    },
+    "lines": [
+      {
+        "id": 1,
+        "spanish_text": "Pasa y siéntate, tranquilízate",
+        "hebrew_translation": "כנסי ושבי, תירגעי",
+        "words": [
+          {
+            "es": "pasa",
+            "he": "כנסי / תעברי",
+            "pron": "פָּאסָה"
+          },
+          {
+            "es": "siéntate",
+            "he": "שבי",
+            "pron": "סְיֶנְטָטֶה"
+          },
+          {
+            "es": "tranquilízate",
+            "he": "תירגעי",
+            "pron": "טְרַנְקִילִיסָאטֶה"
+          }
+        ],
+        "audio_es_path": "audio/la-cita/00_es.mp3",
+        "audio_he_path": "audio/la-cita/00_he.mp3"
+      },
+      {
+        "id": 2,
+        "spanish_text": "Al fin ya estás aquí, qué más te da",
+        "hebrew_translation": "סוף סוף את כבר כאן, מה זה כבר משנה לך",
+        "words": [
+          {
+            "es": "al fin",
+            "he": "סוף סוף",
+            "pron": "אַל פִין"
+          },
+          {
+            "es": "qué más te da",
+            "he": "מה זה משנה לך",
+            "pron": "קֶה מָאס טֶה דָה"
+          }
+        ],
+        "audio_es_path": "audio/la-cita/01_es.mp3",
+        "audio_he_path": "audio/la-cita/01_he.mp3"
+      },
+      {
+        "id": 3,
+        "spanish_text": "Imagínate, que yo no soy yo",
+        "hebrew_translation": "תדמייני לעצמך שאני זה לא אני",
+        "words": [
+          {
+            "es": "imagínate",
+            "he": "תדמייני לעצמך",
+            "pron": "אִימָחִינָאטֶה"
+          },
+          {
+            "es": "soy",
+            "he": "אני (הנני)",
+            "pron": "סוֹי"
+          }
+        ],
+        "audio_es_path": "audio/la-cita/02_es.mp3",
+        "audio_he_path": "audio/la-cita/02_he.mp3"
+      },
+      {
+        "id": 4,
+        "spanish_text": "Que soy el otro hombre que esperabas ver",
+        "hebrew_translation": "שאני הגבר האחר שציפית לראות",
+        "words": [
+          {
+            "es": "otro",
+            "he": "אחר",
+            "pron": "אוֹטְרוֹ"
+          },
+          {
+            "es": "esperabas",
+            "he": "ציפית / חיכית",
+            "pron": "אֶסְפֶּרָאבָאס"
+          }
+        ],
+        "audio_es_path": "audio/la-cita/03_es.mp3",
+        "audio_he_path": "audio/la-cita/03_he.mp3"
+      },
+      {
+        "id": 5,
+        "spanish_text": "Un desconocido que te ha escrito un verso",
+        "hebrew_translation": "זר שכתב לך שורה של שיר",
+        "words": [
+          {
+            "es": "desconocido",
+            "he": "זר / לא מוכר",
+            "pron": "דֶסְקוֹנוֹסִידוֹ"
+          },
+          {
+            "es": "verso",
+            "he": "בית בשיר / שורה",
+            "pron": "בֶּרְסוֹ"
+          }
+        ],
+        "audio_es_path": "audio/la-cita/04_es.mp3",
+        "audio_he_path": "audio/la-cita/04_he.mp3"
+      },
+      {
+        "id": 6,
+        "spanish_text": "Y te dibujó la luna, en un trozo de papel",
+        "hebrew_translation": "וצייר לך את הירח על פיסת נייר",
+        "words": [
+          {
+            "es": "dibujó",
+            "he": "צייר",
+            "pron": "דִיבוּחוֹ"
+          },
+          {
+            "es": "trozo",
+            "he": "חתיכה / פיסה",
+            "pron": "טְרוֹסוֹ"
+          }
+        ],
+        "audio_es_path": "audio/la-cita/05_es.mp3",
+        "audio_he_path": "audio/la-cita/05_he.mp3"
+      },
+      {
+        "id": 7,
+        "spanish_text": "Un amante improvisado, misterioso, apasionado",
+        "hebrew_translation": "מאהב מאולתר, מסתורי, מלא תשוקה",
+        "words": [
+          {
+            "es": "amante",
+            "he": "מאהב",
+            "pron": "אַמָאנְטֶה"
+          },
+          {
+            "es": "improvisado",
+            "he": "מאולתר",
+            "pron": "אִמְפְּרוֹבִיסָאדוֹ"
+          },
+          {
+            "es": "apasionado",
+            "he": "מלא תשוקה",
+            "pron": "אַפָּאסְיוֹנָאדוֹ"
+          }
+        ],
+        "audio_es_path": "audio/la-cita/06_es.mp3",
+        "audio_he_path": "audio/la-cita/06_he.mp3"
+      },
+      {
+        "id": 8,
+        "spanish_text": "Que te dio una cita, en este hotel",
+        "hebrew_translation": "שקבע איתך פגישה במלון הזה",
+        "words": [
+          {
+            "es": "cita",
+            "he": "פגישה / דייט",
+            "pron": "סִיטָה"
+          },
+          {
+            "es": "hotel",
+            "he": "מלון",
+            "pron": "אוֹטֶל"
+          }
+        ],
+        "audio_es_path": "audio/la-cita/07_es.mp3",
+        "audio_he_path": "audio/la-cita/07_he.mp3"
+      },
+      {
+        "id": 9,
+        "spanish_text": "Desnúdate ahora y apaga la luz un instante",
+        "hebrew_translation": "תתפשטי עכשיו ותכבי את האור לרגע",
+        "words": [
+          {
+            "es": "desnúdate",
+            "he": "תתפשטי",
+            "pron": "דֶסְנוּדָאטֶה"
+          },
+          {
+            "es": "apaga",
+            "he": "תכבי",
+            "pron": "אַפָּאגָה"
+          },
+          {
+            "es": "instante",
+            "he": "רגע",
+            "pron": "אִנְסְטַנְטֶה"
+          }
+        ],
+        "audio_es_path": "audio/la-cita/08_es.mp3",
+        "audio_he_path": "audio/la-cita/08_he.mp3"
+      },
+      {
+        "id": 10,
+        "spanish_text": "Y hazme el amor, como lo haces con esos amantes",
+        "hebrew_translation": "ותעשי איתי אהבה, כמו שאת עושה עם המאהבים האלה",
+        "words": [
+          {
+            "es": "hazme",
+            "he": "תעשי לי",
+            "pron": "אַסְמֶה"
+          },
+          {
+            "es": "amor",
+            "he": "אהבה",
+            "pron": "אַמוֹר"
+          }
+        ],
+        "audio_es_path": "audio/la-cita/09_es.mp3",
+        "audio_he_path": "audio/la-cita/09_he.mp3"
+      },
+      {
+        "id": 11,
+        "spanish_text": "Te juro que hoy es la última vez que te burlas de mí",
+        "hebrew_translation": "אני נשבע לך שהיום זו הפעם האחרונה שאת צוחקת עליי",
+        "words": [
+          {
+            "es": "juro",
+            "he": "נשבע",
+            "pron": "חוּרוֹ"
+          },
+          {
+            "es": "última",
+            "he": "אחרונה",
+            "pron": "אוּלְטִימָה"
+          },
+          {
+            "es": "te burlas",
+            "he": "את לועגת / צוחקת",
+            "pron": "טֶה בּוּרְלָאס"
+          }
+        ],
+        "audio_es_path": "audio/la-cita/10_es.mp3",
+        "audio_he_path": "audio/la-cita/10_he.mp3"
+      },
+      {
+        "id": 12,
+        "spanish_text": "Que me engañas y me hieres",
+        "hebrew_translation": "שאת בוגדת בי ופוגעת בי",
+        "words": [
+          {
+            "es": "engañas",
+            "he": "בוגדת / מרמה",
+            "pron": "אֶנְגַאנְיָאס"
+          },
+          {
+            "es": "hieres",
+            "he": "פוגעת",
+            "pron": "יֶרֶס"
+          }
+        ],
+        "audio_es_path": "audio/la-cita/11_es.mp3",
+        "audio_he_path": "audio/la-cita/11_he.mp3"
+      },
+      {
+        "id": 13,
+        "spanish_text": "Y fueron mis manos las que te escribieron la carta",
+        "hebrew_translation": "ואלו היו הידיים שלי שכתבו לך את המכתב",
+        "words": [
+          {
+            "es": "manos",
+            "he": "ידיים",
+            "pron": "מָאנוֹס"
+          },
+          {
+            "es": "carta",
+            "he": "מכתב",
+            "pron": "קָארְטָה"
+          }
+        ],
+        "audio_es_path": "audio/la-cita/12_es.mp3",
+        "audio_he_path": "audio/la-cita/12_he.mp3"
+      },
+      {
+        "id": 14,
+        "spanish_text": "Han sido mis celos los que te pusieron la trampa",
+        "hebrew_translation": "זו הייתה הקנאה שלי שטמנה לך את המלכודת",
+        "words": [
+          {
+            "es": "celos",
+            "he": "קנאה",
+            "pron": "סֶלוֹס"
+          },
+          {
+            "es": "trampa",
+            "he": "מלכודת",
+            "pron": "טְרָאמְפָּה"
+          }
+        ],
+        "audio_es_path": "audio/la-cita/13_es.mp3",
+        "audio_he_path": "audio/la-cita/13_he.mp3"
+      },
+      {
+        "id": 15,
+        "spanish_text": "Y es mi corazón el que llora de pena por dentro",
+        "hebrew_translation": "וזה הלב שלי שבוכה מכאב מבפנים",
+        "words": [
+          {
+            "es": "corazón",
+            "he": "לב",
+            "pron": "קוֹרָסוֹן"
+          },
+          {
+            "es": "llora",
+            "he": "בוכה",
+            "pron": "יוֹרָה"
+          },
+          {
+            "es": "pena",
+            "he": "צער / כאב",
+            "pron": "פֶּנָה"
+          }
+        ],
+        "audio_es_path": "audio/la-cita/14_es.mp3",
+        "audio_he_path": "audio/la-cita/14_he.mp3"
+      },
+      {
+        "id": 16,
+        "spanish_text": "Pero te dejo y me marcho, para siempre",
+        "hebrew_translation": "אבל אני עוזב אותך והולך לתמיד",
+        "words": [
+          {
+            "es": "dejo",
+            "he": "עוזב",
+            "pron": "דֶחוֹ"
+          },
+          {
+            "es": "me marcho",
+            "he": "אני הולך / עוזב",
+            "pron": "מֶה מָארְצ'וֹ"
+          },
+          {
+            "es": "siempre",
+            "he": "תמיד",
+            "pron": "סְיֶמְפְּרֶה"
+          }
+        ],
+        "audio_es_path": "audio/la-cita/15_es.mp3",
+        "audio_he_path": "audio/la-cita/15_he.mp3"
+      },
+      {
+        "id": 17,
+        "spanish_text": "Fue sorpresa para ti hallarme en el cuarto",
+        "hebrew_translation": "זו הייתה הפתעה בשבילך למצוא אותי בחדר",
+        "words": [
+          {
+            "es": "sorpresa",
+            "he": "הפתעה",
+            "pron": "סוֹרְפְּרֶסָה"
+          },
+          {
+            "es": "hallarme",
+            "he": "למצוא אותי",
+            "pron": "אַיָארְמֶה"
+          },
+          {
+            "es": "cuarto",
+            "he": "חדר",
+            "pron": "קוּאָרְטוֹ"
+          }
+        ],
+        "audio_es_path": "audio/la-cita/16_es.mp3",
+        "audio_he_path": "audio/la-cita/16_he.mp3"
+      },
+      {
+        "id": 18,
+        "spanish_text": "Palideciste y te pusiste muy nerviosa",
+        "hebrew_translation": "החוורת ונהיית מאוד לחוצה",
+        "words": [
+          {
+            "es": "palideciste",
+            "he": "החוורת",
+            "pron": "פָּאלִידֶסִיסְטֶה"
+          },
+          {
+            "es": "nerviosa",
+            "he": "עצבנית / לחוצה",
+            "pron": "נֶרְבְיוֹסָה"
+          }
+        ],
+        "audio_es_path": "audio/la-cita/17_es.mp3",
+        "audio_he_path": "audio/la-cita/17_he.mp3"
+      }
+    ],
+    "progress_percentage": 0,
+    "is_mastered": false
+  },
+  {
+    "id": "me-tengo-que-ir",
+    "title": "Me Tengo Que Ir",
+    "artist": "Adolescents Orquesta",
+    "spotify_url": "https://open.spotify.com/track/3fccHyCREvjvDinu9TPZv9",
+    "trackId": "3fccHyCREvjvDinu9TPZv9",
+    "albumArt": "https://i.scdn.co/image/ab67616d00001e028a7fa93d6c42e82149866c76",
+    "genre": "Salsa",
+    "level": "intermediate",
+    "cover": "🎺",
+    "locked": false,
+    "lyrics_data": {
+      "lines": [
+        {
+          "id": 1,
+          "spanish_text": "Me enamoré, de la persona ideal",
+          "hebrew_translation": "התאהבתי באדם המושלם",
+          "words": [
+            {
+              "es": "me enamoré",
+              "he": "התאהבתי",
+              "pron": "מֶה אֶנָמוֹרֶה"
+            },
+            {
+              "es": "persona",
+              "he": "בן אדם / אישיות",
+              "pron": "פֶּרְסוֹנָה"
+            },
+            {
+              "es": "ideal",
+              "he": "אידיאלי / מושלם",
+              "pron": "אִידֶאַל"
+            }
+          ],
+          "audio_es_path": "audio/me-tengo-que-ir/00_es.mp3",
+          "audio_he_path": "audio/me-tengo-que-ir/00_he.mp3"
+        },
+        {
+          "id": 2,
+          "spanish_text": "pero a la vez, se tuvo que ir",
+          "hebrew_translation": "אבל באותו הזמן, הוא היה חייב ללכת",
+          "words": [
+            {
+              "es": "a la vez",
+              "he": "בו זמנית / יחד עם זאת",
+              "pron": "אָ לָה וֶס"
+            },
+            {
+              "es": "se tuvo que",
+              "he": "היה צריך ל...",
+              "pron": "סֶה טוּבוֹ קֶה"
+            },
+            {
+              "es": "ir",
+              "he": "ללכת",
+              "pron": "אִיר"
+            }
+          ],
+          "audio_es_path": "audio/me-tengo-que-ir/01_es.mp3",
+          "audio_he_path": "audio/me-tengo-que-ir/01_he.mp3"
+        },
+        {
+          "id": 3,
+          "spanish_text": "Ay es el dolor que desgarró toda mi alma y corazón",
+          "hebrew_translation": "אוי, זה הכאב שקרע לגזרים את כל הנשמה והלב שלי",
+          "words": [
+            {
+              "es": "dolor",
+              "he": "כאב",
+              "pron": "דוֹלוֹר"
+            },
+            {
+              "es": "desgarró",
+              "he": "קרע / שיסע",
+              "pron": "דֶסְגָּרוֹ"
+            },
+            {
+              "es": "alma",
+              "he": "נשמה",
+              "pron": "אָלְמָה"
+            },
+            {
+              "es": "corazón",
+              "he": "לב",
+              "pron": "קוֹרָסוֹן"
+            }
+          ],
+          "audio_es_path": "audio/me-tengo-que-ir/02_es.mp3",
+          "audio_he_path": "audio/me-tengo-que-ir/02_he.mp3"
+        },
+        {
+          "id": 4,
+          "spanish_text": "para vivir de los recuerdos de ese amor",
+          "hebrew_translation": "כדי לחיות מהזיכרונות של האהבה ההיא",
+          "words": [
+            {
+              "es": "vivir",
+              "he": "לחיות",
+              "pron": "בִּיבִיר"
+            },
+            {
+              "es": "recuerdos",
+              "he": "זיכרונות",
+              "pron": "רֶקְוֶרְדוֹס"
+            },
+            {
+              "es": "ese",
+              "he": "ההוא / ההיא",
+              "pron": "אֶסֶה"
+            }
+          ],
+          "audio_es_path": "audio/me-tengo-que-ir/03_es.mp3",
+          "audio_he_path": "audio/me-tengo-que-ir/03_he.mp3"
+        },
+        {
+          "id": 5,
+          "spanish_text": "cuando agarrados de la mano",
+          "hebrew_translation": "כאשר החזקנו ידיים",
+          "words": [
+            {
+              "es": "cuando",
+              "he": "כאשר / מתי ש...",
+              "pron": "קוּאָנְדוֹ"
+            },
+            {
+              "es": "agarrados",
+              "he": "אחוזים / תפוסים",
+              "pron": "אָגָרָדוֹס"
+            },
+            {
+              "es": "mano",
+              "he": "יד",
+              "pron": "מָנוֹ"
+            }
+          ],
+          "audio_es_path": "audio/me-tengo-que-ir/04_es.mp3",
+          "audio_he_path": "audio/me-tengo-que-ir/04_he.mp3"
+        },
+        {
+          "id": 6,
+          "spanish_text": "en el parque nos besamos",
+          "hebrew_translation": "בפארק התנשקנו",
+          "words": [
+            {
+              "es": "parque",
+              "he": "פארק",
+              "pron": "פָּרְקֶה"
+            },
+            {
+              "es": "nos besamos",
+              "he": "התנשקנו",
+              "pron": "נוֹס בֶּסָמוֹס"
+            }
+          ],
+          "audio_es_path": "audio/me-tengo-que-ir/05_es.mp3",
+          "audio_he_path": "audio/me-tengo-que-ir/05_he.mp3"
+        },
+        {
+          "id": 7,
+          "spanish_text": "unas lágrimas caian en los pétalos de rosa",
+          "hebrew_translation": "דמעות זלגו על עלי הכותרת של הוורד",
+          "words": [
+            {
+              "es": "lágrimas",
+              "he": "דמעות",
+              "pron": "לָגְרִימָס"
+            },
+            {
+              "es": "caían",
+              "he": "נפלו / זלגו",
+              "pron": "קָאִיאִן"
+            },
+            {
+              "es": "pétalos",
+              "he": "עלי כותרת",
+              "pron": "פֶּטָלוֹס"
+            }
+          ],
+          "audio_es_path": "audio/me-tengo-que-ir/06_es.mp3",
+          "audio_he_path": "audio/me-tengo-que-ir/06_he.mp3"
+        },
+        {
+          "id": 8,
+          "spanish_text": "y tristemente me dijiste así: Me tengo que ir",
+          "hebrew_translation": "ובעצב אמרת לי כך: אני חייב ללכת",
+          "words": [
+            {
+              "es": "tristemente",
+              "he": "בעצב / בצורה עצובה",
+              "pron": "טְרִיסְטֶמֶנְטֶה"
+            },
+            {
+              "es": "me dijiste",
+              "he": "אמרת לי",
+              "pron": "מֶה דִיחִיסְטֶה"
+            },
+            {
+              "es": "me tengo que ir",
+              "he": "אני חייב ללכת",
+              "pron": "מֶה טֶנְגוֹ קֶה אִיר"
+            }
+          ],
+          "audio_es_path": "audio/me-tengo-que-ir/07_es.mp3",
+          "audio_he_path": "audio/me-tengo-que-ir/07_he.mp3"
+        },
+        {
+          "id": 9,
+          "spanish_text": "contigo está mi corazón",
+          "hebrew_translation": "הלב שלי נמצא איתך",
+          "words": [
+            {
+              "es": "contigo",
+              "he": "איתך",
+              "pron": "קוֹנְטִיגוֹ"
+            },
+            {
+              "es": "está",
+              "he": "נמצא / נמצאת",
+              "pron": "אֶסְטָה"
+            }
+          ],
+          "audio_es_path": "audio/me-tengo-que-ir/08_es.mp3",
+          "audio_he_path": "audio/me-tengo-que-ir/08_he.mp3"
+        },
+        {
+          "id": 10,
+          "spanish_text": "algun día volveré a estar aquí",
+          "hebrew_translation": "יום אחד אחזור להיות כאן",
+          "words": [
+            {
+              "es": "algún día",
+              "he": "יום אחד",
+              "pron": "אַלְגּוּן דִּיאָ"
+            },
+            {
+              "es": "volveré",
+              "he": "אחזור",
+              "pron": "בוֹלְבֶרֶה"
+            },
+            {
+              "es": "aquí",
+              "he": "כאן",
+              "pron": "אָקִי"
+            }
+          ],
+          "audio_es_path": "audio/me-tengo-que-ir/09_es.mp3",
+          "audio_he_path": "audio/me-tengo-que-ir/09_he.mp3"
+        },
+        {
+          "id": 11,
+          "spanish_text": "asi es la vida y tiene desilusión",
+          "hebrew_translation": "אלה החיים ויש בהם אכזבה",
+          "words": [
+            {
+              "es": "vida",
+              "he": "חיים",
+              "pron": "בִּידָה"
+            },
+            {
+              "es": "tiene",
+              "he": "יש בו / יש לה",
+              "pron": "טְיֶנֶה"
+            },
+            {
+              "es": "desilusión",
+              "he": "אכזבה / התפכחות מאשליה",
+              "pron": "דֶסִילּוּסְיוֹן"
+            }
+          ],
+          "audio_es_path": "audio/me-tengo-que-ir/10_es.mp3",
+          "audio_he_path": "audio/me-tengo-que-ir/10_he.mp3"
+        },
+        {
+          "id": 12,
+          "spanish_text": "se que hay amor y esperanza",
+          "hebrew_translation": "אני יודע שיש אהבה ותקווה",
+          "words": [
+            {
+              "es": "sé",
+              "he": "אני יודע",
+              "pron": "סֶה"
+            },
+            {
+              "es": "hay",
+              "he": "יש",
+              "pron": "אִי"
+            },
+            {
+              "es": "esperanza",
+              "he": "תקווה",
+              "pron": "אֶסְפֶרָנְסָה"
+            }
+          ],
+          "audio_es_path": "audio/me-tengo-que-ir/11_es.mp3",
+          "audio_he_path": "audio/me-tengo-que-ir/11_he.mp3"
+        },
+        {
+          "id": 13,
+          "spanish_text": "Ay es el dolor que hay en su vientre, un niño estaba presente",
+          "hebrew_translation": "אוי, זה הכאב שבבטנה, תינוק היה נוכח",
+          "words": [
+            {
+              "es": "vientre",
+              "he": "בטן / רחם",
+              "pron": "בְּיֶנְטְרֶה"
+            },
+            {
+              "es": "niño",
+              "he": "ילד / תינוק",
+              "pron": "נִינְיוֹ"
+            },
+            {
+              "es": "presente",
+              "he": "נוכח",
+              "pron": "פְּרֶסֶנְטֶה"
+            }
+          ],
+          "audio_es_path": "audio/me-tengo-que-ir/12_es.mp3",
+          "audio_he_path": "audio/me-tengo-que-ir/12_he.mp3"
+        },
+        {
+          "id": 14,
+          "spanish_text": "en sus cartas me decía que alguien perdería la vida",
+          "hebrew_translation": "במכתביה היא סיפרה לי שמישהו יאבד את חייו",
+          "words": [
+            {
+              "es": "cartas",
+              "he": "מכתבים",
+              "pron": "קָרְטָס"
+            },
+            {
+              "es": "decía",
+              "he": "היה אומר / היה מספר",
+              "pron": "דֶסִיאֳה"
+            },
+            {
+              "es": "perdería",
+              "he": "היה מאבד",
+              "pron": "פֶרְדֶרִיאֳה"
+            }
+          ],
+          "audio_es_path": "audio/me-tengo-que-ir/13_es.mp3",
+          "audio_he_path": "audio/me-tengo-que-ir/13_he.mp3"
+        }
+      ],
+      "vocabulary": [
+        {
+          "es": "enamorarse",
+          "he": "להתאהב",
+          "pron": "אֶנָמוֹרָרְסֶה",
+          "category": "verb"
+        },
+        {
+          "es": "dolor",
+          "he": "כאב",
+          "pron": "דוֹלוֹר",
+          "category": "noun"
+        },
+        {
+          "es": "alma",
+          "he": "נשמה",
+          "pron": "אָלְמָה",
+          "category": "noun"
+        },
+        {
+          "es": "corazón",
+          "he": "לב",
+          "pron": "קוֹרָסוֹן",
+          "category": "noun"
+        },
+        {
+          "es": "recuerdo",
+          "he": "זיכרון",
+          "pron": "רֶקְוֶרְדוֹ",
+          "category": "noun"
+        },
+        {
+          "es": "agarrar",
+          "he": "לאחוז / לתפוס",
+          "pron": "אָגָרָר",
+          "category": "verb"
+        },
+        {
+          "es": "lágrima",
+          "he": "דמעה",
+          "pron": "לָגְרִימָה",
+          "category": "noun"
+        },
+        {
+          "es": "triste",
+          "he": "עצוב",
+          "pron": "טְרִיסְטֶה",
+          "category": "adjective"
+        },
+        {
+          "es": "irse",
+          "he": "ללכת / לעזוב",
+          "pron": "אִירְסֶה",
+          "category": "verb"
+        },
+        {
+          "es": "desilusión",
+          "he": "אכזבה",
+          "pron": "דֶסִילּוּסְיוֹן",
+          "category": "noun"
+        },
+        {
+          "es": "esperanza",
+          "he": "תקווה",
+          "pron": "אֶסְפֶרָנְסָה",
+          "category": "noun"
+        },
+        {
+          "es": "prójimo",
+          "he": "הזולת / רע",
+          "pron": "פְּרוֹחִימוֹ",
+          "category": "noun"
+        },
+        {
+          "es": "vientre",
+          "he": "בטן / רחם",
+          "pron": "בְּיֶנְטְרֶה",
+          "category": "noun"
+        },
+        {
+          "es": "carta",
+          "he": "מכתב",
+          "pron": "קָרְטָה",
+          "category": "noun"
+        },
+        {
+          "es": "perder",
+          "he": "לאבד / להפסיד",
+          "pron": "פֶרְדֶר",
+          "category": "verb"
+        }
+      ]
+    },
+    "lines": [
+      {
+        "id": 1,
+        "spanish_text": "Me enamoré, de la persona ideal",
+        "hebrew_translation": "התאהבתי באדם המושלם",
+        "words": [
+          {
+            "es": "me enamoré",
+            "he": "התאהבתי",
+            "pron": "מֶה אֶנָמוֹרֶה"
+          },
+          {
+            "es": "persona",
+            "he": "בן אדם / אישיות",
+            "pron": "פֶּרְסוֹנָה"
+          },
+          {
+            "es": "ideal",
+            "he": "אידיאלי / מושלם",
+            "pron": "אִידֶאַל"
+          }
+        ],
+        "audio_es_path": "audio/me-tengo-que-ir/00_es.mp3",
+        "audio_he_path": "audio/me-tengo-que-ir/00_he.mp3"
+      },
+      {
+        "id": 2,
+        "spanish_text": "pero a la vez, se tuvo que ir",
+        "hebrew_translation": "אבל באותו הזמן, הוא היה חייב ללכת",
+        "words": [
+          {
+            "es": "a la vez",
+            "he": "בו זמנית / יחד עם זאת",
+            "pron": "אָ לָה וֶס"
+          },
+          {
+            "es": "se tuvo que",
+            "he": "היה צריך ל...",
+            "pron": "סֶה טוּבוֹ קֶה"
+          },
+          {
+            "es": "ir",
+            "he": "ללכת",
+            "pron": "אִיר"
+          }
+        ],
+        "audio_es_path": "audio/me-tengo-que-ir/01_es.mp3",
+        "audio_he_path": "audio/me-tengo-que-ir/01_he.mp3"
+      },
+      {
+        "id": 3,
+        "spanish_text": "Ay es el dolor que desgarró toda mi alma y corazón",
+        "hebrew_translation": "אוי, זה הכאב שקרע לגזרים את כל הנשמה והלב שלי",
+        "words": [
+          {
+            "es": "dolor",
+            "he": "כאב",
+            "pron": "דוֹלוֹר"
+          },
+          {
+            "es": "desgarró",
+            "he": "קרע / שיסע",
+            "pron": "דֶסְגָּרוֹ"
+          },
+          {
+            "es": "alma",
+            "he": "נשמה",
+            "pron": "אָלְמָה"
+          },
+          {
+            "es": "corazón",
+            "he": "לב",
+            "pron": "קוֹרָסוֹן"
+          }
+        ],
+        "audio_es_path": "audio/me-tengo-que-ir/02_es.mp3",
+        "audio_he_path": "audio/me-tengo-que-ir/02_he.mp3"
+      },
+      {
+        "id": 4,
+        "spanish_text": "para vivir de los recuerdos de ese amor",
+        "hebrew_translation": "כדי לחיות מהזיכרונות של האהבה ההיא",
+        "words": [
+          {
+            "es": "vivir",
+            "he": "לחיות",
+            "pron": "בִּיבִיר"
+          },
+          {
+            "es": "recuerdos",
+            "he": "זיכרונות",
+            "pron": "רֶקְוֶרְדוֹס"
+          },
+          {
+            "es": "ese",
+            "he": "ההוא / ההיא",
+            "pron": "אֶסֶה"
+          }
+        ],
+        "audio_es_path": "audio/me-tengo-que-ir/03_es.mp3",
+        "audio_he_path": "audio/me-tengo-que-ir/03_he.mp3"
+      },
+      {
+        "id": 5,
+        "spanish_text": "cuando agarrados de la mano",
+        "hebrew_translation": "כאשר החזקנו ידיים",
+        "words": [
+          {
+            "es": "cuando",
+            "he": "כאשר / מתי ש...",
+            "pron": "קוּאָנְדוֹ"
+          },
+          {
+            "es": "agarrados",
+            "he": "אחוזים / תפוסים",
+            "pron": "אָגָרָדוֹס"
+          },
+          {
+            "es": "mano",
+            "he": "יד",
+            "pron": "מָנוֹ"
+          }
+        ],
+        "audio_es_path": "audio/me-tengo-que-ir/04_es.mp3",
+        "audio_he_path": "audio/me-tengo-que-ir/04_he.mp3"
+      },
+      {
+        "id": 6,
+        "spanish_text": "en el parque nos besamos",
+        "hebrew_translation": "בפארק התנשקנו",
+        "words": [
+          {
+            "es": "parque",
+            "he": "פארק",
+            "pron": "פָּרְקֶה"
+          },
+          {
+            "es": "nos besamos",
+            "he": "התנשקנו",
+            "pron": "נוֹס בֶּסָמוֹס"
+          }
+        ],
+        "audio_es_path": "audio/me-tengo-que-ir/05_es.mp3",
+        "audio_he_path": "audio/me-tengo-que-ir/05_he.mp3"
+      },
+      {
+        "id": 7,
+        "spanish_text": "unas lágrimas caian en los pétalos de rosa",
+        "hebrew_translation": "דמעות זלגו על עלי הכותרת של הוורד",
+        "words": [
+          {
+            "es": "lágrimas",
+            "he": "דמעות",
+            "pron": "לָגְרִימָס"
+          },
+          {
+            "es": "caían",
+            "he": "נפלו / זלגו",
+            "pron": "קָאִיאִן"
+          },
+          {
+            "es": "pétalos",
+            "he": "עלי כותרת",
+            "pron": "פֶּטָלוֹס"
+          }
+        ],
+        "audio_es_path": "audio/me-tengo-que-ir/06_es.mp3",
+        "audio_he_path": "audio/me-tengo-que-ir/06_he.mp3"
+      },
+      {
+        "id": 8,
+        "spanish_text": "y tristemente me dijiste así: Me tengo que ir",
+        "hebrew_translation": "ובעצב אמרת לי כך: אני חייב ללכת",
+        "words": [
+          {
+            "es": "tristemente",
+            "he": "בעצב / בצורה עצובה",
+            "pron": "טְרִיסְטֶמֶנְטֶה"
+          },
+          {
+            "es": "me dijiste",
+            "he": "אמרת לי",
+            "pron": "מֶה דִיחִיסְטֶה"
+          },
+          {
+            "es": "me tengo que ir",
+            "he": "אני חייב ללכת",
+            "pron": "מֶה טֶנְגוֹ קֶה אִיר"
+          }
+        ],
+        "audio_es_path": "audio/me-tengo-que-ir/07_es.mp3",
+        "audio_he_path": "audio/me-tengo-que-ir/07_he.mp3"
+      },
+      {
+        "id": 9,
+        "spanish_text": "contigo está mi corazón",
+        "hebrew_translation": "הלב שלי נמצא איתך",
+        "words": [
+          {
+            "es": "contigo",
+            "he": "איתך",
+            "pron": "קוֹנְטִיגוֹ"
+          },
+          {
+            "es": "está",
+            "he": "נמצא / נמצאת",
+            "pron": "אֶסְטָה"
+          }
+        ],
+        "audio_es_path": "audio/me-tengo-que-ir/08_es.mp3",
+        "audio_he_path": "audio/me-tengo-que-ir/08_he.mp3"
+      },
+      {
+        "id": 10,
+        "spanish_text": "algun día volveré a estar aquí",
+        "hebrew_translation": "יום אחד אחזור להיות כאן",
+        "words": [
+          {
+            "es": "algún día",
+            "he": "יום אחד",
+            "pron": "אַלְגּוּן דִּיאָ"
+          },
+          {
+            "es": "volveré",
+            "he": "אחזור",
+            "pron": "בוֹלְבֶרֶה"
+          },
+          {
+            "es": "aquí",
+            "he": "כאן",
+            "pron": "אָקִי"
+          }
+        ],
+        "audio_es_path": "audio/me-tengo-que-ir/09_es.mp3",
+        "audio_he_path": "audio/me-tengo-que-ir/09_he.mp3"
+      },
+      {
+        "id": 11,
+        "spanish_text": "asi es la vida y tiene desilusión",
+        "hebrew_translation": "אלה החיים ויש בהם אכזבה",
+        "words": [
+          {
+            "es": "vida",
+            "he": "חיים",
+            "pron": "בִּידָה"
+          },
+          {
+            "es": "tiene",
+            "he": "יש בו / יש לה",
+            "pron": "טְיֶנֶה"
+          },
+          {
+            "es": "desilusión",
+            "he": "אכזבה / התפכחות מאשליה",
+            "pron": "דֶסִילּוּסְיוֹן"
+          }
+        ],
+        "audio_es_path": "audio/me-tengo-que-ir/10_es.mp3",
+        "audio_he_path": "audio/me-tengo-que-ir/10_he.mp3"
+      },
+      {
+        "id": 12,
+        "spanish_text": "se que hay amor y esperanza",
+        "hebrew_translation": "אני יודע שיש אהבה ותקווה",
+        "words": [
+          {
+            "es": "sé",
+            "he": "אני יודע",
+            "pron": "סֶה"
+          },
+          {
+            "es": "hay",
+            "he": "יש",
+            "pron": "אִי"
+          },
+          {
+            "es": "esperanza",
+            "he": "תקווה",
+            "pron": "אֶסְפֶרָנְסָה"
+          }
+        ],
+        "audio_es_path": "audio/me-tengo-que-ir/11_es.mp3",
+        "audio_he_path": "audio/me-tengo-que-ir/11_he.mp3"
+      },
+      {
+        "id": 13,
+        "spanish_text": "Ay es el dolor que hay en su vientre, un niño estaba presente",
+        "hebrew_translation": "אוי, זה הכאב שבבטנה, תינוק היה נוכח",
+        "words": [
+          {
+            "es": "vientre",
+            "he": "בטן / רחם",
+            "pron": "בְּיֶנְטְרֶה"
+          },
+          {
+            "es": "niño",
+            "he": "ילד / תינוק",
+            "pron": "נִינְיוֹ"
+          },
+          {
+            "es": "presente",
+            "he": "נוכח",
+            "pron": "פְּרֶסֶנְטֶה"
+          }
+        ],
+        "audio_es_path": "audio/me-tengo-que-ir/12_es.mp3",
+        "audio_he_path": "audio/me-tengo-que-ir/12_he.mp3"
+      },
+      {
+        "id": 14,
+        "spanish_text": "en sus cartas me decía que alguien perdería la vida",
+        "hebrew_translation": "במכתביה היא סיפרה לי שמישהו יאבד את חייו",
+        "words": [
+          {
+            "es": "cartas",
+            "he": "מכתבים",
+            "pron": "קָרְטָס"
+          },
+          {
+            "es": "decía",
+            "he": "היה אומר / היה מספר",
+            "pron": "דֶסִיאֳה"
+          },
+          {
+            "es": "perdería",
+            "he": "היה מאבד",
+            "pron": "פֶרְדֶרִיאֳה"
+          }
+        ],
+        "audio_es_path": "audio/me-tengo-que-ir/13_es.mp3",
+        "audio_he_path": "audio/me-tengo-que-ir/13_he.mp3"
+      }
+    ],
+    "progress_percentage": 0,
+    "is_mastered": false
+  },
+  {
+    "id": "persona-ideal",
+    "title": "Persona Ideal",
+    "artist": "Adolescents Orquesta",
+    "spotify_url": "https://open.spotify.com/track/5H1mAzh396id1TPT0JaItz",
+    "trackId": "5H1mAzh396id1TPT0JaItz",
+    "albumArt": "https://i.scdn.co/image/ab67616d00001e023463634e7bde025aa312cb8e",
+    "genre": "Salsa",
+    "level": "intermediate",
+    "cover": "🎺",
+    "locked": false,
+    "lyrics_data": {
+      "lines": [
+        {
+          "id": 1,
+          "spanish_text": "¡Ay! Es el dolor que desgarró toda mi alma y corazón",
+          "hebrew_translation": "איי! זה הכאב שקרע לי את כל הנשמה והלב",
+          "words": [
+            {
+              "es": "dolor",
+              "he": "כאב",
+              "pron": "דּוֹלוֹר"
+            },
+            {
+              "es": "desgarró",
+              "he": "קרע / שיסע",
+              "pron": "דֶּסְגָּרוֹ"
+            },
+            {
+              "es": "alma",
+              "he": "נשמה",
+              "pron": "אַלְמָה"
+            }
+          ],
+          "audio_es_path": "audio/persona-ideal/00_es.mp3",
+          "audio_he_path": "audio/persona-ideal/00_he.mp3"
+        },
+        {
+          "id": 2,
+          "spanish_text": "Para vivir de los recuerdos de ese amor",
+          "hebrew_translation": "כדי לחיות מהזיכרונות של האהבה ההיא",
+          "words": [
+            {
+              "es": "vivir",
+              "he": "לחיות",
+              "pron": "בִּיבִיר"
+            },
+            {
+              "es": "recuerdos",
+              "he": "זיכרונות",
+              "pron": "רֶקְוֶורְדּוֹס"
+            }
+          ],
+          "audio_es_path": "audio/persona-ideal/01_es.mp3",
+          "audio_he_path": "audio/persona-ideal/01_he.mp3"
+        },
+        {
+          "id": 3,
+          "spanish_text": "Cuando agarrados de la mano en el parque nos besamos",
+          "hebrew_translation": "כשהחזקנו ידיים והתנשקנו בפארק",
+          "words": [
+            {
+              "es": "agarrados",
+              "he": "אחוזים / מחזיקים",
+              "pron": "אַגָּרָדוֹס"
+            },
+            {
+              "es": "mano",
+              "he": "יד",
+              "pron": "מָנוֹ"
+            },
+            {
+              "es": "nos besamos",
+              "he": "התנשקנו",
+              "pron": "נוֹס בֶּסָמוֹס"
+            }
+          ],
+          "audio_es_path": "audio/persona-ideal/02_es.mp3",
+          "audio_he_path": "audio/persona-ideal/02_he.mp3"
+        },
+        {
+          "id": 4,
+          "spanish_text": "Y las lágrimas caían en los pétalos de rosas",
+          "hebrew_translation": "והדמעות זלגו על עלי הכותרת של הוורדים",
+          "words": [
+            {
+              "es": "lágrimas",
+              "he": "דמעות",
+              "pron": "לָאגְרִימָס"
+            },
+            {
+              "es": "caían",
+              "he": "נפלו / זלגו",
+              "pron": "קָאִיאִן"
+            },
+            {
+              "es": "pétalos",
+              "he": "עלי כותרת",
+              "pron": "פֶּטָלוֹס"
+            }
+          ],
+          "audio_es_path": "audio/persona-ideal/03_es.mp3",
+          "audio_he_path": "audio/persona-ideal/03_he.mp3"
+        },
+        {
+          "id": 5,
+          "spanish_text": "Y tristemente me dijiste así:",
+          "hebrew_translation": "ובעצב אמרת לי כך:",
+          "words": [
+            {
+              "es": "tristemente",
+              "he": "בעצב",
+              "pron": "תְּרִיסְטֶמֶנְטֶה"
+            },
+            {
+              "es": "dijiste",
+              "he": "אמרת",
+              "pron": "דִּיחִיסְטֶה"
+            }
+          ],
+          "audio_es_path": "audio/persona-ideal/04_es.mp3",
+          "audio_he_path": "audio/persona-ideal/04_he.mp3"
+        },
+        {
+          "id": 6,
+          "spanish_text": "Me tengo que ir",
+          "hebrew_translation": "אני חייב ללכת",
+          "words": [
+            {
+              "es": "me tengo que",
+              "he": "אני חייב",
+              "pron": "מֶה טֶנְגּוֹ קֶה"
+            },
+            {
+              "es": "ir",
+              "he": "ללכת",
+              "pron": "אִיר"
+            }
+          ],
+          "audio_es_path": "audio/persona-ideal/05_es.mp3",
+          "audio_he_path": "audio/persona-ideal/05_he.mp3"
+        },
+        {
+          "id": 7,
+          "spanish_text": "Y no es por mí, contigo está mi corazón",
+          "hebrew_translation": "וזה לא בגללי, הלב שלי נשאר איתך",
+          "words": [
+            {
+              "es": "contigo",
+              "he": "איתך",
+              "pron": "קוֹנְטִיגּוֹ"
+            },
+            {
+              "es": "corazón",
+              "he": "לב",
+              "pron": "קוֹרָסוֹן"
+            }
+          ],
+          "audio_es_path": "audio/persona-ideal/06_es.mp3",
+          "audio_he_path": "audio/persona-ideal/06_he.mp3"
+        },
+        {
+          "id": 8,
+          "spanish_text": "Todo el amor de mis entrañas",
+          "hebrew_translation": "כל האהבה ממעמקי נשמתי",
+          "words": [
+            {
+              "es": "entrañas",
+              "he": "קרביים / מעמקים",
+              "pron": "אֶנְתְּרָנְיָאס"
+            }
+          ],
+          "audio_es_path": "audio/persona-ideal/07_es.mp3",
+          "audio_he_path": "audio/persona-ideal/07_he.mp3"
+        },
+        {
+          "id": 9,
+          "spanish_text": "Algún día volveré a estar aquí",
+          "hebrew_translation": "יום אחד עוד אחזור לכאן",
+          "words": [
+            {
+              "es": "algún día",
+              "he": "יום אחד",
+              "pron": "אַלְגּוּן דִּיאָה"
+            },
+            {
+              "es": "volveré",
+              "he": "אחזור",
+              "pron": "בוֹלְבֶרֶה"
+            }
+          ],
+          "audio_es_path": "audio/persona-ideal/08_es.mp3",
+          "audio_he_path": "audio/persona-ideal/08_he.mp3"
+        },
+        {
+          "id": 10,
+          "spanish_text": "Así es la vida y tiene desilusión",
+          "hebrew_translation": "אלה הם החיים ויש בהם אכזבות",
+          "words": [
+            {
+              "es": "vida",
+              "he": "חיים",
+              "pron": "בִּידָה"
+            },
+            {
+              "es": "desilusión",
+              "he": "אכזבה",
+              "pron": "דֶּסִילּוּסְיוֹן"
+            }
+          ],
+          "audio_es_path": "audio/persona-ideal/09_es.mp3",
+          "audio_he_path": "audio/persona-ideal/09_he.mp3"
+        },
+        {
+          "id": 11,
+          "spanish_text": "Se tiene amor y hay esperanza",
+          "hebrew_translation": "יש אהבה ויש תקווה",
+          "words": [
+            {
+              "es": "esperanza",
+              "he": "תקווה",
+              "pron": "אֶסְפֶּרָנְסָה"
+            },
+            {
+              "es": "hay",
+              "he": "יש",
+              "pron": "אַי"
+            }
+          ],
+          "audio_es_path": "audio/persona-ideal/10_es.mp3",
+          "audio_he_path": "audio/persona-ideal/10_he.mp3"
+        },
+        {
+          "id": 12,
+          "spanish_text": "Al prójimo que Dios te puso allí",
+          "hebrew_translation": "לאדם שאלוהים הציב בדרכך",
+          "words": [
+            {
+              "es": "prójimo",
+              "he": "הזולת / רעך",
+              "pron": "פּרוֹחִימוֹ"
+            },
+            {
+              "es": "puso",
+              "he": "שם (בעבר)",
+              "pron": "פּוּסוֹ"
+            }
+          ],
+          "audio_es_path": "audio/persona-ideal/11_es.mp3",
+          "audio_he_path": "audio/persona-ideal/11_he.mp3"
+        },
+        {
+          "id": 13,
+          "spanish_text": "¡Ay! Es el dolor que había en su vientre",
+          "hebrew_translation": "איי! זה הכאב שהיה בבטנה",
+          "words": [
+            {
+              "es": "vientre",
+              "he": "בטן / רחם",
+              "pron": "בְּיֶנְתְּרֶה"
+            },
+            {
+              "es": "había",
+              "he": "היה / הייתה",
+              "pron": "אָבִיאָה"
+            }
+          ],
+          "audio_es_path": "audio/persona-ideal/12_es.mp3",
+          "audio_he_path": "audio/persona-ideal/12_he.mp3"
+        },
+        {
+          "id": 14,
+          "spanish_text": "Un niño estaba presente",
+          "hebrew_translation": "תינוק היה שם בפנים",
+          "words": [
+            {
+              "es": "niño",
+              "he": "ילד",
+              "pron": "נִינְיוֹ"
+            },
+            {
+              "es": "presente",
+              "he": "נוכח",
+              "pron": "פּרֶסֶנְתֶּה"
+            }
+          ],
+          "audio_es_path": "audio/persona-ideal/13_es.mp3",
+          "audio_he_path": "audio/persona-ideal/13_he.mp3"
+        },
+        {
+          "id": 15,
+          "spanish_text": "Y en sus cartas me decía",
+          "hebrew_translation": "ובמכתביה היא כתבה לי",
+          "words": [
+            {
+              "es": "cartas",
+              "he": "מכתבים",
+              "pron": "קָרְתָאס"
+            },
+            {
+              "es": "decía",
+              "he": "אמרה / הייתה אומרת",
+              "pron": "דֶּסִיאָה"
+            }
+          ],
+          "audio_es_path": "audio/persona-ideal/14_es.mp3",
+          "audio_he_path": "audio/persona-ideal/14_he.mp3"
+        },
+        {
+          "id": 16,
+          "spanish_text": "Que alguien perdería la vida",
+          "hebrew_translation": "שמישהו עומד לאבד את חייו",
+          "words": [
+            {
+              "es": "alguien",
+              "he": "מישהו",
+              "pron": "אַלְגִּיֶין"
+            },
+            {
+              "es": "perdería",
+              "he": "היה מאבד",
+              "pron": "פֶּרְדֶּרִיאָה"
+            }
+          ],
+          "audio_es_path": "audio/persona-ideal/15_es.mp3",
+          "audio_he_path": "audio/persona-ideal/15_he.mp3"
+        },
+        {
+          "id": 17,
+          "spanish_text": "Todo el fruto de este amor te queda a ti",
+          "hebrew_translation": "כל הפרי של האהבה הזו נשאר לך",
+          "words": [
+            {
+              "es": "fruto",
+              "he": "פרי",
+              "pron": "פְרוּתוֹ"
+            },
+            {
+              "es": "queda",
+              "he": "נשאר",
+              "pron": "קֶדָה"
+            }
+          ],
+          "audio_es_path": "audio/persona-ideal/16_es.mp3",
+          "audio_he_path": "audio/persona-ideal/16_he.mp3"
+        },
+        {
+          "id": 18,
+          "spanish_text": "Ya no estarás más en mi vida",
+          "hebrew_translation": "כבר לא תהיי יותר בחיי",
+          "words": [
+            {
+              "es": "ya no",
+              "he": "כבר לא",
+              "pron": "יָא נוֹ"
+            },
+            {
+              "es": "estarás",
+              "he": "תהיה / תהיי",
+              "pron": "אֶסְתָּרָאס"
+            }
+          ],
+          "audio_es_path": "audio/persona-ideal/17_es.mp3",
+          "audio_he_path": "audio/persona-ideal/17_he.mp3"
+        },
+        {
+          "id": 19,
+          "spanish_text": "Triste el adiós, triste tu partida",
+          "hebrew_translation": "עצובה הפרידה, עצוב לכתך",
+          "words": [
+            {
+              "es": "adiós",
+              "he": "שלום / פרידה",
+              "pron": "אָדְיוֹס"
+            },
+            {
+              "es": "partida",
+              "he": "עזיבה / לכת",
+              "pron": "פַּרְתִּידָה"
+            }
+          ],
+          "audio_es_path": "audio/persona-ideal/18_es.mp3",
+          "audio_he_path": "audio/persona-ideal/18_he.mp3"
+        },
+        {
+          "id": 20,
+          "spanish_text": "Es la verdad de una pasión cuando se entrega el corazón",
+          "hebrew_translation": "זו האמת של התשוקה כשמוסרים את הלב",
+          "words": [
+            {
+              "es": "verdad",
+              "he": "אמת",
+              "pron": "בֶּרְדָאד"
+            },
+            {
+              "es": "pasión",
+              "he": "תשוקה",
+              "pron": "פָּסְיוֹן"
+            },
+            {
+              "es": "se entrega",
+              "he": "נמסר / מוסרים",
+              "pron": "סֶה אֶנְתְּרֶגָה"
+            }
+          ],
+          "audio_es_path": "audio/persona-ideal/19_es.mp3",
+          "audio_he_path": "audio/persona-ideal/19_he.mp3"
+        }
+      ],
+      "vocabulary": [
+        {
+          "es": "dolor",
+          "he": "כאב",
+          "pron": "דּוֹלוֹר",
+          "category": "noun"
+        },
+        {
+          "es": "alma",
+          "he": "נשמה",
+          "pron": "אַלְמָה",
+          "category": "noun"
+        },
+        {
+          "es": "corazón",
+          "he": "לב",
+          "pron": "קוֹרָסוֹן",
+          "category": "noun"
+        },
+        {
+          "es": "recuerdo",
+          "he": "זיכרון",
+          "pron": "רֶקְוֶורְדּוֹ",
+          "category": "noun"
+        },
+        {
+          "es": "mano",
+          "he": "יד",
+          "pron": "מָנוֹ",
+          "category": "noun"
+        },
+        {
+          "es": "lágrima",
+          "he": "דמעה",
+          "pron": "לָאגְרִימָה",
+          "category": "noun"
+        },
+        {
+          "es": "triste",
+          "he": "עצוב",
+          "pron": "תְּרִיסְתֶּה",
+          "category": "adjective"
+        },
+        {
+          "es": "ir",
+          "he": "ללכת",
+          "pron": "אִיר",
+          "category": "verb"
+        },
+        {
+          "es": "vida",
+          "he": "חיים",
+          "pron": "בִּידָה",
+          "category": "noun"
+        },
+        {
+          "es": "esperanza",
+          "he": "תקווה",
+          "pron": "אֶסְפֶּרָנְסָה",
+          "category": "noun"
+        },
+        {
+          "es": "volver",
+          "he": "לחזור",
+          "pron": "בוֹלְבֶר",
+          "category": "verb"
+        },
+        {
+          "es": "carta",
+          "he": "מכתב",
+          "pron": "קָרְתָה",
+          "category": "noun"
+        },
+        {
+          "es": "perder",
+          "he": "לאבד",
+          "pron": "פֶּרְדֶּר",
+          "category": "verb"
+        },
+        {
+          "es": "partida",
+          "he": "עזיבה / פרידה",
+          "pron": "פַּרְתִּידָה",
+          "category": "noun"
+        },
+        {
+          "es": "entregar",
+          "he": "למסור / להעניק",
+          "pron": "אֶנְתְּרֶגָר",
+          "category": "verb"
+        }
+      ]
+    },
+    "lines": [
+      {
+        "id": 1,
+        "spanish_text": "¡Ay! Es el dolor que desgarró toda mi alma y corazón",
+        "hebrew_translation": "איי! זה הכאב שקרע לי את כל הנשמה והלב",
+        "words": [
+          {
+            "es": "dolor",
+            "he": "כאב",
+            "pron": "דּוֹלוֹר"
+          },
+          {
+            "es": "desgarró",
+            "he": "קרע / שיסע",
+            "pron": "דֶּסְגָּרוֹ"
+          },
+          {
+            "es": "alma",
+            "he": "נשמה",
+            "pron": "אַלְמָה"
+          }
+        ],
+        "audio_es_path": "audio/persona-ideal/00_es.mp3",
+        "audio_he_path": "audio/persona-ideal/00_he.mp3"
+      },
+      {
+        "id": 2,
+        "spanish_text": "Para vivir de los recuerdos de ese amor",
+        "hebrew_translation": "כדי לחיות מהזיכרונות של האהבה ההיא",
+        "words": [
+          {
+            "es": "vivir",
+            "he": "לחיות",
+            "pron": "בִּיבִיר"
+          },
+          {
+            "es": "recuerdos",
+            "he": "זיכרונות",
+            "pron": "רֶקְוֶורְדּוֹס"
+          }
+        ],
+        "audio_es_path": "audio/persona-ideal/01_es.mp3",
+        "audio_he_path": "audio/persona-ideal/01_he.mp3"
+      },
+      {
+        "id": 3,
+        "spanish_text": "Cuando agarrados de la mano en el parque nos besamos",
+        "hebrew_translation": "כשהחזקנו ידיים והתנשקנו בפארק",
+        "words": [
+          {
+            "es": "agarrados",
+            "he": "אחוזים / מחזיקים",
+            "pron": "אַגָּרָדוֹס"
+          },
+          {
+            "es": "mano",
+            "he": "יד",
+            "pron": "מָנוֹ"
+          },
+          {
+            "es": "nos besamos",
+            "he": "התנשקנו",
+            "pron": "נוֹס בֶּסָמוֹס"
+          }
+        ],
+        "audio_es_path": "audio/persona-ideal/02_es.mp3",
+        "audio_he_path": "audio/persona-ideal/02_he.mp3"
+      },
+      {
+        "id": 4,
+        "spanish_text": "Y las lágrimas caían en los pétalos de rosas",
+        "hebrew_translation": "והדמעות זלגו על עלי הכותרת של הוורדים",
+        "words": [
+          {
+            "es": "lágrimas",
+            "he": "דמעות",
+            "pron": "לָאגְרִימָס"
+          },
+          {
+            "es": "caían",
+            "he": "נפלו / זלגו",
+            "pron": "קָאִיאִן"
+          },
+          {
+            "es": "pétalos",
+            "he": "עלי כותרת",
+            "pron": "פֶּטָלוֹס"
+          }
+        ],
+        "audio_es_path": "audio/persona-ideal/03_es.mp3",
+        "audio_he_path": "audio/persona-ideal/03_he.mp3"
+      },
+      {
+        "id": 5,
+        "spanish_text": "Y tristemente me dijiste así:",
+        "hebrew_translation": "ובעצב אמרת לי כך:",
+        "words": [
+          {
+            "es": "tristemente",
+            "he": "בעצב",
+            "pron": "תְּרִיסְטֶמֶנְטֶה"
+          },
+          {
+            "es": "dijiste",
+            "he": "אמרת",
+            "pron": "דִּיחִיסְטֶה"
+          }
+        ],
+        "audio_es_path": "audio/persona-ideal/04_es.mp3",
+        "audio_he_path": "audio/persona-ideal/04_he.mp3"
+      },
+      {
+        "id": 6,
+        "spanish_text": "Me tengo que ir",
+        "hebrew_translation": "אני חייב ללכת",
+        "words": [
+          {
+            "es": "me tengo que",
+            "he": "אני חייב",
+            "pron": "מֶה טֶנְגּוֹ קֶה"
+          },
+          {
+            "es": "ir",
+            "he": "ללכת",
+            "pron": "אִיר"
+          }
+        ],
+        "audio_es_path": "audio/persona-ideal/05_es.mp3",
+        "audio_he_path": "audio/persona-ideal/05_he.mp3"
+      },
+      {
+        "id": 7,
+        "spanish_text": "Y no es por mí, contigo está mi corazón",
+        "hebrew_translation": "וזה לא בגללי, הלב שלי נשאר איתך",
+        "words": [
+          {
+            "es": "contigo",
+            "he": "איתך",
+            "pron": "קוֹנְטִיגּוֹ"
+          },
+          {
+            "es": "corazón",
+            "he": "לב",
+            "pron": "קוֹרָסוֹן"
+          }
+        ],
+        "audio_es_path": "audio/persona-ideal/06_es.mp3",
+        "audio_he_path": "audio/persona-ideal/06_he.mp3"
+      },
+      {
+        "id": 8,
+        "spanish_text": "Todo el amor de mis entrañas",
+        "hebrew_translation": "כל האהבה ממעמקי נשמתי",
+        "words": [
+          {
+            "es": "entrañas",
+            "he": "קרביים / מעמקים",
+            "pron": "אֶנְתְּרָנְיָאס"
+          }
+        ],
+        "audio_es_path": "audio/persona-ideal/07_es.mp3",
+        "audio_he_path": "audio/persona-ideal/07_he.mp3"
+      },
+      {
+        "id": 9,
+        "spanish_text": "Algún día volveré a estar aquí",
+        "hebrew_translation": "יום אחד עוד אחזור לכאן",
+        "words": [
+          {
+            "es": "algún día",
+            "he": "יום אחד",
+            "pron": "אַלְגּוּן דִּיאָה"
+          },
+          {
+            "es": "volveré",
+            "he": "אחזור",
+            "pron": "בוֹלְבֶרֶה"
+          }
+        ],
+        "audio_es_path": "audio/persona-ideal/08_es.mp3",
+        "audio_he_path": "audio/persona-ideal/08_he.mp3"
+      },
+      {
+        "id": 10,
+        "spanish_text": "Así es la vida y tiene desilusión",
+        "hebrew_translation": "אלה הם החיים ויש בהם אכזבות",
+        "words": [
+          {
+            "es": "vida",
+            "he": "חיים",
+            "pron": "בִּידָה"
+          },
+          {
+            "es": "desilusión",
+            "he": "אכזבה",
+            "pron": "דֶּסִילּוּסְיוֹן"
+          }
+        ],
+        "audio_es_path": "audio/persona-ideal/09_es.mp3",
+        "audio_he_path": "audio/persona-ideal/09_he.mp3"
+      },
+      {
+        "id": 11,
+        "spanish_text": "Se tiene amor y hay esperanza",
+        "hebrew_translation": "יש אהבה ויש תקווה",
+        "words": [
+          {
+            "es": "esperanza",
+            "he": "תקווה",
+            "pron": "אֶסְפֶּרָנְסָה"
+          },
+          {
+            "es": "hay",
+            "he": "יש",
+            "pron": "אַי"
+          }
+        ],
+        "audio_es_path": "audio/persona-ideal/10_es.mp3",
+        "audio_he_path": "audio/persona-ideal/10_he.mp3"
+      },
+      {
+        "id": 12,
+        "spanish_text": "Al prójimo que Dios te puso allí",
+        "hebrew_translation": "לאדם שאלוהים הציב בדרכך",
+        "words": [
+          {
+            "es": "prójimo",
+            "he": "הזולת / רעך",
+            "pron": "פּרוֹחִימוֹ"
+          },
+          {
+            "es": "puso",
+            "he": "שם (בעבר)",
+            "pron": "פּוּסוֹ"
+          }
+        ],
+        "audio_es_path": "audio/persona-ideal/11_es.mp3",
+        "audio_he_path": "audio/persona-ideal/11_he.mp3"
+      },
+      {
+        "id": 13,
+        "spanish_text": "¡Ay! Es el dolor que había en su vientre",
+        "hebrew_translation": "איי! זה הכאב שהיה בבטנה",
+        "words": [
+          {
+            "es": "vientre",
+            "he": "בטן / רחם",
+            "pron": "בְּיֶנְתְּרֶה"
+          },
+          {
+            "es": "había",
+            "he": "היה / הייתה",
+            "pron": "אָבִיאָה"
+          }
+        ],
+        "audio_es_path": "audio/persona-ideal/12_es.mp3",
+        "audio_he_path": "audio/persona-ideal/12_he.mp3"
+      },
+      {
+        "id": 14,
+        "spanish_text": "Un niño estaba presente",
+        "hebrew_translation": "תינוק היה שם בפנים",
+        "words": [
+          {
+            "es": "niño",
+            "he": "ילד",
+            "pron": "נִינְיוֹ"
+          },
+          {
+            "es": "presente",
+            "he": "נוכח",
+            "pron": "פּרֶסֶנְתֶּה"
+          }
+        ],
+        "audio_es_path": "audio/persona-ideal/13_es.mp3",
+        "audio_he_path": "audio/persona-ideal/13_he.mp3"
+      },
+      {
+        "id": 15,
+        "spanish_text": "Y en sus cartas me decía",
+        "hebrew_translation": "ובמכתביה היא כתבה לי",
+        "words": [
+          {
+            "es": "cartas",
+            "he": "מכתבים",
+            "pron": "קָרְתָאס"
+          },
+          {
+            "es": "decía",
+            "he": "אמרה / הייתה אומרת",
+            "pron": "דֶּסִיאָה"
+          }
+        ],
+        "audio_es_path": "audio/persona-ideal/14_es.mp3",
+        "audio_he_path": "audio/persona-ideal/14_he.mp3"
+      },
+      {
+        "id": 16,
+        "spanish_text": "Que alguien perdería la vida",
+        "hebrew_translation": "שמישהו עומד לאבד את חייו",
+        "words": [
+          {
+            "es": "alguien",
+            "he": "מישהו",
+            "pron": "אַלְגִּיֶין"
+          },
+          {
+            "es": "perdería",
+            "he": "היה מאבד",
+            "pron": "פֶּרְדֶּרִיאָה"
+          }
+        ],
+        "audio_es_path": "audio/persona-ideal/15_es.mp3",
+        "audio_he_path": "audio/persona-ideal/15_he.mp3"
+      },
+      {
+        "id": 17,
+        "spanish_text": "Todo el fruto de este amor te queda a ti",
+        "hebrew_translation": "כל הפרי של האהבה הזו נשאר לך",
+        "words": [
+          {
+            "es": "fruto",
+            "he": "פרי",
+            "pron": "פְרוּתוֹ"
+          },
+          {
+            "es": "queda",
+            "he": "נשאר",
+            "pron": "קֶדָה"
+          }
+        ],
+        "audio_es_path": "audio/persona-ideal/16_es.mp3",
+        "audio_he_path": "audio/persona-ideal/16_he.mp3"
+      },
+      {
+        "id": 18,
+        "spanish_text": "Ya no estarás más en mi vida",
+        "hebrew_translation": "כבר לא תהיי יותר בחיי",
+        "words": [
+          {
+            "es": "ya no",
+            "he": "כבר לא",
+            "pron": "יָא נוֹ"
+          },
+          {
+            "es": "estarás",
+            "he": "תהיה / תהיי",
+            "pron": "אֶסְתָּרָאס"
+          }
+        ],
+        "audio_es_path": "audio/persona-ideal/17_es.mp3",
+        "audio_he_path": "audio/persona-ideal/17_he.mp3"
+      },
+      {
+        "id": 19,
+        "spanish_text": "Triste el adiós, triste tu partida",
+        "hebrew_translation": "עצובה הפרידה, עצוב לכתך",
+        "words": [
+          {
+            "es": "adiós",
+            "he": "שלום / פרידה",
+            "pron": "אָדְיוֹס"
+          },
+          {
+            "es": "partida",
+            "he": "עזיבה / לכת",
+            "pron": "פַּרְתִּידָה"
+          }
+        ],
+        "audio_es_path": "audio/persona-ideal/18_es.mp3",
+        "audio_he_path": "audio/persona-ideal/18_he.mp3"
+      },
+      {
+        "id": 20,
+        "spanish_text": "Es la verdad de una pasión cuando se entrega el corazón",
+        "hebrew_translation": "זו האמת של התשוקה כשמוסרים את הלב",
+        "words": [
+          {
+            "es": "verdad",
+            "he": "אמת",
+            "pron": "בֶּרְדָאד"
+          },
+          {
+            "es": "pasión",
+            "he": "תשוקה",
+            "pron": "פָּסְיוֹן"
+          },
+          {
+            "es": "se entrega",
+            "he": "נמסר / מוסרים",
+            "pron": "סֶה אֶנְתְּרֶגָה"
+          }
+        ],
+        "audio_es_path": "audio/persona-ideal/19_es.mp3",
+        "audio_he_path": "audio/persona-ideal/19_he.mp3"
+      }
+    ],
+    "progress_percentage": 0,
+    "is_mastered": false
+  },
+  {
+    "id": "te-va-a-doler",
+    "title": "Te Va a Doler",
+    "artist": "Maelo Ruiz",
+    "spotify_url": "https://open.spotify.com/track/2ozSogNm6z9G2Uv6a9iji4",
+    "trackId": "2ozSogNm6z9G2Uv6a9iji4",
+    "albumArt": "https://i.scdn.co/image/ab67616d00001e026bccd61ccb76645a10625854",
+    "genre": "Salsa",
+    "level": "beginner",
+    "cover": "🎺",
+    "locked": false,
+    "lyrics_data": {
+      "lines": [
+        {
+          "id": 1,
+          "spanish_text": "Es una pena que tú seas así",
+          "hebrew_translation": "זה חבל שאת כזאת",
+          "words": [
+            {
+              "es": "pena",
+              "he": "חבל / צער",
+              "pron": "פֶּנָה"
+            },
+            {
+              "es": "seas",
+              "he": "תהיי (בצורת חיבור)",
+              "pron": "סֶאַס"
+            },
+            {
+              "es": "así",
+              "he": "ככה / כך",
+              "pron": "אָסִי"
+            }
+          ],
+          "audio_es_path": "audio/te-va-a-doler/00_es.mp3",
+          "audio_he_path": "audio/te-va-a-doler/00_he.mp3"
+        },
+        {
+          "id": 2,
+          "spanish_text": "Que no te guste ser llevada por la buena",
+          "hebrew_translation": "שאת לא אוהבת שמתייחסים אלייך בטוב",
+          "words": [
+            {
+              "es": "guste",
+              "he": "ימצא חן בעינייך",
+              "pron": "גּוּסְטֶה"
+            },
+            {
+              "es": "llevada",
+              "he": "שיובילו אותך",
+              "pron": "יֶבָאדָה"
+            },
+            {
+              "es": "por la buena",
+              "he": "בדרכי נועם / בטוב",
+              "pron": "פּוֹר לָה בּוּאֶנָה"
+            }
+          ],
+          "audio_es_path": "audio/te-va-a-doler/01_es.mp3",
+          "audio_he_path": "audio/te-va-a-doler/01_he.mp3"
+        },
+        {
+          "id": 3,
+          "spanish_text": "No entiendo como tú pretendes ser feliz",
+          "hebrew_translation": "אני לא מבין איך את מצפה להיות מאושרת",
+          "words": [
+            {
+              "es": "entiendo",
+              "he": "מבין",
+              "pron": "אֶנְטְיֶנְדּוֹ"
+            },
+            {
+              "es": "pretendes",
+              "he": "מתכוונת / מתיימרת",
+              "pron": "פְּרֶטֶנְדֶּס"
+            },
+            {
+              "es": "feliz",
+              "he": "מאושר/ת",
+              "pron": "פֶלִיס"
+            }
+          ],
+          "audio_es_path": "audio/te-va-a-doler/02_es.mp3",
+          "audio_he_path": "audio/te-va-a-doler/02_he.mp3"
+        },
+        {
+          "id": 4,
+          "spanish_text": "Con ese idiota que te trata como a una cualquiera",
+          "hebrew_translation": "עם האידיוט הזה שמתייחס אלייך כמו אל סתם אחת",
+          "words": [
+            {
+              "es": "trata",
+              "he": "מתייחס / מתנהג אל",
+              "pron": "טְרָטָה"
+            },
+            {
+              "es": "cualquiera",
+              "he": "סתם אחת / כל אחת",
+              "pron": "קוּאַלְקְיֶרָה"
+            }
+          ],
+          "audio_es_path": "audio/te-va-a-doler/03_es.mp3",
+          "audio_he_path": "audio/te-va-a-doler/03_he.mp3"
+        },
+        {
+          "id": 5,
+          "spanish_text": "Sé que algún día te hará falta mi amor",
+          "hebrew_translation": "אני יודע שיום אחד האהבה שלי תהיה חסרה לך",
+          "words": [
+            {
+              "es": "sé",
+              "he": "אני יודע",
+              "pron": "סֶה"
+            },
+            {
+              "es": "hará falta",
+              "he": "יהיה חסר",
+              "pron": "אָרָה פַלְטָה"
+            }
+          ],
+          "audio_es_path": "audio/te-va-a-doler/04_es.mp3",
+          "audio_he_path": "audio/te-va-a-doler/04_he.mp3"
+        },
+        {
+          "id": 6,
+          "spanish_text": "Y no lo digo por despecho aunque parezca",
+          "hebrew_translation": "ואני לא אומר את זה מתוך תסכול, למרות שזה נראה כך",
+          "words": [
+            {
+              "es": "despecho",
+              "he": "טינה / תסכול / נקמנות",
+              "pron": "דֶסְפֶּצ'וֹ"
+            },
+            {
+              "es": "aunque",
+              "he": "למרות ש...",
+              "pron": "אָאוּנְקֶה"
+            },
+            {
+              "es": "parezca",
+              "he": "נראה / נדמה",
+              "pron": "פָּרֶסְקָה"
+            }
+          ],
+          "audio_es_path": "audio/te-va-a-doler/05_es.mp3",
+          "audio_he_path": "audio/te-va-a-doler/05_he.mp3"
+        },
+        {
+          "id": 7,
+          "spanish_text": "Te equivocaste al elegir entre él y yo",
+          "hebrew_translation": "טעית בבחירה בינו לביני",
+          "words": [
+            {
+              "es": "te equivocaste",
+              "he": "טעית",
+              "pron": "טֶה אֶקִיבוֹקָסְטֶה"
+            },
+            {
+              "es": "elegir",
+              "he": "לבחור",
+              "pron": "אֶלֶחִיר"
+            }
+          ],
+          "audio_es_path": "audio/te-va-a-doler/06_es.mp3",
+          "audio_he_path": "audio/te-va-a-doler/06_he.mp3"
+        },
+        {
+          "id": 8,
+          "spanish_text": "Pero te vas a arrepentir la vida entera",
+          "hebrew_translation": "אבל את תתחרטי על כך כל החיים",
+          "words": [
+            {
+              "es": "arrepentir",
+              "he": "להתחרט",
+              "pron": "אַרֶפֶּנְטִיר"
+            },
+            {
+              "es": "entera",
+              "he": "שלמה",
+              "pron": "אֶנְטֶרָה"
+            }
+          ],
+          "audio_es_path": "audio/te-va-a-doler/07_es.mp3",
+          "audio_he_path": "audio/te-va-a-doler/07_he.mp3"
+        },
+        {
+          "id": 9,
+          "spanish_text": "Te va a doler",
+          "hebrew_translation": "זה יכאב לך",
+          "words": [
+            {
+              "es": "doler",
+              "he": "לכאוב",
+              "pron": "דּוֹלֶר"
+            },
+            {
+              "es": "te va a",
+              "he": "זה הולך ל... (לך)",
+              "pron": "טֶה בָה אָ"
+            }
+          ],
+          "audio_es_path": "audio/te-va-a-doler/08_es.mp3",
+          "audio_he_path": "audio/te-va-a-doler/08_he.mp3"
+        },
+        {
+          "id": 10,
+          "spanish_text": "Tarde o temprano ya verás lo que te toca",
+          "hebrew_translation": "במוקדם או במאוחר את כבר תראי מה שמגיע לך",
+          "words": [
+            {
+              "es": "tarde o temprano",
+              "he": "במוקדם או במאוחר",
+              "pron": "טָרְדֶּה אוֹ טֶמְפְּרָנוֹ"
+            },
+            {
+              "es": "verás",
+              "he": "תראי",
+              "pron": "בֶּרָאס"
+            },
+            {
+              "es": "te toca",
+              "he": "מגיע לך / תורך",
+              "pron": "טֶה טוֹקָה"
+            }
+          ],
+          "audio_es_path": "audio/te-va-a-doler/09_es.mp3",
+          "audio_he_path": "audio/te-va-a-doler/09_he.mp3"
+        },
+        {
+          "id": 11,
+          "spanish_text": "Cuando tu piel ya no le excite y te abandone",
+          "hebrew_translation": "כשהעור שלך כבר לא ירגש אותו והוא יעזוב אותך",
+          "words": [
+            {
+              "es": "piel",
+              "he": "עור",
+              "pron": "פְּיֶל"
+            },
+            {
+              "es": "excite",
+              "he": "ירגש / יעורר מינית",
+              "pron": "אֶקְסִיטֶה"
+            },
+            {
+              "es": "abandone",
+              "he": "יעזוב / ינטוש",
+              "pron": "אַבַּנְדּוֹנֶה"
+            }
+          ],
+          "audio_es_path": "audio/te-va-a-doler/10_es.mp3",
+          "audio_he_path": "audio/te-va-a-doler/10_he.mp3"
+        },
+        {
+          "id": 12,
+          "spanish_text": "O al descubrir con amargura que tiene a otra",
+          "hebrew_translation": "או כשתגלי במרירות שיש לו מישהי אחרת",
+          "words": [
+            {
+              "es": "descubrir",
+              "he": "לגלות",
+              "pron": "דֶּסְקוּבְּרִיר"
+            },
+            {
+              "es": "amargura",
+              "he": "מרירות",
+              "pron": "אַמַרְגּוּרָה"
+            }
+          ],
+          "audio_es_path": "audio/te-va-a-doler/11_es.mp3",
+          "audio_he_path": "audio/te-va-a-doler/11_he.mp3"
+        },
+        {
+          "id": 13,
+          "spanish_text": "Como me está doliendo ahora que me dejas",
+          "hebrew_translation": "כמו שזה כואב לי עכשיו כשאת עוזבת אותי",
+          "words": [
+            {
+              "es": "doliendo",
+              "he": "כואב (כרגע)",
+              "pron": "דּוֹלְיֶנְדּוֹ"
+            },
+            {
+              "es": "dejas",
+              "he": "עוזבת",
+              "pron": "דֶּחָס"
+            }
+          ],
+          "audio_es_path": "audio/te-va-a-doler/12_es.mp3",
+          "audio_he_path": "audio/te-va-a-doler/12_he.mp3"
+        },
+        {
+          "id": 14,
+          "spanish_text": "Pero este amor no ha de durarme para siempre",
+          "hebrew_translation": "אבל האהבה הזו לא תימשך עבורי לנצח",
+          "words": [
+            {
+              "es": "durarme",
+              "he": "להימשך עבורי",
+              "pron": "דּוּרָרְמֶה"
+            },
+            {
+              "es": "siempre",
+              "he": "תמיד / נצח",
+              "pron": "סְיֶמְפְּרֶה"
+            }
+          ],
+          "audio_es_path": "audio/te-va-a-doler/13_es.mp3",
+          "audio_he_path": "audio/te-va-a-doler/13_he.mp3"
+        },
+        {
+          "id": 15,
+          "spanish_text": "Y te lo advierto de una vez mejor ni vuelvas",
+          "hebrew_translation": "ואני מזהיר אותך מעכשיו, עדיף שלא תחזרי בכלל",
+          "words": [
+            {
+              "es": "advierto",
+              "he": "מזהיר",
+              "pron": "אַדְבְיֶרְטוֹ"
+            },
+            {
+              "es": "vuelvas",
+              "he": "תחזרי",
+              "pron": "בּוּאֶלְבָס"
+            }
+          ],
+          "audio_es_path": "audio/te-va-a-doler/14_es.mp3",
+          "audio_he_path": "audio/te-va-a-doler/14_he.mp3"
+        }
+      ],
+      "vocabulary": [
+        {
+          "es": "pena",
+          "he": "חבל / צער",
+          "pron": "פֶּנָה",
+          "category": "noun"
+        },
+        {
+          "es": "pretender",
+          "he": "להתכוון / להתיימר",
+          "pron": "פְּרֶטֶנְדֶּר",
+          "category": "verb"
+        },
+        {
+          "es": "tratar",
+          "he": "להתייחס / לטפל",
+          "pron": "טְרָטָר",
+          "category": "verb"
+        },
+        {
+          "es": "despecho",
+          "he": "טינה / תסכול",
+          "pron": "דֶסְפֶּצ'וֹ",
+          "category": "noun"
+        },
+        {
+          "es": "equivocarse",
+          "he": "לטעות",
+          "pron": "אֶקִיבוֹקָרְסֶה",
+          "category": "verb"
+        },
+        {
+          "es": "arrepentir",
+          "he": "להתחרט",
+          "pron": "אַרֶפֶּנְטִיר",
+          "category": "verb"
+        },
+        {
+          "es": "doler",
+          "he": "לכאוב",
+          "pron": "דּוֹלֶר",
+          "category": "verb"
+        },
+        {
+          "es": "temprano",
+          "he": "מוקדם",
+          "pron": "טֶמְפְּרָנוֹ",
+          "category": "adjective"
+        },
+        {
+          "es": "piel",
+          "he": "עור",
+          "pron": "פְּיֶל",
+          "category": "noun"
+        },
+        {
+          "es": "abandonar",
+          "he": "לנטוש / לעזוב",
+          "pron": "אַבַּנְדּוֹנָר",
+          "category": "verb"
+        },
+        {
+          "es": "descubrir",
+          "he": "לגלות",
+          "pron": "דֶּסְקוּבְּרִיר",
+          "category": "verb"
+        },
+        {
+          "es": "amargura",
+          "he": "מרירות",
+          "pron": "אַמַרְגּוּרָה",
+          "category": "noun"
+        },
+        {
+          "es": "advertir",
+          "he": "להזהיר",
+          "pron": "אַדְבֶרְטִיר",
+          "category": "verb"
+        },
+        {
+          "es": "entera",
+          "he": "שלמה",
+          "pron": "אֶנְטֶרָה",
+          "category": "adjective"
+        }
+      ]
+    },
+    "lines": [
+      {
+        "id": 1,
+        "spanish_text": "Es una pena que tú seas así",
+        "hebrew_translation": "זה חבל שאת כזאת",
+        "words": [
+          {
+            "es": "pena",
+            "he": "חבל / צער",
+            "pron": "פֶּנָה"
+          },
+          {
+            "es": "seas",
+            "he": "תהיי (בצורת חיבור)",
+            "pron": "סֶאַס"
+          },
+          {
+            "es": "así",
+            "he": "ככה / כך",
+            "pron": "אָסִי"
+          }
+        ],
+        "audio_es_path": "audio/te-va-a-doler/00_es.mp3",
+        "audio_he_path": "audio/te-va-a-doler/00_he.mp3"
+      },
+      {
+        "id": 2,
+        "spanish_text": "Que no te guste ser llevada por la buena",
+        "hebrew_translation": "שאת לא אוהבת שמתייחסים אלייך בטוב",
+        "words": [
+          {
+            "es": "guste",
+            "he": "ימצא חן בעינייך",
+            "pron": "גּוּסְטֶה"
+          },
+          {
+            "es": "llevada",
+            "he": "שיובילו אותך",
+            "pron": "יֶבָאדָה"
+          },
+          {
+            "es": "por la buena",
+            "he": "בדרכי נועם / בטוב",
+            "pron": "פּוֹר לָה בּוּאֶנָה"
+          }
+        ],
+        "audio_es_path": "audio/te-va-a-doler/01_es.mp3",
+        "audio_he_path": "audio/te-va-a-doler/01_he.mp3"
+      },
+      {
+        "id": 3,
+        "spanish_text": "No entiendo como tú pretendes ser feliz",
+        "hebrew_translation": "אני לא מבין איך את מצפה להיות מאושרת",
+        "words": [
+          {
+            "es": "entiendo",
+            "he": "מבין",
+            "pron": "אֶנְטְיֶנְדּוֹ"
+          },
+          {
+            "es": "pretendes",
+            "he": "מתכוונת / מתיימרת",
+            "pron": "פְּרֶטֶנְדֶּס"
+          },
+          {
+            "es": "feliz",
+            "he": "מאושר/ת",
+            "pron": "פֶלִיס"
+          }
+        ],
+        "audio_es_path": "audio/te-va-a-doler/02_es.mp3",
+        "audio_he_path": "audio/te-va-a-doler/02_he.mp3"
+      },
+      {
+        "id": 4,
+        "spanish_text": "Con ese idiota que te trata como a una cualquiera",
+        "hebrew_translation": "עם האידיוט הזה שמתייחס אלייך כמו אל סתם אחת",
+        "words": [
+          {
+            "es": "trata",
+            "he": "מתייחס / מתנהג אל",
+            "pron": "טְרָטָה"
+          },
+          {
+            "es": "cualquiera",
+            "he": "סתם אחת / כל אחת",
+            "pron": "קוּאַלְקְיֶרָה"
+          }
+        ],
+        "audio_es_path": "audio/te-va-a-doler/03_es.mp3",
+        "audio_he_path": "audio/te-va-a-doler/03_he.mp3"
+      },
+      {
+        "id": 5,
+        "spanish_text": "Sé que algún día te hará falta mi amor",
+        "hebrew_translation": "אני יודע שיום אחד האהבה שלי תהיה חסרה לך",
+        "words": [
+          {
+            "es": "sé",
+            "he": "אני יודע",
+            "pron": "סֶה"
+          },
+          {
+            "es": "hará falta",
+            "he": "יהיה חסר",
+            "pron": "אָרָה פַלְטָה"
+          }
+        ],
+        "audio_es_path": "audio/te-va-a-doler/04_es.mp3",
+        "audio_he_path": "audio/te-va-a-doler/04_he.mp3"
+      },
+      {
+        "id": 6,
+        "spanish_text": "Y no lo digo por despecho aunque parezca",
+        "hebrew_translation": "ואני לא אומר את זה מתוך תסכול, למרות שזה נראה כך",
+        "words": [
+          {
+            "es": "despecho",
+            "he": "טינה / תסכול / נקמנות",
+            "pron": "דֶסְפֶּצ'וֹ"
+          },
+          {
+            "es": "aunque",
+            "he": "למרות ש...",
+            "pron": "אָאוּנְקֶה"
+          },
+          {
+            "es": "parezca",
+            "he": "נראה / נדמה",
+            "pron": "פָּרֶסְקָה"
+          }
+        ],
+        "audio_es_path": "audio/te-va-a-doler/05_es.mp3",
+        "audio_he_path": "audio/te-va-a-doler/05_he.mp3"
+      },
+      {
+        "id": 7,
+        "spanish_text": "Te equivocaste al elegir entre él y yo",
+        "hebrew_translation": "טעית בבחירה בינו לביני",
+        "words": [
+          {
+            "es": "te equivocaste",
+            "he": "טעית",
+            "pron": "טֶה אֶקִיבוֹקָסְטֶה"
+          },
+          {
+            "es": "elegir",
+            "he": "לבחור",
+            "pron": "אֶלֶחִיר"
+          }
+        ],
+        "audio_es_path": "audio/te-va-a-doler/06_es.mp3",
+        "audio_he_path": "audio/te-va-a-doler/06_he.mp3"
+      },
+      {
+        "id": 8,
+        "spanish_text": "Pero te vas a arrepentir la vida entera",
+        "hebrew_translation": "אבל את תתחרטי על כך כל החיים",
+        "words": [
+          {
+            "es": "arrepentir",
+            "he": "להתחרט",
+            "pron": "אַרֶפֶּנְטִיר"
+          },
+          {
+            "es": "entera",
+            "he": "שלמה",
+            "pron": "אֶנְטֶרָה"
+          }
+        ],
+        "audio_es_path": "audio/te-va-a-doler/07_es.mp3",
+        "audio_he_path": "audio/te-va-a-doler/07_he.mp3"
+      },
+      {
+        "id": 9,
+        "spanish_text": "Te va a doler",
+        "hebrew_translation": "זה יכאב לך",
+        "words": [
+          {
+            "es": "doler",
+            "he": "לכאוב",
+            "pron": "דּוֹלֶר"
+          },
+          {
+            "es": "te va a",
+            "he": "זה הולך ל... (לך)",
+            "pron": "טֶה בָה אָ"
+          }
+        ],
+        "audio_es_path": "audio/te-va-a-doler/08_es.mp3",
+        "audio_he_path": "audio/te-va-a-doler/08_he.mp3"
+      },
+      {
+        "id": 10,
+        "spanish_text": "Tarde o temprano ya verás lo que te toca",
+        "hebrew_translation": "במוקדם או במאוחר את כבר תראי מה שמגיע לך",
+        "words": [
+          {
+            "es": "tarde o temprano",
+            "he": "במוקדם או במאוחר",
+            "pron": "טָרְדֶּה אוֹ טֶמְפְּרָנוֹ"
+          },
+          {
+            "es": "verás",
+            "he": "תראי",
+            "pron": "בֶּרָאס"
+          },
+          {
+            "es": "te toca",
+            "he": "מגיע לך / תורך",
+            "pron": "טֶה טוֹקָה"
+          }
+        ],
+        "audio_es_path": "audio/te-va-a-doler/09_es.mp3",
+        "audio_he_path": "audio/te-va-a-doler/09_he.mp3"
+      },
+      {
+        "id": 11,
+        "spanish_text": "Cuando tu piel ya no le excite y te abandone",
+        "hebrew_translation": "כשהעור שלך כבר לא ירגש אותו והוא יעזוב אותך",
+        "words": [
+          {
+            "es": "piel",
+            "he": "עור",
+            "pron": "פְּיֶל"
+          },
+          {
+            "es": "excite",
+            "he": "ירגש / יעורר מינית",
+            "pron": "אֶקְסִיטֶה"
+          },
+          {
+            "es": "abandone",
+            "he": "יעזוב / ינטוש",
+            "pron": "אַבַּנְדּוֹנֶה"
+          }
+        ],
+        "audio_es_path": "audio/te-va-a-doler/10_es.mp3",
+        "audio_he_path": "audio/te-va-a-doler/10_he.mp3"
+      },
+      {
+        "id": 12,
+        "spanish_text": "O al descubrir con amargura que tiene a otra",
+        "hebrew_translation": "או כשתגלי במרירות שיש לו מישהי אחרת",
+        "words": [
+          {
+            "es": "descubrir",
+            "he": "לגלות",
+            "pron": "דֶּסְקוּבְּרִיר"
+          },
+          {
+            "es": "amargura",
+            "he": "מרירות",
+            "pron": "אַמַרְגּוּרָה"
+          }
+        ],
+        "audio_es_path": "audio/te-va-a-doler/11_es.mp3",
+        "audio_he_path": "audio/te-va-a-doler/11_he.mp3"
+      },
+      {
+        "id": 13,
+        "spanish_text": "Como me está doliendo ahora que me dejas",
+        "hebrew_translation": "כמו שזה כואב לי עכשיו כשאת עוזבת אותי",
+        "words": [
+          {
+            "es": "doliendo",
+            "he": "כואב (כרגע)",
+            "pron": "דּוֹלְיֶנְדּוֹ"
+          },
+          {
+            "es": "dejas",
+            "he": "עוזבת",
+            "pron": "דֶּחָס"
+          }
+        ],
+        "audio_es_path": "audio/te-va-a-doler/12_es.mp3",
+        "audio_he_path": "audio/te-va-a-doler/12_he.mp3"
+      },
+      {
+        "id": 14,
+        "spanish_text": "Pero este amor no ha de durarme para siempre",
+        "hebrew_translation": "אבל האהבה הזו לא תימשך עבורי לנצח",
+        "words": [
+          {
+            "es": "durarme",
+            "he": "להימשך עבורי",
+            "pron": "דּוּרָרְמֶה"
+          },
+          {
+            "es": "siempre",
+            "he": "תמיד / נצח",
+            "pron": "סְיֶמְפְּרֶה"
+          }
+        ],
+        "audio_es_path": "audio/te-va-a-doler/13_es.mp3",
+        "audio_he_path": "audio/te-va-a-doler/13_he.mp3"
+      },
+      {
+        "id": 15,
+        "spanish_text": "Y te lo advierto de una vez mejor ni vuelvas",
+        "hebrew_translation": "ואני מזהיר אותך מעכשיו, עדיף שלא תחזרי בכלל",
+        "words": [
+          {
+            "es": "advierto",
+            "he": "מזהיר",
+            "pron": "אַדְבְיֶרְטוֹ"
+          },
+          {
+            "es": "vuelvas",
+            "he": "תחזרי",
+            "pron": "בּוּאֶלְבָס"
+          }
+        ],
+        "audio_es_path": "audio/te-va-a-doler/14_es.mp3",
+        "audio_he_path": "audio/te-va-a-doler/14_he.mp3"
+      }
+    ],
+    "progress_percentage": 0,
+    "is_mastered": false
+  }
+]

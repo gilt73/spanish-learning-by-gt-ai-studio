@@ -10,16 +10,24 @@
 require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
+const OpenAI = require('openai');
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const LYRICS_DIR = path.join(__dirname, 'Songs Lyrics');
 const OUTPUT_FILE = path.join(__dirname, 'songs.json');
+const AUDIO_DIR = path.join(__dirname, 'audio');
 
 if (!GEMINI_API_KEY) {
     console.error('❌ GEMINI_API_KEY not found in .env. Please add it and try again.');
     process.exit(1);
 }
+if (!OPENAI_API_KEY) {
+    console.error('❌ OPENAI_API_KEY not found in .env. Please add it and try again.');
+    process.exit(1);
+}
 
+const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
 // Known metadata for each song (trackId, albumArt, spotify_url, genre, level)
 const SONG_METADATA = {
     'amores como el nuestro': {
@@ -95,8 +103,8 @@ Return ONLY valid JSON (no markdown, no explanation) in this exact format:
   "lines": [
     {
       "id": 1,
-      "es": "The original Spanish sentence/phrase",
-      "he": "The idiomatic Hebrew translation (not word-for-word literal)",
+      "spanish_text": "The original Spanish sentence/phrase",
+      "hebrew_translation": "The idiomatic Hebrew translation (not word-for-word literal)",
       "words": [
         { "es": "Spanish word or short phrase", "he": "Hebrew meaning", "pron": "Hebrew phonetic pronunciation like קוֹרָסוֹן" }
       ]
@@ -109,7 +117,7 @@ Return ONLY valid JSON (no markdown, no explanation) in this exact format:
 
 Rules:
 1. Split the lyrics into natural phrases/sentences (one line of the song = one entry, skip pure repetition if a phrase repeats more than 3 times).
-2. The "he" translation must be natural spoken Hebrew, not a dictionary translation.
+2. The "hebrew_translation" must be natural spoken Hebrew, not a dictionary translation.
 3. For each line, include only the 2-4 most educational/interesting words in "words" array.
 4. The "vocabulary" array should contain the 10-15 most useful words from the entire song.
 5. "pron" must be Hebrew phonetic pronunciation written in Hebrew letters with vowel marks (nikud), like: קוֹרָסוֹן, אָמוֹר, בַּיְילָה
@@ -118,7 +126,7 @@ Rules:
 8. Return ONLY the raw JSON object, starting with { and ending with }`;
 
     const res = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${GEMINI_API_KEY}`,
         {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -178,6 +186,45 @@ async function processSong(filename) {
     console.log(`  📡 Calling Gemini for: "${title}" by ${artist}...`);
     const lyricsData = await callGeminiWithRetry(title, artist, lyrics);
     console.log(`  ✅ Got ${lyricsData.lines?.length || 0} lines, ${lyricsData.vocabulary?.length || 0} vocab words`);
+
+    // Ensure audio directory exists
+    const songAudioDir = path.join(AUDIO_DIR, meta.id);
+    if (!fs.existsSync(songAudioDir)) {
+        fs.mkdirSync(songAudioDir, { recursive: true });
+    }
+
+    console.log(`  🔊 Generating audio with OpenAI TTS for ${lyricsData.lines?.length} lines...`);
+    for (let i = 0; i < (lyricsData.lines || []).length; i++) {
+        const line = lyricsData.lines[i];
+        const esFileName = `${String(i).padStart(2, '0')}_es.mp3`;
+        const heFileName = `${String(i).padStart(2, '0')}_he.mp3`;
+        const esFilePath = path.join(songAudioDir, esFileName);
+        const heFilePath = path.join(songAudioDir, heFileName);
+        
+        // Only generate if not exists (allows partial resumes)
+        if (!fs.existsSync(esFilePath)) {
+            const mp3 = await openai.audio.speech.create({
+                model: "tts-1",
+                voice: "nova",
+                input: line.spanish_text,
+            });
+            const buffer = Buffer.from(await mp3.arrayBuffer());
+            await fs.promises.writeFile(esFilePath, buffer);
+        }
+        
+        if (!fs.existsSync(heFilePath)) {
+            const mp3 = await openai.audio.speech.create({
+                model: "tts-1",
+                voice: "nova",
+                input: line.hebrew_translation,
+            });
+            const buffer = Buffer.from(await mp3.arrayBuffer());
+            await fs.promises.writeFile(heFilePath, buffer);
+        }
+
+        line.audio_es_path = `audio/${meta.id}/${esFileName}`;
+        line.audio_he_path = `audio/${meta.id}/${heFileName}`;
+    }
 
     return {
         id: meta.id,

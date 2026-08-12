@@ -388,8 +388,8 @@ function renderLesson() {
         embedWrap.innerHTML = '';
     }
 
-    document.getElementById('lesson-es').textContent = line.es;
-    document.getElementById('lesson-he').textContent = line.he;
+    document.getElementById('lesson-es').textContent = line.spanish_text || line.es;
+    document.getElementById('lesson-he').textContent = line.hebrew_translation || line.he;
 
     const words = line.words || [];
     document.getElementById('lesson-words').innerHTML = words.map(w => `
@@ -423,12 +423,23 @@ function playLine(rate) {
     const song = getSongById(state.currentSongId);
     if (!song) return;
     const line = song.lines[state.currentLineIndex];
-    if (!line || !('speechSynthesis' in window)) return;
-    const utter = new SpeechSynthesisUtterance(line.es);
-    utter.lang = 'es-ES';
-    utter.rate = rate;
-    speechSynthesis.cancel();
-    speechSynthesis.speak(utter);
+    if (!line) return;
+    
+    if (state.currentAudio) {
+        state.currentAudio.pause();
+    }
+    
+    if (line.audio_es_path) {
+        state.currentAudio = new Audio(line.audio_es_path);
+        state.currentAudio.playbackRate = rate || 1;
+        state.currentAudio.play();
+    } else if ('speechSynthesis' in window) {
+        const utter = new SpeechSynthesisUtterance(line.spanish_text || line.es);
+        utter.lang = 'es-ES';
+        utter.rate = rate;
+        speechSynthesis.cancel();
+        speechSynthesis.speak(utter);
+    }
 }
 
 function nextLine() {
@@ -977,8 +988,8 @@ function renderDrivingScreen(animate = false) {
         heEl.classList.add('driving-sentence-enter');
     }
 
-    esEl.textContent = line.es;
-    heEl.textContent = line.he;
+    esEl.textContent = line.spanish_text || line.es;
+    heEl.textContent = line.hebrew_translation || line.he;
 
     document.getElementById('driving-meta').textContent =
         `${song.title} · ${state.currentLineIndex + 1} / ${song.lines.length}`;
@@ -1009,18 +1020,29 @@ function drivingPrevLine() {
     }
 }
 
-// ---- Play current line TTS (Spanish) ----
+// ---- Play current line (Spanish) ----
 function drivingPlayCurrent() {
     const song = getSongById(state.currentSongId);
     if (!song) return;
     const line = song.lines[state.currentLineIndex];
-    if (!line || !('speechSynthesis' in window)) return;
-    speechSynthesis.cancel();
-    const utter = new SpeechSynthesisUtterance(line.es);
-    utter.lang = 'es-ES';
-    utter.rate = 1;
-    speechSynthesis.speak(utter);
-    return utter; // return for auto-play chaining
+    if (!line) return;
+    
+    if (state.currentAudio) {
+        state.currentAudio.pause();
+    }
+    
+    if (line.audio_es_path) {
+        state.currentAudio = new Audio(line.audio_es_path);
+        state.currentAudio.play();
+        return state.currentAudio;
+    } else if ('speechSynthesis' in window) {
+        speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(line.spanish_text || line.es);
+        utter.lang = 'es-ES';
+        utter.rate = 1;
+        speechSynthesis.speak(utter);
+        return utter; // return for auto-play chaining
+    }
 }
 
 // ---- Touch/Gesture Handling ----
@@ -1122,6 +1144,7 @@ function stopDrivingAutoPlay() {
         clearTimeout(drivingState.autoPlayTimer);
         drivingState.autoPlayTimer = null;
     }
+    if (state.currentAudio) state.currentAudio.pause();
     speechSynthesis.cancel();
     updateAutoPlayBtn();
 }
@@ -1137,6 +1160,7 @@ function restartDrivingAutoPlay() {
         clearTimeout(drivingState.autoPlayTimer);
         drivingState.autoPlayTimer = null;
     }
+    if (state.currentAudio) state.currentAudio.pause();
     speechSynthesis.cancel();
     // Small delay before restarting loop after manual swipe
     drivingState.autoPlayTimer = setTimeout(() => {
@@ -1154,44 +1178,74 @@ function runAutoPlayCycle() {
     const line = song.lines[state.currentLineIndex];
     if (!line) return;
 
-    // Step 1: Speak Spanish
+    if (state.currentAudio) state.currentAudio.pause();
     speechSynthesis.cancel();
-    const esUtter = new SpeechSynthesisUtterance(line.es);
-    esUtter.lang = 'es-ES';
-    esUtter.rate = 0.9;
-
-    esUtter.onend = () => {
-        if (!drivingState.autoPlay || !drivingState.active) return;
-        // Step 2: Pause 2 seconds, then speak Hebrew
-        drivingState.autoPlayTimer = setTimeout(() => {
+    
+    if (line.audio_es_path && line.audio_he_path) {
+        // Step 1: Play Spanish MP3
+        state.currentAudio = new Audio(line.audio_es_path);
+        state.currentAudio.onended = () => {
             if (!drivingState.autoPlay || !drivingState.active) return;
-            const heUtter = new SpeechSynthesisUtterance(line.he);
-            heUtter.lang = 'he-IL';
-            heUtter.rate = 0.9;
-            heUtter.onend = () => {
+            // Step 2: Pause 2 seconds, then play Hebrew MP3
+            drivingState.autoPlayTimer = setTimeout(() => {
                 if (!drivingState.autoPlay || !drivingState.active) return;
-                // Step 3: Pause 1.5 seconds, advance to next line
-                drivingState.autoPlayTimer = setTimeout(() => {
+                state.currentAudio = new Audio(line.audio_he_path);
+                state.currentAudio.onended = () => {
                     if (!drivingState.autoPlay || !drivingState.active) return;
-                    const atEnd = state.currentLineIndex >= song.lines.length - 1;
-                    if (atEnd) {
-                        // End of song — stop auto-play
-                        stopDrivingAutoPlay();
-                        return;
-                    }
-                    playBeep(880, 35, 0.1);
-                    drivingNextLine();
-                    // Continue loop
+                    // Step 3: Pause 1.5 seconds, advance to next line
                     drivingState.autoPlayTimer = setTimeout(() => {
-                        runAutoPlayCycle();
-                    }, 300);
-                }, 1500);
-            };
-            speechSynthesis.speak(heUtter);
-        }, 2000);
-    };
-
-    speechSynthesis.speak(esUtter);
+                        if (!drivingState.autoPlay || !drivingState.active) return;
+                        const atEnd = state.currentLineIndex >= song.lines.length - 1;
+                        if (atEnd) {
+                            stopDrivingAutoPlay();
+                            return;
+                        }
+                        playBeep(880, 35, 0.1);
+                        drivingNextLine();
+                        drivingState.autoPlayTimer = setTimeout(() => {
+                            runAutoPlayCycle();
+                        }, 300);
+                    }, 1500);
+                };
+                state.currentAudio.play();
+            }, 2000);
+        };
+        state.currentAudio.play();
+    } else {
+        // Fallback to TTS
+        const esUtter = new SpeechSynthesisUtterance(line.spanish_text || line.es);
+        esUtter.lang = 'es-ES';
+        esUtter.rate = 0.9;
+    
+        esUtter.onend = () => {
+            if (!drivingState.autoPlay || !drivingState.active) return;
+            drivingState.autoPlayTimer = setTimeout(() => {
+                if (!drivingState.autoPlay || !drivingState.active) return;
+                const heUtter = new SpeechSynthesisUtterance(line.hebrew_translation || line.he);
+                heUtter.lang = 'he-IL';
+                heUtter.rate = 0.9;
+                heUtter.onend = () => {
+                    if (!drivingState.autoPlay || !drivingState.active) return;
+                    drivingState.autoPlayTimer = setTimeout(() => {
+                        if (!drivingState.autoPlay || !drivingState.active) return;
+                        const atEnd = state.currentLineIndex >= song.lines.length - 1;
+                        if (atEnd) {
+                            stopDrivingAutoPlay();
+                            return;
+                        }
+                        playBeep(880, 35, 0.1);
+                        drivingNextLine();
+                        drivingState.autoPlayTimer = setTimeout(() => {
+                            runAutoPlayCycle();
+                        }, 300);
+                    }, 1500);
+                };
+                speechSynthesis.speak(heUtter);
+            }, 2000);
+        };
+    
+        speechSynthesis.speak(esUtter);
+    }
 }
 
 // ============================================================

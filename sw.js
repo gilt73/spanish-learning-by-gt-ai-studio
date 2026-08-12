@@ -1,5 +1,5 @@
-// sw.js — Spanish Learning Service Worker v2.0.0
-const CACHE_NAME = 'spanish-learning-v2.0.0';
+// sw.js — Spanish Learning Service Worker v2.1.0
+const CACHE_NAME = 'spanish-learning-v2.1.0';
 const ASSETS_TO_CACHE = [
     './',
     './styles.css',
@@ -72,7 +72,16 @@ self.addEventListener('fetch', (event) => {
                 }).catch(() => {});
                 return cachedResponse;
             }
-            return fetch(event.request);
+            // If not in cache, fetch it and cache it (runtime caching)
+            return fetch(event.request).then((networkResponse) => {
+                if (networkResponse && networkResponse.status === 200) {
+                    const clonedResponse = networkResponse.clone();
+                    caches.open(CACHE_NAME).then((cache) => {
+                        cache.put(event.request, clonedResponse);
+                    });
+                }
+                return networkResponse;
+            });
         })
     );
 });

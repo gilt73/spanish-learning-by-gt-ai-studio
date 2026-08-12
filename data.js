@@ -277,13 +277,24 @@ function saveSongProgressToStorage(songId, progress_percentage, is_mastered) {
 
 // ---- Dynamic Song Loading ----
 async function initSongs() {
+    try {
+        const response = await fetch('songs.json');
+        if (response.ok) {
+            const fetchedSongs = await response.json();
+            if (fetchedSongs && fetchedSongs.length > 0) {
+                SONGS = fetchedSongs;
+            }
+        }
+    } catch (e) {
+        console.warn('Failed to load songs.json, falling back to seed data:', e);
+    }
+
     // Restore saved progress onto seed songs
     for (const song of SONGS) {
         const prog = getSongProgressFromStorage(song.id);
         song.progress_percentage = prog.progress_percentage;
         song.is_mastered = prog.is_mastered;
     }
-
     // Merge in user-added songs from localStorage
     const userSongs = getSongsFromLocalStorage();
     for (const song of userSongs) {

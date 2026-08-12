@@ -1,10 +1,11 @@
-// sw.js — Spanish Learning Service Worker v2.1.0
-const CACHE_NAME = 'spanish-learning-v2.1.0';
+// sw.js — Spanish Learning Service Worker v2.1.1
+const CACHE_NAME = 'spanish-learning-v2.1.1';
 const ASSETS_TO_CACHE = [
     './',
     './styles.css',
     './app.js',
     './data.js',
+    './songs.json',
     './wordbank.js',
     './manifest.json',
     './version.json',
